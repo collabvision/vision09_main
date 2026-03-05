@@ -218,8 +218,8 @@
   color: var(--purple-primary);
 }
 .magic-bento-card__title {
-  font-size: 5.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: transparent;
-  -webkit-text-stroke: 1px #000;
+  color: black;
+  /* -webkit-text-stroke: 1px #000; */
 }
