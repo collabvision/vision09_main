@@ -13,72 +13,12 @@ const Hero = () => {
     w-full  
     "
     >
-      {" "}
-      {/* LEFT SIDE - TEXT */}
-      {/* <div className="w-full  flex-1 min-w-75 max-w-165.5 lg:w-1/2">
-        <BlurText
-          text="Everyone Is Making Content. We Make It Viral."
-          delay={200}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="
-        font-bold
-        text-6xl
-        sm:text-7xl
-        md:text-7xl
-        lg:text-7xl
-        xl:text-7xl
-        text-center lg:text-left
-      "
-        />
-
-        <BlurText
-          text="At Vision9, we drive measurable sales and leads through performance marketing, strategic branding, and high-impact UGC content."
-          delay={300}
-          animateBy="words"
-          direction="top"
-          className="
-    mt-10
-    font-medium
-    text-gray-700
-    text-2xl
-   
-    text-center
-    lg:text-left
-    max-w-2xl
-  "
-        />
-      </div> */}
-      {/* RIGHT SIDE - CARD / IMAGE */}
-      {/* <div className="w-full  flex-1  min-w-75  max-w-165.5 lg:w-1/2">
-        <BlurText
-          text="Everyone Is Making Content. We Make It Viral."
-          delay={200}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="
-        font-bold
-        text-6xl
-        sm:text-7xl
-        md:text-7xl
-        lg:text-7xl
-        xl:text-7xl
-        text-center lg:text-left
-      "
-        />
-      </div> */}
-
-         <HeroParallax products={products} />;
-
+      <HeroParallax products={products} />;
     </div>
   );
 };
 
 export default Hero;
-
-
 
 export const products = [
   {
@@ -175,4 +115,3 @@ export const products = [
       "https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
   },
 ];
-
