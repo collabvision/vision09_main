@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
-import Header from "../../components/custom/Header"
 
 /* ═══════════════════════════════════════════════════════════════
    THEME — edit here to retheme the entire page
@@ -470,7 +469,6 @@ export default function ServicesPage() {
       html,body{width:100%;height:100%;overflow:hidden;background:var(--bg)}
       @keyframes fadeTitle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
     `}</style>
-    <Header/>
 
     <div style={{ 
       display:"flex", 

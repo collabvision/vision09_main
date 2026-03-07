@@ -1,12 +1,11 @@
-"use client";
+"use client"; // Add this at the top to handle state
 
 import { useEffect, useState } from "react";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from 'next/font/local';
-import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
-import { FaWhatsapp } from "react-icons/fa";
-import FooterAlt from "../components/custom/FooterAlt";
-// ── FONT CONFIGURATION ──
+import { motion, AnimatePresence } from "framer-motion";
+import { FaWhatsapp } from 'react-icons/fa';
 const causten = localFont({
   src: [
     {
@@ -17,74 +16,13 @@ const causten = localFont({
   variable: '--font-causten',
 });
 
-// ── LOADER COMPONENT ──
-function Loader() {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
-  const [isGlitching, setIsGlitching] = useState(false);
-
-  useEffect(() => {
-    const controls = animate(count, 100, {
-      duration: 1,
-      ease: [0.45, 0, 0.55, 1],
-    });
-
-    const glitchInterval = setInterval(() => {
-      setIsGlitching(true);
-      setTimeout(() => setIsGlitching(false), 80);
-    }, 750);
-
-    return () => {
-      controls.stop();
-      clearInterval(glitchInterval);
-    };
-  }, [count]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ 
-        y: "-100%", 
-        transition: { duration: 1, ease: [0.1, 0, 0.2, 1] } 
-      }}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#080808] overflow-hidden"
-    >
-      {/* ... (Logo and Glitch layers stay the same) ... */}
-
-      <div className="w-64 md:w-80 flex flex-col items-center">
-        <div className="flex justify-between w-full mb-3">
-          <span className="font-['Geist_Mono'] text-[9px] tracking-[0.4em] text-[#5a5a5a] uppercase">
-            System_Loading
-          </span>
-          
-          {/* FIX APPLIED HERE */}
-          <div className="flex font-['Geist_Mono'] text-[77px] text-[#ffffff] font-bold">
-            <motion.span>{rounded}</motion.span>
-            <span>%</span>
-          </div>
-        </div>
-
-        <div className="h-[1px] w-full bg-white/10 relative">
-          <motion.div
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 1, ease: [0.45, 0, 0.55, 1] }}
-            className="absolute inset-y-0 left-0 bg-[#ffffff] shadow-[0_0_10px_#c4f135]"
-          />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// ── MAIN LAYOUT ──
 export default function RootLayout({ children }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1200); // 3s + 200ms buffer for exit animation timing
+      setLoading(false);
+    }, 1000); // 3 Seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -93,30 +31,71 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${causten.variable} antialiased bg-[#080808]`}>
         <AnimatePresence mode="wait">
-          {isLoading ? (
-            <Loader key="v9-loader" />
+          {loading ? (
+            <Loader key="loader" />
           ) : (
             <motion.main
-              key="v9-content"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              key="main-content"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
             >
               {children}
             </motion.main>
           )}
         </AnimatePresence>
          <a
-        href="https://wa.me/918147637913"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all hover:scale-110 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300"
-      >
-        <FaWhatsapp size={28} />
+          href="https://wa.me/918147637913"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+          className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#A8832A] text-white"
+        >
+          <FaWhatsapp size={30} />
+          {/* <span className="absolute inset-0 rounded-full bg-[#FAF8F2] opacity-20 animate-ping -z-10" /> */}
         </a>
-        <FooterAlt/>
       </body>
     </html>
+  );
+}
+
+// ── LOADER COMPONENT ──
+function Loader() {
+  return (
+    <motion.div
+      exit={{ y: "-100%" }}
+      transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+      className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#080808]"
+    >
+      <div className="relative overflow-hidden">
+        <motion.h1
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.8, ease: "circOut" }}
+          className="font-['Bebas_Neue'] text-6xl tracking-widest text-[#f8f8f4]"
+        >
+          VISION<span className="text-[#FAF8F2]">9</span>
+        </motion.h1>
+      </div>
+
+      {/* Progress Bar */}
+      <div className="mt-6 h-[1px] w-48 bg-white/10 relative overflow-hidden">
+        <motion.div
+          initial={{ x: "-100%" }}
+          animate={{ x: "0%" }}
+          transition={{ duration: 1, ease: "linear" }}
+          className="absolute inset-0 bg-[#FAF8F2]"
+        />
+      </div>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="mt-4 text-[10px] uppercase tracking-[0.3em] text-[#5a5a5a]"
+      >
+        Engineering Growth
+      </motion.p>
+    </motion.div>
   );
 }
