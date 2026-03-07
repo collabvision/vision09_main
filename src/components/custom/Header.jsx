@@ -27,7 +27,7 @@ const Header = () => {
     <div
       style={{
         height: "4rem",
-        background: "transparent",
+            background: "var(--sm-bg, rgba(255, 255, 255, 0.8))",
         position: "fixed",
         top: 0,
         left: 0,
