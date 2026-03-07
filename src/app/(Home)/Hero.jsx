@@ -4,19 +4,19 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent:      "#A8832A",
+  accent: "#A8832A",
   accentLight: "#D4B86A",
-  accentMid:   "#C4A24E",
-  accentDark:  "#6B5010",
-  bg:          "#FAF8F2",
-  bgAlt:       "#F2EDE0",
-  text:        "#1C1A14",
-  textSec:     "#56503E",
-  muted:       "#9A8E72",
-  border:      "rgba(168,131,42,0.20)",
-  navBg:       "rgba(250,248,242,0.93)",
-  waGreen:     "#25D366",
-  btnSolidBg:  "#A8832A",
+  accentMid: "#C4A24E",
+  accentDark: "#6B5010",
+  bg: "#FAF8F2",
+  bgAlt: "#F2EDE0",
+  text: "#1C1A14",
+  textSec: "#56503E",
+  muted: "#9A8E72",
+  border: "rgba(168,131,42,0.20)",
+  navBg: "rgba(250,248,242,0.93)",
+  waGreen: "#25D366",
+  btnSolidBg: "#A8832A",
   btnSolidTxt: "#FAF8F2",
 };
 
@@ -39,10 +39,11 @@ ${FONTS}
   pointer-events:none;
 }
 .v9-hero-kicker{
-  font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;
+  font-family:'Tenor Sans',sans-serif;font-size:.78rem;letter-spacing:.28em;
   text-transform:uppercase;color:${T.accent};margin-bottom:1.4rem;
   display:flex;align-items:center;gap:.8rem;
   opacity:0;animation:v9FadeUp .7s .2s forwards;
+  line-height:2;
 }
 .v9-hero-kicker span{width:20px;height:1px;background:${T.accent};display:inline-block}
 .v9-hero-title{
@@ -99,21 +100,96 @@ ${FONTS}
 `;
 
 export const products = [
-  { title:"Moonbeam",    link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png" },
-  { title:"Cursor",      link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/cursor.png" },
-  { title:"Rogue",       link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/rogue.png" },
-  { title:"Editorially", link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/editorially.png" },
-  { title:"Editrix AI",  link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/editrix.png" },
-  { title:"Pixel Perfect",link:"#",thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/pixelperfect.png" },
-  { title:"Algochurn",   link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/algochurn.png" },
-  { title:"Aceternity UI",link:"#",thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/aceternityui.png" },
-  { title:"Tailwind MK", link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png" },
-  { title:"SmartBridge",  link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/smartbridge.png" },
-  { title:"Renderwork",  link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/renderwork.png" },
-  { title:"Creme Digital",link:"#",thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/cremedigital.png" },
-  { title:"Golden Bells", link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png" },
-  { title:"Invoker Labs", link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/invoker.png" },
-  { title:"E Free Inv",  link:"#", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png" },
+  {
+    title: "Moonbeam",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
+  },
+  {
+    title: "Cursor",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
+  },
+  {
+    title: "Rogue",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+  {
+    title: "Editorially",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
+  },
+  {
+    title: "Editrix AI",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/editrix.png",
+  },
+  {
+    title: "Pixel Perfect",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+  },
+  {
+    title: "Algochurn",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/algochurn.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/aceternityui.png",
+  },
+  {
+    title: "Tailwind MK",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+  },
+  {
+    title: "SmartBridge",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/smartbridge.png",
+  },
+  {
+    title: "Renderwork",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/renderwork.png",
+  },
+  {
+    title: "Creme Digital",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/cremedigital.png",
+  },
+  {
+    title: "Golden Bells",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+  },
+  {
+    title: "Invoker Labs",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/invoker.png",
+  },
+  {
+    title: "E Free Inv",
+    link: "#",
+    thumbnail:
+      "https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+  },
 ];
 
 const Hero = () => {
@@ -123,20 +199,31 @@ const Hero = () => {
 
       {/* ── TEXT OVERLAY ── */}
       <div className="v9-hero-overlay">
-        <p className="v9-hero-kicker"><span />Vision9 — Performance Marketing Agency<span /></p>
+        <p className="v9-hero-kicker">
+          Vision9
+          <br /> Performance Marketing Agency
+        </p>
         <h1 className="v9-hero-title">
           <span className="ln ln1">EVERYONE IS</span>
           <span className="ln ln2">MAKING CONTENT.</span>
           <span className="ln ln3">WE MAKE IT VIRAL.</span>
         </h1>
         <p className="v9-hero-sub">
-          At Vision9, we drive measurable sales and leads through performance marketing,
-          strategic branding, and high-impact UGC content.
+          At Vision9, we drive measurable sales and leads through performance
+          marketing, strategic branding, and high-impact UGC content.
         </p>
         <div className="v9-hero-btns">
-          <a href="#contact" className="v9-btn-solid">Book a Strategy Call</a>
-          <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" className="v9-btn-wa">
-            <span className="v9-wa-dot" />Connect on WhatsApp
+          <a href="#contact" className="v9-btn-solid">
+            Book a Strategy Call
+          </a>
+          <a
+            href="https://wa.me/91XXXXXXXXXX"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="v9-btn-wa"
+          >
+            <span className="v9-wa-dot" />
+            Connect on WhatsApp
           </a>
         </div>
       </div>
