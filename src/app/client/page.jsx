@@ -1,397 +1,709 @@
-"use client"
+"use client";
+import { useEffect, useRef } from "react";
+import Header from "../../components/custom/Header";
 
-import { useEffect, useRef } from "react"
-import Header from "../../components/custom/Header"
+/* ═══════════════════════════════════════════════════════════════
+   THEME — edit here to retheme the entire page
+   Every color in this file flows from these tokens only.
+═══════════════════════════════════════════════════════════════ */
+const THEME = {
+  accent: "#A8832A",
+  accentLight: "#D4B86A",
+  accentMid: "#C4A24E",
+  accentDark: "#6B5010",
+  pageBg: "#FAF8F2",
+  pageBgAlt: "#F2EDE0",
+  cardBg: "#FFFFFF",
+  navBg: "rgba(250,248,242,0.93)",
+  textPrimary: "#1C1A14",
+  textSecondary: "#56503E",
+  textMuted: "#9A8E72",
+  border: "rgba(168,131,42,0.20)",
+  borderFaint: "rgba(168,131,42,0.10)",
+  tickerBg: "#A8832A",
+  tickerText: "#FAF8F2",
+  cursorFill: "#A8832A",
+  cursorRing: "rgba(168,131,42,0.28)",
+  btnSolidBg: "#A8832A",
+  btnSolidText: "#FAF8F2",
+  btnSolidHover: "#C4A24E",
+  btnOutlineBorder: "rgba(168,131,42,0.38)",
+  btnOutlineText: "#1C1A14",
+  btnOutlineHover: "#A8832A",
+  pillHoverBg: "#A8832A",
+  pillHoverText: "#FAF8F2",
+  logoCellHoverBg: "#A8832A",
+  logoCellHoverText: "#FAF8F2",
+};
+
+const v = (t) =>
+  [
+    `--accent:${t.accent}`,
+    `--accent-l:${t.accentLight}`,
+    `--accent-m:${t.accentMid}`,
+    `--accent-d:${t.accentDark}`,
+    `--bg:${t.pageBg}`,
+    `--bg-alt:${t.pageBgAlt}`,
+    `--card:${t.cardBg}`,
+    `--nav-bg:${t.navBg}`,
+    `--text:${t.textPrimary}`,
+    `--text-sec:${t.textSecondary}`,
+    `--muted:${t.textMuted}`,
+    `--border:${t.border}`,
+    `--border-f:${t.borderFaint}`,
+    `--tick-bg:${t.tickerBg}`,
+    `--tick-txt:${t.tickerText}`,
+    `--cur:${t.cursorFill}`,
+    `--cur-ring:${t.cursorRing}`,
+    `--btn-bg:${t.btnSolidBg}`,
+    `--btn-txt:${t.btnSolidText}`,
+    `--btn-hover:${t.btnSolidHover}`,
+    `--btn-ob:${t.btnOutlineBorder}`,
+    `--btn-ot:${t.btnOutlineText}`,
+    `--btn-ohover:${t.btnOutlineHover}`,
+    `--pill-hbg:${t.pillHoverBg}`,
+    `--pill-htxt:${t.pillHoverText}`,
+    `--logo-hbg:${t.logoCellHoverBg}`,
+    `--logo-htxt:${t.logoCellHoverText}`,
+  ].join(";");
+
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
+
+const CSS = `
+${FONTS}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{${v(THEME)}}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{width:8px;height:8px;background:var(--cur);position:fixed;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);transition:width .35s,height .35s,border-radius .35s}
+#cur.big{width:44px;height:44px;background:transparent;border:1px solid var(--cur);border-radius:0}
+#cur-ring{width:32px;height:32px;border:1px solid var(--cur-ring);position:fixed;pointer-events:none;
+  z-index:9998;transform:translate(-50%,-50%);transition:width .5s,height .5s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem clamp(1.5rem,5vw,4rem);z-index:200;border-bottom:1px solid var(--border);
+  background:var(--nav-bg);backdrop-filter:blur(16px)}
+.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
+  letter-spacing:.06em;color:var(--text);text-decoration:none}
+.logo .g{color:var(--accent)}
+.nav-t{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+
+/* FURNITURE */
+.sec-orn{font-family:'Tenor Sans',sans-serif;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
+.sec-orn::before{content:'';flex:1;max-width:40px;height:1px;background:linear-gradient(270deg,var(--accent),transparent)}
+.sec-orn::after{content:'';flex:1;max-width:40px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+.sec-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--accent-m),transparent);opacity:.3}
+.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:600;
+  line-height:1.15;max-width:600px;margin-bottom:3rem;color:var(--text)}
+.sec-h em{color:var(--accent);font-style:italic}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(6rem,14vh,10rem) clamp(1.5rem,5vw,4rem) 0;position:relative;overflow:hidden;background:var(--bg)}
+.hero-noise{position:absolute;inset:0;opacity:.015;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;pointer-events:none}
+.hero-glow{position:absolute;top:-20%;left:-10%;width:700px;height:700px;
+  background:radial-gradient(ellipse,var(--accent-l) 0%,transparent 70%);opacity:.1;pointer-events:none}
+.hero-kicker{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.6rem;opacity:0;animation:fadeUp .7s .3s forwards;
+  display:flex;align-items:center;gap:.8rem}
+.hero-kicker span{width:20px;height:1px;background:var(--accent);display:inline-block}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(4rem,12vw,12rem);
+  line-height:.87;letter-spacing:-.02em;overflow:hidden;font-weight:900;color:var(--text)}
+.tl{display:block;clip-path:inset(0 0 100% 0);animation:clipR .95s cubic-bezier(.16,1,.3,1) forwards}
+.tl1{animation-delay:.45s}.tl2{animation-delay:.6s;color:var(--accent);font-style:italic}.tl3{animation-delay:.75s}
+@keyframes clipR{to{clip-path:inset(0 0 0% 0)}}
+.hero-sub{max-width:500px;margin-top:2rem;font-size:clamp(.88rem,1.4vw,1rem);line-height:1.85;
+  color:var(--text-sec);opacity:0;animation:fadeUp .8s 1s forwards}
+
+/* STATS */
+.stats{display:flex;border-top:1px solid var(--border);margin-top:clamp(3rem,6vh,5rem);
+  opacity:0;animation:fadeUp .7s 1.2s forwards;background:var(--bg)}
+.stat{flex:1;padding:1.4rem clamp(1rem,3vw,2.5rem);border-right:1px solid var(--border);
+  transition:background .3s}
+.stat:hover{background:var(--bg-alt)}.stat:last-child{border-right:none}
+.sn{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,3rem);
+  line-height:1;color:var(--accent);display:block;font-weight:700}
+.sl{font-family:'Tenor Sans',sans-serif;font-size:clamp(.52rem,.85vw,.66rem);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
+
+/* TICKER */
+.ticker-wrap{height:52px;background:var(--tick-bg);overflow:hidden;display:flex;align-items:center}
+.tkr{display:flex;white-space:nowrap;animation:tkrAnim 22s linear infinite}
+.ti{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;letter-spacing:.2em;
+  color:var(--tick-txt);padding:0 2.2rem;display:flex;align-items:center;gap:1.4rem;text-transform:uppercase}
+.td{width:5px;height:5px;background:var(--tick-txt);transform:rotate(45deg);opacity:.4;flex-shrink:0}
+@keyframes tkrAnim{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* INDUSTRIES */
+.ind{padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);background:var(--bg-alt)}
+.ind-wrap{overflow:hidden;margin-bottom:.8rem}
+.ind-row{display:flex;white-space:nowrap;gap:1rem}
+.rr{animation:sL 26s linear infinite}.rl{animation:sR 32s linear infinite}.rr2{animation:sL 21s linear infinite}
+@keyframes sL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes sR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.pill{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border);
+  padding:.65rem 1.3rem;font-family:'Playfair Display',serif;font-size:clamp(.85rem,1.7vw,1.15rem);
+  font-weight:400;letter-spacing:.06em;color:var(--text);white-space:nowrap;flex-shrink:0;
+  background:var(--card);transition:background .3s,border-color .3s,color .3s;cursor:none}
+.pill:hover{background:var(--pill-hbg);border-color:var(--pill-hbg);color:var(--pill-htxt)}
+.pill .dot{width:5px;height:5px;background:var(--accent);transform:rotate(45deg);
+  flex-shrink:0;transition:background .3s}
+.pill:hover .dot{background:var(--pill-htxt)}
+
+/* EXPERIENCE */
+.exp{padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);display:grid;
+  grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,6rem);align-items:start;background:var(--bg)}
+.exp-l{position:sticky;top:clamp(5rem,10vh,7rem)}
+.exp-body{font-size:clamp(.88rem,1.4vw,1rem);line-height:1.9;color:var(--text-sec);margin-bottom:1.8rem}
+.exp-areas{margin-top:2rem;border-top:1px solid var(--border)}
+.ea{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);
+  opacity:0;transform:translateX(-18px);transition:opacity .6s,transform .6s}
+.ea.on{opacity:1;transform:translateX(0)}
+.ea-n{font-family:'Playfair Display',serif;font-size:.88rem;color:var(--accent);min-width:2rem;padding-top:.1rem}
+.ea-t{font-size:clamp(.8rem,1.25vw,.92rem);line-height:1.7;color:var(--text-sec)}
+.cnt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);margin-top:3rem}
+.cnt{background:var(--card);padding:clamp(1.4rem,3vw,2.5rem);position:relative;
+  overflow:hidden;transition:background .4s}
+.cnt:hover{background:var(--bg-alt)}
+.cnt::before{content:'◆';position:absolute;bottom:.6rem;right:.8rem;font-size:.4rem;color:var(--border)}
+.cnt::after{content:'';position:absolute;top:0;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,var(--accent-d),var(--accent),var(--accent-m));
+  transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.cnt:hover::after{transform:scaleX(1)}
+.cv{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);
+  color:var(--accent);line-height:1;display:block;font-weight:700}
+.cl{font-family:'Tenor Sans',sans-serif;font-size:clamp(.6rem,.95vw,.72rem);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;display:block}
+
+/* TESTIMONIALS */
+.testi{padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);overflow:hidden;background:var(--bg-alt)}
+.testi-track{display:flex;gap:clamp(1rem,2vw,1.5rem);overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;cursor:grab;user-select:none}
+.testi-track::-webkit-scrollbar{display:none}
+.testi-track.drag{cursor:grabbing}
+.tc{flex-shrink:0;width:clamp(280px,38vw,420px);background:var(--card);border:1px solid var(--border);
+  padding:clamp(1.5rem,3vw,2.5rem);scroll-snap-align:start;position:relative;overflow:hidden;
+  box-shadow:0 2px 16px var(--border-f);transition:border-color .4s,transform .4s,box-shadow .4s}
+.tc:hover{border-color:var(--accent-m);transform:translateY(-5px);box-shadow:0 16px 48px var(--border)}
+.tc::before{content:'\x201C';font-family:'Playfair Display',serif;font-size:6rem;line-height:.7;
+  color:var(--border);position:absolute;top:.8rem;right:1.2rem;pointer-events:none;font-weight:400}
+.tc::after{content:'';position:absolute;bottom:12px;right:12px;width:16px;height:16px;
+  border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.tq{font-family:'Playfair Display',serif;font-size:clamp(.82rem,1.25vw,.93rem);line-height:1.88;
+  color:var(--text-sec);margin-bottom:1.5rem;font-style:italic;font-weight:400}
+.t-div{width:24px;height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin-bottom:1.2rem}
+.tn{font-family:'Playfair Display',serif;font-size:clamp(.95rem,1.7vw,1.2rem);
+  letter-spacing:.04em;color:var(--text);font-weight:600}
+.tr{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-top:.25rem;display:block}
+.drag-h{display:flex;align-items:center;gap:.8rem;margin-top:1.2rem;
+  font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.drag-line{width:32px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
+.prog-bar{height:1px;background:var(--border);margin-top:1.5rem;position:relative;overflow:hidden}
+.prog-fill{position:absolute;top:0;left:0;bottom:0;
+  background:linear-gradient(90deg,var(--accent-d),var(--accent),var(--accent-m));width:0%;transition:width .1s}
+
+/* LOGOS */
+.logos{padding:clamp(4rem,8vh,6rem) clamp(1.5rem,5vw,4rem);border-top:1px solid var(--border);background:var(--bg)}
+.lg-grid{display:flex;flex-wrap:wrap;border:1px solid var(--border);margin-top:clamp(2rem,4vh,3rem)}
+.lg-cell{flex:1 0 calc(25% - 0px);min-width:160px;padding:clamp(1.2rem,2.5vw,2rem) clamp(1rem,2vw,1.8rem);
+  border-right:1px solid var(--border);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;
+  font-size:clamp(.8rem,1.6vw,1.1rem);font-weight:400;letter-spacing:.08em;
+  color:var(--muted);text-align:center;position:relative;overflow:hidden;cursor:none;
+  background:var(--card);transition:color .4s}
+.lg-cell::after{content:'';position:absolute;inset:0;background:var(--logo-hbg);
+  transform:translateY(102%);transition:transform .4s cubic-bezier(.16,1,.3,1);z-index:0}
+.lg-cell:hover::after{transform:translateY(0)}
+.lg-cell:hover{color:var(--logo-htxt)}
+.lg-cell span{position:relative;z-index:1;white-space:pre-line;text-align:center;font-weight:600}
+
+/* CTA */
+.cta{padding:clamp(6rem,14vh,10rem) clamp(1.5rem,5vw,4rem);text-align:center;
+  position:relative;overflow:hidden;display:flex;flex-direction:column;
+  align-items:center;background:var(--bg-alt)}
+.cta-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;font-size:clamp(5rem,18vw,18rem);color:transparent;
+  -webkit-text-stroke:1px var(--border);white-space:nowrap;pointer-events:none;
+  animation:gPulse 8s ease-in-out infinite;font-weight:900}
+.cta-orn{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.4rem;position:relative;display:flex;align-items:center;
+  gap:.8rem;justify-content:center}
+.cta-orn span{width:30px;height:1px;background:var(--accent);display:inline-block}
+.cta-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,5rem);
+  font-weight:600;line-height:1.08;max-width:740px;position:relative;color:var(--text)}
+.cta-h em{color:var(--accent);font-style:italic}
+.cta-sub{margin-top:1.5rem;font-size:clamp(.85rem,1.4vw,1rem);color:var(--text-sec);
+  max-width:480px;line-height:1.8;position:relative}
+.cta-btns{margin-top:2.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;position:relative}
+.btn-solid{background:var(--btn-bg);color:var(--btn-txt);font-family:'Playfair Display',serif;
+  font-size:.88rem;font-weight:700;letter-spacing:.15em;padding:1rem 2.8rem;border:none;
+  cursor:none;text-decoration:none;display:inline-block;text-transform:uppercase;
+  position:relative;overflow:hidden;transition:background .3s,transform .3s}
+.btn-solid::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transform:translateX(-100%);transition:transform .4s}
+.btn-solid:hover::after{transform:translateX(100%)}
+.btn-solid:hover{background:var(--btn-hover);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--btn-ot);font-family:'Playfair Display',serif;
+  font-size:.88rem;font-weight:600;letter-spacing:.15em;padding:1rem 2.8rem;
+  border:1px solid var(--btn-ob);cursor:none;text-decoration:none;display:inline-block;
+  text-transform:uppercase;transition:border-color .3s,color .3s,transform .3s}
+.btn-outline:hover{border-color:var(--btn-ohover);color:var(--btn-ohover);transform:translateY(-2px)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(38px);transition:opacity .85s ease,transform .85s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes gPulse{0%,100%{opacity:.4;letter-spacing:.02em}50%{opacity:.9;letter-spacing:.1em}}
+@media(max-width:768px){.exp{grid-template-columns:1fr}.exp-l{position:static}.stats{display:none}.lg-cell{flex:1 0 50%}}
+@media(max-width:480px){.lg-cell{flex:1 0 50%}.cta-btns{flex-direction:column;align-items:stretch}}
+`;
 
 export default function ClientsPage() {
-  const cursorRef  = useRef(null)
-  const trackRef   = useRef(null)
-  const fillRef    = useRef(null)
-  const dragRef    = useRef({ isDown: false, startX: 0, scrollL: 0 })
+  const curRef = useRef(null),
+    ringRef = useRef(null);
+  const trackRef = useRef(null),
+    fillRef = useRef(null);
+  const drag = useRef({ down: false, sx: 0, sl: 0 });
 
-  /* ── COUNT UP ── */
   function countUp(el) {
-    const target   = parseInt(el.dataset.target)
-    const duration = 1800
-    const start    = performance.now()
-    const suffix   = "+"
-    ;(function update(now) {
-      const p    = Math.min((now - start) / duration, 1)
-      const ease = 1 - Math.pow(1 - p, 4)
-      const val  = Math.floor(ease * target)
-      el.textContent = val.toLocaleString() + (p >= 1 ? suffix : "")
-      if (p < 1) requestAnimationFrame(update)
-    })(start)
+    const tgt = parseInt(el.dataset.target),
+      dur = 1900,
+      t0 = performance.now();
+    (function go(now) {
+      const p = Math.min((now - t0) / dur, 1),
+        e = 1 - Math.pow(1 - p, 4);
+      el.textContent =
+        Math.floor(e * tgt).toLocaleString() + (p >= 1 ? "+" : "");
+      if (p < 1) requestAnimationFrame(go);
+    })(t0);
   }
 
   useEffect(() => {
-    /* CURSOR */
-    const cursor = cursorRef.current
-    if (!cursor) return
-    let mx=0, my=0, cx=0, cy=0
-    const onMove = e => { mx = e.clientX; my = e.clientY }
-    document.addEventListener("mousemove", onMove)
-    ;(function lerp() {
-      cx += (mx - cx) * .15; cy += (my - cy) * .15
-      cursor.style.left = cx + "px"; cursor.style.top = cy + "px"
-      requestAnimationFrame(lerp)
-    })()
-    document.querySelectorAll("a,button,.testi-card,.count-cell,.logo-cell,.ind-pill,.stat").forEach(el => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("big"))
-      el.addEventListener("mouseleave", () => cursor.classList.remove("big"))
-    })
-
-    /* SCROLL REVEAL */
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target) } })
-    }, { threshold: .1 })
-    document.querySelectorAll(".reveal").forEach(el => obs.observe(el))
-
-    /* EXP AREA REVEAL */
-    const areaObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.querySelectorAll(".exp-area").forEach((a, i) => setTimeout(() => a.classList.add("visible"), i * 120))
-          areaObs.unobserve(e.target)
-        }
-      })
-    }, { threshold: .2 })
-    const expSection = document.querySelector(".exp-areas")
-    if (expSection) areaObs.observe(expSection.parentElement)
-
-    /* COUNT UP */
-    const countObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.querySelectorAll("[data-target]").forEach(countUp); countObs.unobserve(e.target) }
-      })
-    }, { threshold: .3 })
-    document.querySelectorAll(".stats-strip,.count-grid").forEach(el => countObs.observe(el))
-
-    /* DRAG SCROLL */
-    const track = trackRef.current
-    const fill  = fillRef.current
-    if (track && fill) {
-      const d = dragRef.current
-      const onDown  = e => { d.isDown=true; track.classList.add("dragging"); d.startX=e.pageX-track.offsetLeft; d.scrollL=track.scrollLeft }
-      const onLeave = () => { d.isDown=false; track.classList.remove("dragging") }
-      const onUp    = () => { d.isDown=false; track.classList.remove("dragging") }
-      const onMoveT = e => { if(!d.isDown) return; e.preventDefault(); track.scrollLeft = d.scrollL - (e.pageX - track.offsetLeft - d.startX) * 1.4 }
-      const onScroll= () => { fill.style.width = (track.scrollLeft / (track.scrollWidth - track.clientWidth) * 100) + "%" }
-      track.addEventListener("mousedown",  onDown)
-      track.addEventListener("mouseleave", onLeave)
-      track.addEventListener("mouseup",    onUp)
-      track.addEventListener("mousemove",  onMoveT)
-      track.addEventListener("scroll",     onScroll)
+    const cur = curRef.current,
+      ring = ringRef.current;
+    if (!cur || !ring) return;
+    let mx = 0,
+      my = 0,
+      cx = 0,
+      cy = 0,
+      rx = 0,
+      ry = 0;
+    const mv = (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+    };
+    document.addEventListener("mousemove", mv);
+    let raf;
+    (function l() {
+      cx += (mx - cx) * 0.18;
+      cy += (my - cy) * 0.18;
+      rx += (mx - rx) * 0.07;
+      ry += (my - ry) * 0.07;
+      cur.style.left = cx + "px";
+      cur.style.top = cy + "px";
+      ring.style.left = rx + "px";
+      ring.style.top = ry + "px";
+      raf = requestAnimationFrame(l);
+    })();
+    document
+      .querySelectorAll("a,button,.tc,.cnt,.lg-cell,.pill,.stat")
+      .forEach((el) => {
+        el.addEventListener("mouseenter", () => cur.classList.add("big"));
+        el.addEventListener("mouseleave", () => cur.classList.remove("big"));
+      });
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+    document.querySelectorAll(".rv").forEach((el) => obs.observe(el));
+    const aObs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target
+              .querySelectorAll(".ea")
+              .forEach((a, i) =>
+                setTimeout(() => a.classList.add("on"), i * 130),
+              );
+            aObs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+    const ea = document.querySelector(".exp-areas");
+    if (ea) aObs.observe(ea.parentElement);
+    const cObs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.querySelectorAll("[data-target]").forEach(countUp);
+            cObs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+    document
+      .querySelectorAll(".stats,.cnt-grid")
+      .forEach((el) => cObs.observe(el));
+    const tr = trackRef.current,
+      fi = fillRef.current,
+      d = drag.current;
+    if (tr && fi) {
+      const dn = (e) => {
+        d.down = true;
+        tr.classList.add("drag");
+        d.sx = e.pageX - tr.offsetLeft;
+        d.sl = tr.scrollLeft;
+      };
+      const up = () => {
+        d.down = false;
+        tr.classList.remove("drag");
+      };
+      const mm = (e) => {
+        if (!d.down) return;
+        e.preventDefault();
+        tr.scrollLeft = d.sl - (e.pageX - tr.offsetLeft - d.sx) * 1.4;
+      };
+      const sc = () => {
+        fi.style.width =
+          (tr.scrollLeft / (tr.scrollWidth - tr.clientWidth)) * 100 + "%";
+      };
+      tr.addEventListener("mousedown", dn);
+      tr.addEventListener("mouseleave", up);
+      tr.addEventListener("mouseup", up);
+      tr.addEventListener("mousemove", mm);
+      tr.addEventListener("scroll", sc);
     }
+    return () => {
+      document.removeEventListener("mousemove", mv);
+      cancelAnimationFrame(raf);
+      obs.disconnect();
+      aObs.disconnect();
+      cObs.disconnect();
+    };
+  }, []);
 
-    return () => { document.removeEventListener("mousemove", onMove); obs.disconnect(); areaObs.disconnect(); countObs.disconnect() }
-  }, [])
-
-  const industries1 = ["Healthcare & Hospitals","Real Estate & Infrastructure","Education Institutions","FMCG & Consumer Brands","Hospitality & Services"]
-  const industries2 = ["Community Pages","Astrology","Meme Pages","Spiritual Brands","Career Consultancy","Fashion & Design"]
-  const industries3 = ["Coaching Classes","International Recruitment","Luxury Experiences","Dubai Real Estate","Orthopaedic Clinics","Plastic & Hardware Retail"]
-
+  const tickers = [
+    "Healthcare",
+    "Real Estate",
+    "Education",
+    "Hospitality",
+    "FMCG",
+    "Community",
+    "Astrology",
+    "Meme Pages",
+  ];
+  const i1 = [
+    "Healthcare & Hospitals",
+    "Real Estate & Infrastructure",
+    "Education Institutions",
+    "FMCG & Consumer Brands",
+    "Hospitality & Services",
+  ];
+  const i2 = [
+    "Community Pages",
+    "Astrology",
+    "Meme Pages",
+    "Spiritual Brands",
+    "Career Consultancy",
+    "Fashion & Design",
+  ];
+  const i3 = [
+    "Coaching Classes",
+    "International Recruitment",
+    "Luxury Experiences",
+    "Dubai Real Estate",
+    "Orthopaedic Clinics",
+    "Plastic & Hardware Retail",
+  ];
   const testimonials = [
-    {quote:"Vision9 captured the essence of our spiritual work without ever losing its authenticity. Their faceless content brought in meaningful engagement and followers who resonate with our values. They truly understand how to create calm, powerful content in a noisy digital world.",name:"Dr Sphoorthi Mastiholi",role:"CEO · Shivoham Spiritual Hub"},
-    {quote:"We wanted to take our household plastic mall online, and Vision9 made it happen in style. Their video content and creative reels brought local visibility and foot traffic to the store. We now see more customers who first saw us on social media.",name:"Sheetal Bogar",role:"Bogar Enterprises"},
-    {quote:"Working with Vision9 gave our coaching classes the push we needed online. Their team understood how to speak to parents and students through impactful content. Thanks to their consistent efforts, our reach and admission inquiries have grown significantly.",name:"Richa Rashmi",role:"CEO · Cornerstone Academia"},
-    {quote:"Vision9 has transformed our page into a visually appealing platform through their expert editing skills and well-planned content strategies. Their services enabled us to connect with a wide audience of fashion enthusiasts and significantly increased our digital presence.",name:"Prof. Mahantesh C.",role:"Principal · KLE's Institute of Fashion Technology"},
-    {quote:"Working with Vision9 has been a game-changer for CubicCode. Their team brought unmatched creativity and consistency to our community page, helping us scale engagement and reach. Their faceless content strategy stands out, and the results speak for themselves.",name:"Sarvesh K",role:"Co-Founder · CubicCode"},
-    {quote:"Reshaped our branding through identity design, banners, and OPD improvements while promoting government healthcare schemes. Their organic content and ads increased visibility, credibility, and patient trust in our experienced orthopedic team greatly.",name:"Dr. Devagoudah I",role:"Shree Ortho and Trauma Centre"},
-    {quote:"Strengthened our branding with impactful hoardings and graphic design, helping us communicate care and professionalism. Their work increased trust, recognition, and visibility while keeping our hospital's values authentic and approachable to patients.",name:"Dr. Ishrrat Tigadi",role:"Ashirwad Hospital"},
-    {quote:"Their team demonstrated strong expertise, strategic planning, and consistent performance in managing our campaigns. We observed improved reach, better engagement, and a clear understanding of our business goals. Vision9 maintained timely communication and delivered results with professionalism.",name:"Vineethkumar M B",role:"CEO · Admifit Career Consultancy LLP"},
-    {quote:"We were in real estate and recruiting business in Dubai, but without a proper in-house team, Vision9 changed everything—bringing us global investors, strong hires from multiple countries, and much happier clients with consistent growth.",name:"Atiq Naikwadi",role:"Leads Finder Group · Dubai"},
-  ]
-
-  const logoClients = [
-    "SHIVOHAM\nSPIRITUAL HUB","BOGAR\nENTERPRISES","CORNERSTONE\nACADEMIA","KLE INSTITUTE\nOF FASHION",
-    "CUBICCODE","SHREE ORTHO &\nTRAUMA CENTRE","ASHIRWAD\nHOSPITAL","ADMIFIT CAREER\nCONSULTANCY",
-    "LEADS FINDER\nGROUP · DUBAI","SMALL\nMIRACLES","REAL ESTATE\nSTORIES","ROYAL MAJESTIC\nYACHTS",
-    "ASTRO\nHAPPINESS","MISTERCHEF","HEADLINE\nJUNCTION","+ MORE\nBRANDS",
-  ]
-
-  const tickerItems = ["HEALTHCARE","REAL ESTATE","EDUCATION","HOSPITALITY","FMCG","COMMUNITY","ASTROLOGY","MEME PAGES"]
+    {
+      q: "Vision9 captured the essence of our spiritual work without ever losing its authenticity. Their faceless content brought in meaningful engagement and followers who resonate with our values.",
+      n: "Dr Sphoorthi Mastiholi",
+      r: "CEO · Shivoham Spiritual Hub",
+    },
+    {
+      q: "We wanted to take our household plastic mall online, and Vision9 made it happen in style. Their video content and creative reels brought local visibility and foot traffic to the store.",
+      n: "Sheetal Bogar",
+      r: "Bogar Enterprises",
+    },
+    {
+      q: "Working with Vision9 gave our coaching classes the push we needed online. Their team understood how to speak to parents and students through impactful content.",
+      n: "Richa Rashmi",
+      r: "CEO · Cornerstone Academia",
+    },
+    {
+      q: "Vision9 has transformed our page into a visually appealing platform through their expert editing skills and well-planned content strategies.",
+      n: "Prof. Mahantesh C.",
+      r: "Principal · KLE's Institute of Fashion Technology",
+    },
+    {
+      q: "Working with Vision9 has been a game-changer for CubicCode. Their team brought unmatched creativity and consistency to our community page.",
+      n: "Sarvesh K",
+      r: "Co-Founder · CubicCode",
+    },
+    {
+      q: "Reshaped our branding through identity design, banners, and OPD improvements while promoting government healthcare schemes.",
+      n: "Dr. Devagoudah I",
+      r: "Shree Ortho and Trauma Centre",
+    },
+    {
+      q: "Strengthened our branding with impactful hoardings and graphic design, helping us communicate care and professionalism.",
+      n: "Dr. Ishrrat Tigadi",
+      r: "Ashirwad Hospital",
+    },
+    {
+      q: "Their team demonstrated strong expertise, strategic planning, and consistent performance in managing our campaigns.",
+      n: "Vineethkumar M B",
+      r: "CEO · Admifit Career Consultancy LLP",
+    },
+    {
+      q: "We were in real estate and recruiting business in Dubai — Vision9 changed everything, bringing us global investors and strong hires from multiple countries.",
+      n: "Atiq Naikwadi",
+      r: "Leads Finder Group · Dubai",
+    },
+  ];
+  const logos = [
+    "SHIVOHAM\nSPIRITUAL HUB",
+    "BOGAR\nENTERPRISES",
+    "CORNERSTONE\nACADEMIA",
+    "KLE INSTITUTE\nOF FASHION",
+    "CUBICCODE",
+    "SHREE ORTHO &\nTRAUMA CENTRE",
+    "ASHIRWAD\nHOSPITAL",
+    "ADMIFIT CAREER\nCONSULTANCY",
+    "LEADS FINDER\nGROUP · DUBAI",
+    "SMALL\nMIRACLES",
+    "REAL ESTATE\nSTORIES",
+    "ROYAL MAJESTIC\nYACHTS",
+    "ASTRO\nHAPPINESS",
+    "MISTERCHEF",
+    "HEADLINE\nJUNCTION",
+    "+ MORE\nBRANDS",
+  ];
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap');
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        :root{--lime:#c4f135;--black:#080808;--white:#f8f8f4;--gray:#5a5a5a;--border:rgba(255,255,255,0.07);--card-bg:rgba(255,255,255,0.025)}
-        html{scroll-behavior:smooth}
-        body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
-
-        #cl-cursor{width:10px;height:10px;background:var(--lime);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;left:0;top:0;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s,border .3s}
-        #cl-cursor.big{width:52px;height:52px;background:transparent;border:1.5px solid var(--lime);mix-blend-mode:difference}
-
-        nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:1.4rem clamp(1.5rem,5vw,4rem);z-index:200}
-        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.12em;color:var(--white);text-decoration:none}
-        .logo span{color:var(--lime)}
-        .nav-tag{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
-
-        /* HERO */
-        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(6rem,14vh,10rem) clamp(1.5rem,5vw,4rem) clamp(4rem,8vh,6rem);position:relative;overflow:hidden}
-        .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(196,241,53,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,241,53,.04) 1px,transparent 1px);background-size:80px 80px;animation:gridMove 20s linear infinite;pointer-events:none}
-        @keyframes gridMove{0%{background-position:0 0}100%{background-position:80px 80px}}
-        .hero-kicker{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.5rem;opacity:0;animation:fadeUp .7s .3s forwards}
-        .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,12rem);line-height:.88;letter-spacing:-.01em;overflow:hidden}
-        .hero-title .tl{display:block;clip-path:inset(0 0 100% 0);animation:clipReveal .9s cubic-bezier(.16,1,.3,1) forwards}
-        .tl:nth-child(1){animation-delay:.45s}
-        .tl:nth-child(2){animation-delay:.6s;color:var(--lime)}
-        .tl:nth-child(3){animation-delay:.75s}
-        @keyframes clipReveal{to{clip-path:inset(0 0 0% 0)}}
-        .hero-sub{max-width:500px;margin-top:2rem;font-size:clamp(.88rem,1.4vw,1rem);line-height:1.8;color:rgba(248,248,244,.55);opacity:0;animation:fadeUp .8s 1s forwards}
-        .stats-strip{position:absolute;bottom:52px;left:0;right:0;display:flex;border-top:1px solid var(--border);opacity:0;animation:fadeUp .7s 1.2s forwards}
-        .stat{flex:1;padding:1.4rem clamp(1rem,3vw,2.5rem);border-right:1px solid var(--border);transition:background .3s}
-        .stat:hover{background:rgba(196,241,53,.04)}
-        .stat:last-child{border-right:none}
-        .stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.6rem,3.5vw,3rem);line-height:1;color:var(--lime);display:block}
-        .stat-lbl{font-size:clamp(.58rem,.9vw,.72rem);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-top:.3rem;display:block}
-        .ticker-bar{position:absolute;bottom:0;left:0;right:0;height:52px;background:var(--lime);overflow:hidden;display:flex;align-items:center}
-        .ticker-track{display:flex;white-space:nowrap;animation:tick 22s linear infinite}
-        .tick-item{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;color:var(--black);padding:0 2rem;display:flex;align-items:center;gap:1.5rem}
-        .tick-dot{width:4px;height:4px;background:var(--black);border-radius:50%;opacity:.4}
-        @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-        /* INDUSTRIES */
-        .industries{padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);position:relative}
-        .sec-label{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.2rem;display:block}
-        .sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:400;line-height:1.15;max-width:600px;margin-bottom:3rem}
-        .sec-title em{color:var(--lime);font-style:italic}
-        .ind-marquee-wrap{overflow:hidden;margin-bottom:.6rem}
-        .ind-row{display:flex;white-space:nowrap;gap:1rem}
-        .ind-row.row-r{animation:scrollL 25s linear infinite}
-        .ind-row.row-l{animation:scrollR 30s linear infinite}
-        .ind-row.row-r2{animation:scrollL 20s linear infinite}
-        @keyframes scrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-        @keyframes scrollR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
-        .ind-pill{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border);padding:.7rem 1.4rem;font-family:'Bebas Neue',sans-serif;font-size:clamp(.9rem,1.8vw,1.3rem);letter-spacing:.08em;color:var(--white);white-space:nowrap;flex-shrink:0;transition:background .3s,border-color .3s,color .3s}
-        .ind-pill:hover{background:var(--lime);border-color:var(--lime);color:var(--black);cursor:none}
-        .ind-pill .dot{width:5px;height:5px;background:var(--lime);border-radius:50%;flex-shrink:0;transition:background .3s}
-        .ind-pill:hover .dot{background:var(--black)}
-
-        /* EXPERIENCE */
-        .exp-section{padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,6rem);align-items:start}
-        .exp-left{position:sticky;top:clamp(5rem,10vh,7rem)}
-        .exp-body{font-size:clamp(.88rem,1.4vw,1rem);line-height:1.85;color:rgba(248,248,244,.6);margin-bottom:1.8rem}
-        .exp-areas{margin-top:2rem;border-top:1px solid var(--border)}
-        .exp-area{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);opacity:0;transform:translateX(-20px);transition:opacity .6s,transform .6s}
-        .exp-area.visible{opacity:1;transform:translateX(0)}
-        .ea-num{font-family:'Bebas Neue',sans-serif;font-size:.8rem;letter-spacing:.1em;color:var(--lime);min-width:2rem;padding-top:.15rem}
-        .ea-txt{font-size:clamp(.82rem,1.3vw,.95rem);line-height:1.65;color:rgba(248,248,244,.6)}
-
-        /* COUNTS */
-        .count-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:3rem}
-        .count-cell{background:var(--black);padding:clamp(1.5rem,3vw,2.5rem);position:relative;overflow:hidden;transition:background .4s}
-        .count-cell:hover{background:rgba(196,241,53,.04)}
-        .count-cell::after{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
-        .count-cell:hover::after{transform:scaleX(1)}
-        .count-val{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--lime);line-height:1;display:block}
-        .count-lbl{font-size:clamp(.65rem,1vw,.78rem);letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-top:.4rem;display:block}
-
-        /* TESTIMONIALS */
-        .testi-section{padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);overflow:hidden}
-        .testi-outer{position:relative;margin-top:clamp(2rem,4vh,3.5rem)}
-        .testi-track{display:flex;gap:clamp(1rem,2vw,1.5rem);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;cursor:grab;user-select:none}
-        .testi-track::-webkit-scrollbar{display:none}
-        .testi-track.dragging{cursor:grabbing}
-        .testi-card{flex-shrink:0;width:clamp(280px,38vw,420px);background:var(--card-bg);border:1px solid var(--border);padding:clamp(1.5rem,3vw,2.5rem);scroll-snap-align:start;position:relative;overflow:hidden;transition:border-color .4s,transform .4s,background .4s}
-        .testi-card:hover{border-color:rgba(196,241,53,.25);transform:translateY(-5px);background:rgba(196,241,53,.03)}
-        .testi-card::before{content:'201C';font-family:'DM Serif Display',serif;font-size:6rem;line-height:.7;color:rgba(196,241,53,.12);position:absolute;top:1rem;right:1.5rem;pointer-events:none}
-        .testi-quote{font-size:clamp(.82rem,1.3vw,.94rem);line-height:1.82;color:rgba(248,248,244,.65);margin-bottom:1.5rem;font-style:italic}
-        .testi-divider{width:28px;height:1px;background:rgba(196,241,53,.3);margin-bottom:1.2rem}
-        .testi-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,1.8vw,1.3rem);letter-spacing:.06em;color:var(--white)}
-        .testi-role{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);margin-top:.25rem;display:block}
-        .drag-hint{display:flex;align-items:center;gap:.8rem;margin-top:1.2rem;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray)}
-        .drag-line{width:32px;height:1px;background:var(--gray)}
-        .testi-progress{height:2px;background:var(--border);margin-top:1.5rem;position:relative;overflow:hidden}
-        .testi-fill{position:absolute;top:0;left:0;bottom:0;background:var(--lime);width:0%;transition:width .1s}
-
-        /* LOGOS */
-        .logos-section{padding:clamp(4rem,8vh,6rem) clamp(1.5rem,5vw,4rem);border-top:1px solid var(--border)}
-        .logos-grid{display:flex;flex-wrap:wrap;gap:0;margin-top:clamp(2rem,4vh,3rem);border:1px solid var(--border)}
-        .logo-cell{flex:1 0 calc(25% - 0px);min-width:160px;padding:clamp(1.2rem,2.5vw,2rem) clamp(1rem,2vw,1.8rem);border-right:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:clamp(.9rem,1.8vw,1.3rem);letter-spacing:.1em;color:rgba(248,248,244,.35);transition:color .4s,background .4s;text-align:center;position:relative;overflow:hidden}
-        .logo-cell::after{content:'';position:absolute;inset:0;background:var(--lime);transform:translateY(101%);transition:transform .4s cubic-bezier(.16,1,.3,1);z-index:0}
-        .logo-cell:hover::after{transform:translateY(0)}
-        .logo-cell:hover{color:var(--black)}
-        .logo-cell span{position:relative;z-index:1;white-space:pre-line}
-
-        /* CTA */
-        .cta-section{padding:clamp(6rem,14vh,10rem) clamp(1.5rem,5vw,4rem);text-align:center;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center}
-        .cta-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,18vw,18rem);color:transparent;-webkit-text-stroke:1px rgba(196,241,53,.05);white-space:nowrap;pointer-events:none;animation:rotateSlow 30s linear infinite}
-        @keyframes rotateSlow{0%{letter-spacing:.02em}50%{letter-spacing:.15em}100%{letter-spacing:.02em}}
-        .cta-eyebrow{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--lime);margin-bottom:1.5rem;position:relative}
-        .cta-h{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5.5vw,5rem);font-weight:400;line-height:1.1;max-width:740px;position:relative}
-        .cta-h em{color:var(--lime);font-style:italic}
-        .cta-sub{margin-top:1.5rem;font-size:clamp(.85rem,1.4vw,1rem);color:rgba(248,248,244,.5);max-width:480px;line-height:1.75;position:relative}
-        .cta-btns{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;position:relative}
-        .btn-p{background:var(--lime);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;padding:1rem 2.5rem;border:none;cursor:none;text-decoration:none;display:inline-block;transition:background .3s,transform .3s}
-        .btn-p:hover{background:#d4ff3e;transform:translateY(-2px)}
-        .btn-s{background:transparent;color:var(--white);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.12em;padding:1rem 2.5rem;border:1px solid rgba(248,248,244,.2);cursor:none;text-decoration:none;display:inline-block;transition:border-color .3s,color .3s,transform .3s}
-        .btn-s:hover{border-color:var(--lime);color:var(--lime);transform:translateY(-2px)}
-
-        /* REVEAL */
-        .reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
-        .reveal.visible{opacity:1;transform:translateY(0)}
-        .rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}.rd5{transition-delay:.5s}
-
-        @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-
-        @media(max-width:768px){
-          .exp-section{grid-template-columns:1fr}
-          .exp-left{position:static}
-          .count-grid{grid-template-columns:1fr 1fr}
-          .stats-strip{display:none}
-          .logo-cell{flex:1 0 calc(50% - 0px)}
-        }
-        @media(max-width:480px){
-          .count-grid{grid-template-columns:1fr 1fr}
-          .logo-cell{flex:1 0 50%}
-          .cta-btns{flex-direction:column;align-items:stretch}
-          .btn-p,.btn-s{text-align:center}
-        }
-      `}</style>
-          
-
-      <div id="cl-cursor" ref={cursorRef} />
-
-      {/* NAV */}
-      {/* <nav>
-        <a href="#" className="logo">VISION<span>9</span></a>
-        <span className="nav-tag">Clients &amp; Work</span>
-      </nav> */}
-          <Header/>
-
-      {/* ══ HERO ══ */}
+      <style>{CSS}</style>
+      <div id="cur" ref={curRef} />
+      <div id="cur-ring" ref={ringRef} />
+      {/* <nav><a href="#" className="logo">VISION<span className="g">9</span></a><span className="nav-t">Clients &amp; Work</span></nav> */}
+      <Header />
+      {/* HERO */}
       <section className="hero">
-        <div className="grid-bg" />
-        <p className="hero-kicker">Trusted by brands across industries</p>
-       <div> <h1 className="hero-title">
-          <span className="tl">CLIENTS</span>
-          <span className="tl">WE'VE</span>
-          <span className="tl">WORKED WITH</span>
+        <div className="hero-noise" />
+        <div className="hero-glow" />
+        <p className="hero-kicker">
+          <span />
+          Trusted by brands across industries
+          <span />
+        </p>
+        <h1 className="hero-title">
+          <span className="tl tl1">CLIENTS</span>
+          <span className="tl tl2">WE'VE</span>
+          <span className="tl tl3">WORKED WITH</span>
         </h1>
-        <p className="hero-sub">Strategic marketing, branding, performance campaigns, and content execution—aligned with business goals. We work as an extended partner.</p>
-</div>
-        <div className="stats-strip">
-          {[{t:"500",l:"Million+ Views"},{t:"350",l:"Campaigns Executed"},{t:"1000",l:"Influencer Network"},{t:"28",l:"Brands Served"},{t:"30",l:"Active Clients"}].map((s,i)=>(
+        <p className="hero-sub">
+          Strategic marketing, branding, performance campaigns, and content
+          execution—aligned with business goals. We work as an extended partner.
+        </p>
+        <div className="stats">
+          {[
+            { t: "500", l: "Million+ Views" },
+            { t: "350", l: "Campaigns Executed" },
+            { t: "1000", l: "Influencer Network" },
+            { t: "28", l: "Brands Served" },
+            { t: "30", l: "Active Clients" },
+          ].map((s, i) => (
             <div key={i} className="stat">
-              <span className="stat-num" data-target={s.t}>0</span>
-              <span className="stat-lbl">{s.l}</span>
+              <span className="sn" data-target={s.t}>
+                0
+              </span>
+              <span className="sl">{s.l}</span>
             </div>
           ))}
         </div>
-
-        <div className="ticker-bar">
-          <div className="ticker-track">
-            {[...tickerItems,...tickerItems].map((t,i)=>(
-              <span key={i} className="tick-item">{t}<span className="tick-dot"/></span>
+        <div className="ticker-wrap">
+          <div className="tkr">
+            {[...tickers, ...tickers].map((t, i) => (
+              <div key={i} className="ti">
+                {t}
+                <span className="td" />
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ INDUSTRIES ══ */}
-      <section className="industries">
-        <span className="sec-label reveal">01 — Industries</span>
-        <h2 className="sec-title reveal rd1">We speak every <em>industry's</em> language</h2>
+      <div className="sec-rule" />
 
-        <div className="ind-marquee-wrap reveal rd2">
-          <div className="ind-row row-r">
-            {[...industries1,...industries1].map((n,i)=>(
-              <span key={i} className="ind-pill"><span className="dot"/>{n}</span>
-            ))}
+      {/* INDUSTRIES */}
+      <section className="ind">
+        <div className="sec-orn rv">01 — Industries</div>
+        <h2 className="sec-h rv d1">
+          We speak every <em>industry's</em> language
+        </h2>
+        {[
+          [i1, "rr"],
+          [i2, "rl"],
+          [i3, "rr2"],
+        ].map(([items, cls], ri) => (
+          <div key={ri} className={`ind-wrap rv d${ri + 2}`}>
+            <div className={`ind-row ${cls}`}>
+              {[...items, ...items].map((n, i) => (
+                <span key={i} className="pill">
+                  <span className="dot" />
+                  {n}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="ind-marquee-wrap reveal rd3">
-          <div className="ind-row row-l">
-            {[...industries2,...industries2].map((n,i)=>(
-              <span key={i} className="ind-pill"><span className="dot"/>{n}</span>
-            ))}
-          </div>
-        </div>
-
-        <div className="ind-marquee-wrap reveal rd4">
-          <div className="ind-row row-r2">
-            {[...industries3,...industries3].map((n,i)=>(
-              <span key={i} className="ind-pill"><span className="dot"/>{n}</span>
-            ))}
-          </div>
-        </div>
+        ))}
       </section>
 
-      {/* ══ EXPERIENCE ══ */}
-      <section className="exp-section">
-        <div className="exp-left">
-          <span className="sec-label reveal">02 — Founders' Experience</span>
-          <h2 className="sec-title reveal rd1" style={{marginBottom:"1.5rem"}}>Experience that goes <em>beyond</em> one agency</h2>
-          <p className="exp-body reveal rd2">The founders bring extensive hands-on experience from managing and contributing to multiple brand pages, campaigns, and digital properties across industries — through freelance, consulting, and collaborative roles.</p>
+      <div className="sec-rule" />
+
+      {/* EXPERIENCE */}
+      <section className="exp">
+        <div className="exp-l">
+          <div className="sec-orn rv">02 — Founders' Experience</div>
+          <h2 className="sec-h rv d1" style={{ marginBottom: "1.5rem" }}>
+            Experience that goes <em>beyond</em> one agency
+          </h2>
+          <p className="exp-body rv d2">
+            The founders bring extensive hands-on experience from managing and
+            contributing to multiple brand pages, campaigns, and digital
+            properties across industries.
+          </p>
           <div className="exp-areas">
-            <div className="exp-area"><span className="ea-num">01</span><span className="ea-txt">Managing and scaling brand pages across platforms</span></div>
-            <div className="exp-area"><span className="ea-num">02</span><span className="ea-txt">Executing performance marketing campaigns</span></div>
-            <div className="exp-area"><span className="ea-num">03</span><span className="ea-txt">Developing content and UGC strategies</span></div>
-            <div className="exp-area"><span className="ea-num">04</span><span className="ea-txt">Supporting branding, communication, and digital presence</span></div>
+            {[
+              "Managing and scaling brand pages across platforms",
+              "Executing performance marketing campaigns",
+              "Developing content and UGC strategies",
+              "Supporting branding, communication, and digital presence",
+            ].map((t, i) => (
+              <div key={i} className="ea">
+                <span className="ea-n">0{i + 1}</span>
+                <span className="ea-t">{t}</span>
+              </div>
+            ))}
           </div>
         </div>
-
         <div>
-          <span className="sec-label reveal">Experience Snapshot</span>
-          <div className="count-grid reveal rd1">
-            {[{t:"500",l:"Million+ Views Generated"},{t:"350",l:"Campaigns Executed"},{t:"1000",l:"Influencers · Pan-India"},{t:"20000",l:"Social Pages Reach"},{t:"28",l:"Brands Served"},{t:"30",l:"Active Clients"}].map((c,i)=>(
-              <div key={i} className="count-cell">
-                <span className="count-val" data-target={c.t}>0</span>
-                <span className="count-lbl">{c.l}</span>
+          <div className="sec-orn rv">Experience Snapshot</div>
+          <div className="cnt-grid rv d1">
+            {[
+              { t: "500", l: "Million+ Views Generated" },
+              { t: "350", l: "Campaigns Executed" },
+              { t: "1000", l: "Influencers · Pan-India" },
+              { t: "20000", l: "Social Pages Reach" },
+              { t: "28", l: "Brands Served" },
+              { t: "30", l: "Active Clients" },
+            ].map((c, i) => (
+              <div key={i} className="cnt">
+                <span className="cv" data-target={c.t}>
+                  0
+                </span>
+                <span className="cl">{c.l}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ TESTIMONIALS ══ */}
-      <section className="testi-section">
-        <span className="sec-label reveal">03 — Testimonials</span>
-        <h2 className="sec-title reveal rd1">Straight from the <em>brands</em> we've built</h2>
-        <div className="drag-hint reveal rd2">
-          <span className="drag-line"/><span>Drag to explore</span>
+      <div className="sec-rule" />
+
+      {/* TESTIMONIALS */}
+      <section className="testi">
+        <div className="sec-orn rv">03 — Testimonials</div>
+        <h2 className="sec-h rv d1">
+          Straight from the <em>brands</em> we've built
+        </h2>
+        <div className="drag-h rv d2">
+          <span className="drag-line" />
+          Drag to explore
         </div>
-        <div className="testi-outer">
+        <div
+          style={{ position: "relative", marginTop: "clamp(2rem,4vh,3.5rem)" }}
+        >
           <div className="testi-track" ref={trackRef}>
-            {testimonials.map((t,i)=>(
-              <div key={i} className="testi-card">
-                <p className="testi-quote">{t.quote}</p>
-                <div className="testi-divider"/>
-                <div className="testi-name">{t.name}</div>
-                <span className="testi-role">{t.role}</span>
+            {testimonials.map((t, i) => (
+              <div key={i} className="tc">
+                <p className="tq">{t.q}</p>
+                <div className="t-div" />
+                <div className="tn">{t.n}</div>
+                <span className="tr">{t.r}</span>
               </div>
             ))}
           </div>
-          <div className="testi-progress"><div className="testi-fill" ref={fillRef}/></div>
+          <div className="prog-bar">
+            <div className="prog-fill" ref={fillRef} />
+          </div>
         </div>
       </section>
 
-      {/* ══ CLIENT LOGOS ══ */}
-      <section className="logos-section">
-        <span className="sec-label reveal">04 — Our Clients</span>
-        <h2 className="sec-title reveal rd1">Brands that <em>trust</em> Vision9</h2>
-        <div className="logos-grid reveal rd2">
-          {logoClients.map((name,i)=>(
-            <div key={i} className="logo-cell"><span>{name}</span></div>
+      <div className="sec-rule" />
+
+      {/* LOGOS */}
+      <section className="logos">
+        <div className="sec-orn rv">04 — Our Clients</div>
+        <h2 className="sec-h rv d1">
+          Brands that <em>trust</em> Vision9
+        </h2>
+        <div className="lg-grid rv d2">
+          {logos.map((n, i) => (
+            <div key={i} className="lg-cell">
+              <span>{n}</span>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* ══ CTA ══ */}
-      <section className="cta-section">
-        <div className="cta-bg">VISION9</div>
-        <p className="cta-eyebrow reveal">Ready to join them?</p>
-        <h2 className="cta-h reveal rd1">Let's Build Brands That <em>Perform</em></h2>
-        <p className="cta-sub reveal rd2">Partner with Vision9 to move from ideas to execution — and from execution to measurable growth.</p>
-        <div className="cta-btns reveal rd3">
-          <a href="#" className="btn-p">BOOK A STRATEGY CALL</a>
-          <a href="#" className="btn-s">CONTACT US</a>
+      {/* CTA */}
+      <section className="cta">
+        <div className="cta-ghost">VISION9</div>
+        <div className="cta-orn rv">
+          <span />
+          Ready to join them?
+          <span />
+        </div>
+        <h2 className="cta-h rv d1">
+          Let's Build Brands That <em>Perform</em>
+        </h2>
+        <p className="cta-sub rv d2">
+          Partner with Vision9 to move from ideas to execution — and from
+          execution to measurable growth.
+        </p>
+        <div className="cta-btns rv d3">
+          <a href="#" className="btn-solid">
+            Book a Strategy Call
+          </a>
+          <a href="#" className="btn-outline">
+            Contact Us
+          </a>
         </div>
       </section>
     </>
-  )
+  );
 }

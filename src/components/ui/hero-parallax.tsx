@@ -45,7 +45,7 @@ export const HeroParallax = ({
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    useTransform(scrollYProgress, [0, 0.2], [-0.2, 1]),
     springConfig
   );
   const rotateZ = useSpring(
@@ -59,7 +59,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[250vh]  px-5 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[150vh] mt-[52vh] px-5 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -122,9 +122,9 @@ export const Header = () => {
     // </div>
 
      <div className="w-[90%] md:w-[70%] relative mx-auto py-20 sm:py-10 md:py-20 px-4  left-0 top-0">
-          <BlurText text ="Everyone Is Making Content. We Make It Viral." delay={200} animateBy="words" direction="top" onAnimationComplete={handleAnimationComplete} className=" font-bold text-6xl sm:text-7xl md:text-7xl lg:text-7xl xl:text-7xl text-center lg:text-left " />
+          {/* <BlurText text ="Everyone Is Making Content. We Make It Viral." delay={200} animateBy="words" direction="top" onAnimationComplete={handleAnimationComplete} className=" font-bold text-6xl sm:text-7xl md:text-7xl lg:text-7xl xl:text-7xl text-center lg:text-left " /> */}
     
-            <BlurText
+            {/* <BlurText
               text="At Vision9, we drive measurable sales and leads through performance marketing, strategic branding, and high-impact UGC content."
               delay={300}
               animateBy="words"
@@ -139,9 +139,9 @@ export const Header = () => {
         lg:text-left
         max-w-2xl
       "
-      />
+      /> */}
       <div className="flex mt-7 justify-start items-center gap-2">
-           <NoiseBackgroundDemo />
+           {/* <NoiseBackgroundDemo /> */}
                 {/* <NoiseBackgroundDemo/> */}
       </div>
    
@@ -168,9 +168,9 @@ export const ProductCard = ({
       style={{
         x: translate,
       }}
-      whileHover={{
-        y: -20,
-      }}
+      // whileHover={{
+      //   y: -20,
+      // }}
       key={product.title}
       className="group/product h-96 w-[30rem] relative shrink-0"
     >

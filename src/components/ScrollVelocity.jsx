@@ -117,7 +117,7 @@ export const ScrollVelocity = ({
   }
 
   return (
-    <section className='bg-black text-white py-2'>
+    <section className='bg-[#202020] text-white py-2'>
       {texts.map((text, index) => (
         <VelocityText
           key={index}
