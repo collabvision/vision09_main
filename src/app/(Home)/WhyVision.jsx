@@ -4,25 +4,34 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent:      "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid:   "#C4A24E",
-  accentDark:  "#6B5010",
-  bg:          "#FAF8F2",
-  bgAlt:       "#F2EDE0",
-  card:        "#FFFFFF",
-  text:        "#1C1A14",
-  textSec:     "#56503E",
-  muted:       "#9A8E72",
-  border:      "rgba(168,131,42,0.20)",
-  borderFaint: "rgba(168,131,42,0.10)",
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f5f2c8",
+  card: "#ffffff",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
+  borderFaint: "rgba(115,112,23,0.10)",
 };
 
 import { forwardRef, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { AnimatedBeam } from "../../components/ui/animated-beam";
 import {
-  Target, Briefcase, ShieldCheck, Settings, TrendingUp, Eye, Rocket
+  Target,
+  Briefcase,
+  ShieldCheck,
+  Settings,
+  TrendingUp,
+  Eye,
+  Rocket,
 } from "lucide-react";
 
 const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
@@ -145,39 +154,102 @@ Square.displayName = "Square";
 
 function BeamDiagram() {
   const containerRef = useRef(null);
-  const refs = [useRef(null),useRef(null),useRef(null),useRef(null),useRef(null),useRef(null),useRef(null)];
-  const [r1,r2,r3,r4,r5,r6,r7] = refs;
+  const refs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
+  const [r1, r2, r3, r4, r5, r6, r7] = refs;
 
   return (
     <div className="wv-beam-wrap" ref={containerRef}>
-      <div style={{ display:"flex",flexDirection:"column",justifyContent:"space-between",
-        alignItems:"stretch",height:"100%",maxHeight:340,width:"100%",maxWidth:460 }}>
-
-        <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center" }}>
-          <Square ref={r1}><Target size={28}/><span>Strategy</span></Square>
-          <Square ref={r5}><Briefcase size={28}/><span>Expertise</span></Square>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "stretch",
+          height: "100%",
+          maxHeight: 340,
+          width: "100%",
+          maxWidth: 460,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Square ref={r1}>
+            <Target size={28} />
+            <span>Strategy</span>
+          </Square>
+          <Square ref={r5}>
+            <Briefcase size={28} />
+            <span>Expertise</span>
+          </Square>
         </div>
 
-        <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center" }}>
-          <Square ref={r2}><ShieldCheck size={28}/><span>Standards</span></Square>
-          <Square ref={r4} isCenter><Settings size={34}/><span>Execution</span></Square>
-          <Square ref={r6}><TrendingUp size={28}/><span>Performance</span></Square>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Square ref={r2}>
+            <ShieldCheck size={28} />
+            <span>Standards</span>
+          </Square>
+          <Square ref={r4} isCenter>
+            <Settings size={34} />
+            <span>Execution</span>
+          </Square>
+          <Square ref={r6}>
+            <TrendingUp size={28} />
+            <span>Performance</span>
+          </Square>
         </div>
 
-        <div style={{ display:"flex",justifyContent:"space-between",alignItems:"center" }}>
-          <Square ref={r3}><Eye size={28}/><span>Transparency</span></Square>
-          <Square ref={r7}><Rocket size={28}/><span>Growth</span></Square>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Square ref={r3}>
+            <Eye size={28} />
+            <span>Transparency</span>
+          </Square>
+          <Square ref={r7}>
+            <Rocket size={28} />
+            <span>Growth</span>
+          </Square>
         </div>
       </div>
 
       {[
-        [r1,r4,-75,-10,false],[r2,r4,0,0,false],[r3,r4,75,10,false],
-        [r5,r4,-75,-10,true],[r6,r4,0,0,true],[r7,r4,75,10,true],
-      ].map(([from,to,curv,yOff,rev],i)=>(
-        <AnimatedBeam key={i}
+        [r1, r4, -75, -10, false],
+        [r2, r4, 0, 0, false],
+        [r3, r4, 75, 10, false],
+        [r5, r4, -75, -10, true],
+        [r6, r4, 0, 0, true],
+        [r7, r4, 75, 10, true],
+      ].map(([from, to, curv, yOff, rev], i) => (
+        <AnimatedBeam
+          key={i}
           containerRef={containerRef}
-          fromRef={from} toRef={to}
-          curvature={curv} endYOffset={yOff}
+          fromRef={from}
+          toRef={to}
+          curvature={curv}
+          endYOffset={yOff}
           reverse={rev}
           pathColor={T.border}
           gradientStartColor={T.accentMid}
@@ -189,36 +261,49 @@ function BeamDiagram() {
 }
 
 export default function WhyVision() {
-  useEffect(()=>{
-    const obs = new IntersectionObserver(es=>{
-      es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)}});
-    },{ threshold:.1 });
-    document.querySelectorAll(".wv-rv").forEach(el=>obs.observe(el));
-    return ()=>obs.disconnect();
-  },[]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+    document.querySelectorAll(".wv-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section className="wv-section">
       <style>{CSS}</style>
-      <div className="wv-noise"/>
+      <div className="wv-noise" />
 
       <div className="wv-inner">
         {/* LEFT */}
         <div>
           <div className="wv-rv">
-            <div className="wv-eyebrow"><span/>Why Vision9</div>
-            <h2 className="wv-h">Seven reasons brands <em>choose us</em></h2>
+            <div className="wv-eyebrow">
+              <span />
+              Why Vision9
+            </div>
+            <h2 className="wv-h">
+              Seven reasons brands <em>choose us</em>
+            </h2>
             <p className="wv-sub">
-              We're not just a marketing agency — we're a strategic growth partner.
-              Every decision, every creative, every campaign is built with your
-              business outcomes at the core.
+              We're not just a marketing agency — we're a strategic growth
+              partner. Every decision, every creative, every campaign is built
+              with your business outcomes at the core.
             </p>
           </div>
 
           <div className="wv-list wv-rv wv-d1">
-            {WHY_REASONS.map((r,i)=>(
+            {WHY_REASONS.map((r, i) => (
               <div key={i} className="wv-item">
-                <span className="wv-num">0{i+1}</span>
+                <span className="wv-num">0{i + 1}</span>
                 <span className="wv-txt">{r}</span>
                 <span className="wv-arrow">→</span>
               </div>
@@ -228,7 +313,7 @@ export default function WhyVision() {
 
         {/* RIGHT — beam diagram */}
         <div className="wv-rv wv-d2">
-          <BeamDiagram/>
+          <BeamDiagram />
         </div>
       </div>
     </section>

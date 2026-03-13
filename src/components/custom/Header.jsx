@@ -13,7 +13,7 @@ const menuItems = [
     link: "/case_studies",
   },
   { label: "Blogs", ariaLabel: "Read our blogs", link: "/blogs" },
-  { label: "Contacts", ariaLabel: "Get in touch with us", link: "/contact" }
+  { label: "Contacts", ariaLabel: "Get in touch with us", link: "/contact" },
 ];
 
 const socialItems = [
@@ -24,10 +24,76 @@ const socialItems = [
 
 const Header = () => {
   return (
+    
+    <>
+      
+
+{/*       
+       // <div
+    //   style={{
+    //     height: "4rem",
+    //         background: "var(--sm-bg, rgba(255, 255, 255, 0.8))",
+    //     position: "fixed",
+    //     top: 0,
+    //     left: 0,
+    //     right: 0,
+    //     zIndex: 1000,
+    //     pointerEvents: "none",
+    //   }}
+    // >
+    //   <div
+    //     style={{
+    //       position: "relative",
+    //       width: "100%",
+    //         background: "var(--sm-bg, rgba(255, 255, 255, 0.8))",
+
+    //       height: "100%",
+    //       pointerEvents: "auto",
+    //     }}
+    //   >
+    //     <StaggeredMenu
+    //       position="right"
+    //       items={menuItems}
+    //       socialItems={socialItems}
+    //       displaySocials={true}
+    //       displayItemNumbering={true}
+    //       menuButtonColor="transparent"
+    //       openMenuButtonColor="#080808"
+    //       changeMenuColorOnOpen={true}
+    //       colors={["#A8832A", "#A8832A"]}
+    //       logoUrl="/vision9-logo.svg"
+    //       accentColor="#A8832A"
+    //       onMenuOpen={() => console.log("Menu opened")}
+    //       onMenuClose={() => console.log("Menu closed")}
+    //       // Custom styling for menu items
+    //       menuItemStyle={{
+    //         fontFamily: "'Bebas Neue', sans-serif",
+    //         fontSize: "clamp(0.5rem, 4vw, 2.5rem)",
+    //         letterSpacing: "0.05em",
+    //         textTransform: "uppercase",
+    //         color: "#080808",
+    //       }}
+    //       // Custom styling for social items
+    //       socialItemStyle={{
+    //         fontFamily: "'DM Sans', sans-serif",
+    //         fontSize: "0.85rem",
+    //         letterSpacing: "0.1em",
+    //         textTransform: "uppercase",
+    //         color: "#5A5A5A",
+    //       }}
+    //       // Custom styling for the menu panel
+    //       menuPanelStyle={{
+    //         background: "#FAF8F2",
+    //         borderLeft: "1px solid rgba(168,131,42,0.20)",
+    //         backdropFilter: "blur(10px)",
+    //       }}
+    //     />
+    //   </div>
+    // </div> */}
     <div
       style={{
         height: "4rem",
-            background: "var(--sm-bg, rgba(255, 255, 255, 0.8))",
+        background: "var(--sm-bg, rgba(255,252,214,0.85))",
         position: "fixed",
         top: 0,
         left: 0,
@@ -40,8 +106,9 @@ const Header = () => {
         style={{
           position: "relative",
           width: "100%",
-            background: "var(--sm-bg, rgba(255, 255, 255, 0.8))",
-
+          // background: "var(--sm-bg, rgba(255,252,214,0.85))",
+            background: "var(--sm-bg, #fffee9)",
+          
           height: "100%",
           pointerEvents: "auto",
         }}
@@ -53,38 +120,39 @@ const Header = () => {
           displaySocials={true}
           displayItemNumbering={true}
           menuButtonColor="transparent"
-          openMenuButtonColor="#080808"
+          openMenuButtonColor="#231f1f"
           changeMenuColorOnOpen={true}
-          colors={["#A8832A", "#A8832A"]}
-          logoUrl="/vision9-logo.svg"
-          accentColor="#A8832A"
+          colors={["#a6a216", "#d2ce12"]}
+          logoUrl="/logo.png"
+          accentColor="#a6a216"
           onMenuOpen={() => console.log("Menu opened")}
           onMenuClose={() => console.log("Menu closed")}
-          // Custom styling for menu items
+          // Menu items
           menuItemStyle={{
             fontFamily: "'Bebas Neue', sans-serif",
             fontSize: "clamp(0.5rem, 4vw, 2.5rem)",
             letterSpacing: "0.05em",
             textTransform: "uppercase",
-            color: "#080808",
+            color: "#231f1f",
           }}
-          // Custom styling for social items
+          // Social items
           socialItemStyle={{
             fontFamily: "'DM Sans', sans-serif",
             fontSize: "0.85rem",
             letterSpacing: "0.1em",
             textTransform: "uppercase",
-            color: "#5A5A5A",
+            color: "#58564d",
           }}
-          // Custom styling for the menu panel
+          // Menu panel
           menuPanelStyle={{
-            background: "#FAF8F2",
-            borderLeft: "1px solid rgba(168,131,42,0.20)",
+            background: "#fffee9",
+            borderLeft: "1px solid rgba(115,112,23,0.20)",
             backdropFilter: "blur(10px)",
           }}
         />
       </div>
     </div>
+    </>
   );
 };
 

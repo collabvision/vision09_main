@@ -1,8 +1,23 @@
 "use client";
-const T={accent:"#A8832A",accentLight:"#D4B86A",accentMid:"#C4A24E",accentDark:"#6B5010",bg:"#FAF8F2",bgAlt:"#F2EDE0",card:"#FFFFFF",text:"#1C1A14",textSec:"#56503E",muted:"#9A8E72",border:"rgba(168,131,42,0.20)"};
-import{useEffect}from"react";
-const FONTS=`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
-const CSS=`
+const T = {
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f6f3c9",
+  card: "#ffffff",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
+};
+import { useEffect } from "react";
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
+const CSS = `
 ${FONTS}
 .ct-section{background:${T.bg};padding:clamp(4rem,8vh,6rem) clamp(1.5rem,5vw,4rem);font-family:'DM Sans',sans-serif;border-top:1px solid ${T.border}}
 .ct-eyebrow{font-family:'Tenor Sans',sans-serif;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:${T.accent};margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
@@ -22,20 +37,60 @@ ${FONTS}
 .ct-d1{transition-delay:.1s}.ct-d2{transition-delay:.2s}
 @media(max-width:768px){.ct-inner{grid-template-columns:1fr}}
 `;
-const LOGOS=["Shivoham","Bogar Enterprises","Cornerstone","KLE Fashion","CubicCode","Ashirwad Hosp.","Shree Ortho","Admifit","Leads Finder · Dubai","Small Miracles","Real Estate Stories","+ More Brands"];
-export default function ClientsTeaser(){
-  useEffect(()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll(".ct-rv").forEach(el=>obs.observe(el));return()=>obs.disconnect();},[]);
-  return(
-    <section className="ct-section"><style>{CSS}</style>
+const LOGOS = [
+  "Shivoham",
+  "Bogar Enterprises",
+  "Cornerstone",
+  "KLE Fashion",
+  "CubicCode",
+  "Ashirwad Hosp.",
+  "Shree Ortho",
+  "Admifit",
+  "Leads Finder · Dubai",
+  "Small Miracles",
+  "Real Estate Stories",
+  "+ More Brands",
+];
+export default function ClientsTeaser() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document.querySelectorAll(".ct-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <section className="ct-section">
+      <style>{CSS}</style>
       <div className="ct-eyebrow ct-rv">Clients &amp; Experience</div>
       <div className="ct-inner">
         <div className="ct-rv ct-d1">
-          <h2 className="ct-h">Trusted by brands <em>across India</em> and beyond</h2>
-          <p className="ct-p">Delivering consistent results for brands across healthcare, education, real estate, FMCG, and service industries — through structured marketing systems and long-term partnerships.</p>
-          <a href="/clients" className="ct-link">Explore Our Clients →</a>
+          <h2 className="ct-h">
+            Trusted by brands <em>across India</em> and beyond
+          </h2>
+          <p className="ct-p">
+            Delivering consistent results for brands across healthcare,
+            education, real estate, FMCG, and service industries — through
+            structured marketing systems and long-term partnerships.
+          </p>
+          <a href="/clients" className="ct-link">
+            Explore Our Clients →
+          </a>
         </div>
         <div className="ct-logos ct-rv ct-d2">
-          {LOGOS.map((l,i)=><div key={i} className="ct-logo">{l}</div>)}
+          {LOGOS.map((l, i) => (
+            <div key={i} className="ct-logo">
+              {l}
+            </div>
+          ))}
         </div>
       </div>
     </section>

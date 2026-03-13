@@ -4,19 +4,23 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent:      "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid:   "#C4A24E",
-  accentDark:  "#6B5010",
-  bg:          "#FAF8F2",
-  bgAlt:       "#F2EDE0",
-  card:        "#FFFFFF",
-  dark:        "#1C1A14",
-  darkCard:    "#2A2618",
-  text:        "#1C1A14",
-  textSec:     "#56503E",
-  muted:       "#9A8E72",
-  border:      "rgba(168,131,42,0.20)",
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f5f2c8",
+  card: "#ffffff",
+
+  dark: "#231f1f",
+  darkCard: "#3f3c15",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
 };
 
 import { useEffect } from "react";
@@ -102,33 +106,44 @@ ${FONTS}
 
 const SERVICES = [
   {
-    n:"01",tag:"Performance",
-    h:"Lead Generation & Performance Marketing",
-    p:"Data-driven campaigns designed to deliver consistent, high-quality leads across Meta and Google platforms. Every rupee tracked, every outcome measured.",
-    link:"/services/performance",
+    n: "01",
+    tag: "Performance",
+    h: "Lead Generation & Performance Marketing",
+    p: "Data-driven campaigns designed to deliver consistent, high-quality leads across Meta and Google platforms. Every rupee tracked, every outcome measured.",
+    link: "/services/performance",
   },
   {
-    n:"02",tag:"Branding",
-    h:"Branding & Social Media Marketing",
-    p:"End-to-end brand building through strategic positioning, content creation, and social media management. Building brands that audiences recognise and trust.",
-    link:"/services/branding",
+    n: "02",
+    tag: "Branding",
+    h: "Branding & Social Media Marketing",
+    p: "End-to-end brand building through strategic positioning, content creation, and social media management. Building brands that audiences recognise and trust.",
+    link: "/services/branding",
   },
   {
-    n:"03",tag:"Content",
-    h:"Video, Reels & UGC Content Creation",
-    p:"Authentic, high-performing content built to increase engagement, trust, and advertising efficiency. From scripting to final edit — we own the process.",
-    link:"/services/content",
+    n: "03",
+    tag: "Content",
+    h: "Video, Reels & UGC Content Creation",
+    p: "Authentic, high-performing content built to increase engagement, trust, and advertising efficiency. From scripting to final edit — we own the process.",
+    link: "/services/content",
   },
 ];
 
 export default function CoreServices() {
-  useEffect(()=>{
-    const obs = new IntersectionObserver(es=>{
-      es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)}});
-    },{ threshold:.12 });
-    document.querySelectorAll(".cs-rv").forEach(el=>obs.observe(el));
-    return ()=>obs.disconnect();
-  },[]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document.querySelectorAll(".cs-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section className="cs-section">
@@ -136,17 +151,21 @@ export default function CoreServices() {
 
       <div className="cs-head cs-rv">
         <div className="cs-eyebrow">Our Core Services</div>
-        <h2 className="cs-h">What we do <em>exceptionally well</em></h2>
+        <h2 className="cs-h">
+          What we do <em>exceptionally well</em>
+        </h2>
       </div>
 
       <div className="cs-grid">
-        {SERVICES.map((s,i)=>(
-          <div key={i} className={`cs-card cs-rv cs-d${i+1}`}>
+        {SERVICES.map((s, i) => (
+          <div key={i} className={`cs-card cs-rv cs-d${i + 1}`}>
             <span className="cs-num">{s.n}</span>
             <span className="cs-tag">{s.tag}</span>
             <h3 className="cs-card-h">{s.h}</h3>
             <p className="cs-card-p">{s.p}</p>
-            <a href={s.link} className="cs-card-link">Learn More →</a>
+            <a href={s.link} className="cs-card-link">
+              Learn More →
+            </a>
           </div>
         ))}
       </div>

@@ -4,20 +4,25 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent: "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid: "#C4A24E",
-  accentDark: "#6B5010",
-  bg: "#FAF8F2",
-  bgAlt: "#F2EDE0",
-  text: "#1C1A14",
-  textSec: "#56503E",
-  muted: "#9A8E72",
-  border: "rgba(168,131,42,0.20)",
-  navBg: "rgba(250,248,242,0.93)",
+  accent: "#d2ce12",
+  accentLight: "#ebe60c",
+  accentMid: "#a6a216",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#a19f8a",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#3f3c15",
+
+  border: "rgba(166,162,22,0.20)",
+  navBg: "rgba(255,252,214,0.93)",
+
   waGreen: "#25D366",
-  btnSolidBg: "#A8832A",
-  btnSolidTxt: "#FAF8F2",
+
+  btnSolidBg: "#d2ce12",
+  btnSolidTxt: "#231f1f",
 };
 
 import { useEffect, useRef } from "react";

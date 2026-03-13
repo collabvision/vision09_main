@@ -4,24 +4,33 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent:      "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid:   "#C4A24E",
-  accentDark:  "#6B5010",
-  bg:          "#FAF8F2",
-  bgAlt:       "#F2EDE0",
-  card:        "#FFFFFF",
-  text:        "#1C1A14",
-  textSec:     "#56503E",
-  muted:       "#9A8E72",
-  border:      "rgba(168,131,42,0.20)",
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#f5f2c8",
+  bgAlt: "#fffee9",
+  card: "#ffffff",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
 };
 
 import { useEffect } from "react";
 import { cn } from "@/lib/utils";
 import {
-  IconTargetArrow, IconPalette, IconRocket, IconUsers,
-  IconHierarchy3, IconTrendingUp, IconNews, IconChartBar,
+  IconTargetArrow,
+  IconPalette,
+  IconRocket,
+  IconUsers,
+  IconHierarchy3,
+  IconTrendingUp,
+  IconNews,
+  IconChartBar,
 } from "@tabler/icons-react";
 import SplitText from "../../components/SplitText";
 
@@ -103,53 +112,95 @@ ${FONTS}
 `;
 
 const FEATURES = [
-  { title:"Strategic Marketing",         icon:<IconTargetArrow size={26}/>,  desc:"Data-driven strategies aligned with your brand goals that drive measurable, sustainable growth." },
-  { title:"Creative Brand Design",        icon:<IconPalette size={26}/>,     desc:"Impactful visuals, branding, and digital experiences that build strong, memorable brand identity." },
-  { title:"Performance Campaigns",        icon:<IconRocket size={26}/>,      desc:"Every campaign focused on generating leads, engagement, and real business results." },
-  { title:"Influencer & Creator Network", icon:<IconUsers size={26}/>,       desc:"Access our pan-India network of 1,000+ influencers to amplify reach and credibility." },
-  { title:"Integrated Marketing",         icon:<IconHierarchy3 size={26}/>,  desc:"From digital campaigns to PR and social media — complete marketing under one roof." },
-  { title:"Growth-Focused Partnerships",  icon:<IconTrendingUp size={26}/>,  desc:"Your extended marketing team, delivering strategic insights and continuous optimization." },
-  { title:"Media & PR Reach",             icon:<IconNews size={26}/>,        desc:"Feature across 5,000+ national and international media platforms through strategic PR." },
-  { title:"Data & Performance Insights",  icon:<IconChartBar size={26}/>,    desc:"Clear tracking across campaigns and channels to maximize ROI and measure what matters." },
+  {
+    title: "Strategic Marketing",
+    icon: <IconTargetArrow size={26} />,
+    desc: "Data-driven strategies aligned with your brand goals that drive measurable, sustainable growth.",
+  },
+  {
+    title: "Creative Brand Design",
+    icon: <IconPalette size={26} />,
+    desc: "Impactful visuals, branding, and digital experiences that build strong, memorable brand identity.",
+  },
+  {
+    title: "Performance Campaigns",
+    icon: <IconRocket size={26} />,
+    desc: "Every campaign focused on generating leads, engagement, and real business results.",
+  },
+  {
+    title: "Influencer & Creator Network",
+    icon: <IconUsers size={26} />,
+    desc: "Access our pan-India network of 1,000+ influencers to amplify reach and credibility.",
+  },
+  {
+    title: "Integrated Marketing",
+    icon: <IconHierarchy3 size={26} />,
+    desc: "From digital campaigns to PR and social media — complete marketing under one roof.",
+  },
+  {
+    title: "Growth-Focused Partnerships",
+    icon: <IconTrendingUp size={26} />,
+    desc: "Your extended marketing team, delivering strategic insights and continuous optimization.",
+  },
+  {
+    title: "Media & PR Reach",
+    icon: <IconNews size={26} />,
+    desc: "Feature across 5,000+ national and international media platforms through strategic PR.",
+  },
+  {
+    title: "Data & Performance Insights",
+    icon: <IconChartBar size={26} />,
+    desc: "Clear tracking across campaigns and channels to maximize ROI and measure what matters.",
+  },
 ];
 
 export default function HomeAbout() {
-  useEffect(()=>{
-    const obs = new IntersectionObserver(es=>{
-      es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)} });
-    },{ threshold:.12 });
-    document.querySelectorAll(".ha-rv").forEach(el=>obs.observe(el));
-    return ()=>obs.disconnect();
-  },[]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document.querySelectorAll(".ha-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <section className="ha-section">
       <style>{CSS}</style>
 
       {/* eyebrow + SplitText heading */}
-      <div style={{ textAlign:"center" }}>
-        <div className="ha-eyebrow ha-rv" style={{ justifyContent:"center" }}>About Vision9</div>
+      <div style={{ textAlign: "center" }}>
+        <div className="ha-eyebrow ha-rv" style={{ justifyContent: "center" }}>
+          About Vision9
+        </div>
 
         <div className="ha-title-wrap">
           <SplitText
             text="At Vision9, We Build"
             className="ha-rv"
             style={{
-              fontFamily:"'Playfair Display',serif",
-              fontWeight:900,
-              fontSize:"clamp(2.4rem,6vw,5.5rem)",
-              lineHeight:.92,
-              letterSpacing:"-.02em",
-              color:T.text,
-              textAlign:"center",
-              display:"block",
+              fontFamily: "'Playfair Display',serif",
+              fontWeight: 900,
+              fontSize: "clamp(2.4rem,6vw,5.5rem)",
+              lineHeight: 0.92,
+              letterSpacing: "-.02em",
+              color: T.text,
+              textAlign: "center",
+              display: "block",
             }}
             delay={40}
             duration={0.9}
             ease="power3.out"
             splitType="chars"
-            from={{ opacity:0, y:50 }}
-            to={{ opacity:1, y:0 }}
+            from={{ opacity: 0, y: 50 }}
+            to={{ opacity: 1, y: 0 }}
             threshold={0.1}
             rootMargin="-80px"
             textAlign="center"
@@ -158,23 +209,23 @@ export default function HomeAbout() {
             text="Brands That Perform"
             className="ha-rv ha-d1"
             style={{
-              fontFamily:"'Playfair Display',serif",
-              fontWeight:900,
-              fontStyle:"italic",
-              fontSize:"clamp(2.4rem,6vw,5.5rem)",
-              lineHeight:.92,
-              letterSpacing:"-.02em",
-              color:T.accent,
-              textAlign:"center",
-              display:"block",
-              marginTop:".1em",
+              fontFamily: "'Playfair Display',serif",
+              fontWeight: 900,
+              fontStyle: "italic",
+              fontSize: "clamp(2.4rem,6vw,5.5rem)",
+              lineHeight: 0.92,
+              letterSpacing: "-.02em",
+              color: T.accent,
+              textAlign: "center",
+              display: "block",
+              marginTop: ".1em",
             }}
             delay={40}
             duration={0.9}
             ease="power3.out"
             splitType="chars"
-            from={{ opacity:0, y:50 }}
-            to={{ opacity:1, y:0 }}
+            from={{ opacity: 0, y: 50 }}
+            to={{ opacity: 1, y: 0 }}
             threshold={0.1}
             rootMargin="-80px"
             textAlign="center"
@@ -182,19 +233,20 @@ export default function HomeAbout() {
         </div>
 
         <p className="ha-intro ha-rv ha-d2">
-          At Vision9, we help brands drive growth through strategic thinking, impactful design,
-          and result-oriented communication. We work as an <em>extended marketing partner</em> —
-          from strategy to execution — ensuring every campaign, creative, and decision is built
-          to generate measurable business outcomes.
+          At Vision9, we help brands drive growth through strategic thinking,
+          impactful design, and result-oriented communication. We work as an{" "}
+          <em>extended marketing partner</em> — from strategy to execution —
+          ensuring every campaign, creative, and decision is built to generate
+          measurable business outcomes.
         </p>
       </div>
 
       {/* Feature grid */}
       <div className="ha-grid">
-        {FEATURES.map((f,i)=>(
-          <div key={i} className={`ha-cell ha-rv ha-d${i+1}`}>
-            <div className="ha-hover-overlay"/>
-            <div className="ha-indicator"/>
+        {FEATURES.map((f, i) => (
+          <div key={i} className={`ha-cell ha-rv ha-d${i + 1}`}>
+            <div className="ha-hover-overlay" />
+            <div className="ha-indicator" />
             <div className="ha-icon">{f.icon}</div>
             <div className="ha-feat-title">{f.title}</div>
             <p className="ha-feat-desc">{f.desc}</p>

@@ -40,48 +40,77 @@ import FinalCTA from "./(Home)/FinalCTA";
 
 /* ─── Shared inline overrides for third-party wrappers ─── */
 const GLOBAL_OVERRIDES = `
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');
 
-  /* ── CurvedLoop ── */
-  [class*="CurvedLoop"] text,
-  [class*="curved-loop"] text,
-  .curved-loop text {
-    fill: #A8832A !important;
-    font-family: 'Playfair Display', serif !important;
-    font-weight: 700 !important;
-    letter-spacing: .08em !important;
-  }
-  [class*="CurvedLoop"] svg,
-  [class*="curved-loop"] svg { opacity: .9 }
+/* ───────── THEME VARIABLES ───────── */
+:root {
+  --accent: #a6a216;
+  --accent-light: #ebe60c;
+  --accent-mid: #d2ce12;
+  --accent-dark: #737017;
 
-  /* ── ScrollVelocity ── */
-  [class*="ScrollVelocity"] span,
-  [class*="scroll-velocity"] span,
-  .scroll-velocity span,
-  .custom-scroll-text {
-    font-family: 'Tenor Sans', sans-serif !important;
-    font-size: clamp(1.62rem, 1.1vw, .82rem) !important;
-    letter-spacing: .28em !important;
-    text-transform: uppercase !important;
-    color: #A8832A !important;
-  }
-  [class*="ScrollVelocity"],
-  [class*="scroll-velocity"] {
-    border-top: 1px solid rgba(168,131,42,.2);
-    border-bottom: 1px solid rgba(168,131,42,.2);
-    background: #F2EDE0 !important;
-    padding: .9rem 0 !important;
-  }
+  --bg: #fffee9;
+  --bg-alt: #f5f2c8;
 
-  /* ── Header ── */
-  header, [class*="Header"], [class*="header"] {
-    background: rgba(250,248,242,0.93) !important;
-    backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid rgba(168,131,42,.18) !important;
-  }
+  --text: #231f1f;
+  --text-sec: #58564d;
+  --muted: #a19f8a;
 
-  /* General page background */
-  body { background: #FAF8F2 !important; }
+  --border: rgba(115,112,23,0.25);
+  --border-light: rgba(115,112,23,0.18);
+
+  --nav-bg: rgba(255,252,214,0.93);
+}
+
+/* ───────── CurvedLoop ───────── */
+[class*="CurvedLoop"] text,
+[class*="curved-loop"] text,
+.curved-loop text {
+  fill: var(--accent) !important;
+  font-family: 'Playfair Display', serif !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+}
+
+[class*="CurvedLoop"] svg,
+[class*="curved-loop"] svg {
+  opacity: .9;
+}
+
+/* ───────── ScrollVelocity ───────── */
+[class*="ScrollVelocity"] span,
+[class*="scroll-velocity"] span,
+.scroll-velocity span,
+.custom-scroll-text {
+  font-family: 'Tenor Sans', sans-serif !important;
+  font-size: clamp(1.62rem, 1.1vw, .82rem) !important;
+  letter-spacing: .28em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+}
+
+[class*="ScrollVelocity"],
+[class*="scroll-velocity"] {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt) !important;
+  padding: .9rem 0 !important;
+}
+
+/* ───────── Header ───────── */
+header,
+[class*="Header"],
+[class*="header"] {
+  background: var(--nav-bg) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+}
+
+/* ───────── Page Background ───────── */
+body {
+  background: var(--bg) !important;
+  color: var(--text);
+}
 `;
 
 export default function Home() {
@@ -93,20 +122,20 @@ export default function Home() {
       <Header />
 
       {/* ── FULL-WIDTH WRAPPER ── */}
-      <div style={{ width:"100%", position:"relative", background:"#FAF8F2" }}>
+      <div style={{ width:"100%", position:"relative", background:"var(--bg)" }}>
 
         {/* ── 2. HERO ── */}
         <Hero />
 
         {/* ── 3. CURVED MARQUEE ── */}
-        <div style={{ background:"#FAF8F2", paddingBottom:"1.5rem", marginTop:"3rem", overflow:"hidden" }}>
+        <div style={{ background:"transparent ", paddingBottom:"1.5rem", marginTop:"3rem", overflow:"hidden" }}>
           <CurvedLoop
             marqueeText="We Make It Viral ✦"
             speed={0.9}
             curveAmount={250}
             direction="left"
             interactive
-            className="custom-text-style"
+            className="custom-text-style bg-[]"
           />
         </div>
 

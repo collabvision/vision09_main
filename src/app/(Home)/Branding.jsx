@@ -4,19 +4,23 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent:      "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid:   "#C4A24E",
-  accentDark:  "#6B5010",
-  bg:          "#FAF8F2",
-  bgAlt:       "#F2EDE0",
-  card:        "#FFFFFF",
-  text:        "#1C1A14",
-  textSec:     "#56503E",
-  muted:       "#9A8E72",
-  border:      "rgba(168,131,42,0.20)",
-  dark:        "#1C1A14",
-  darkText:    "#FAF8F2",
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f5f2c8",
+  card: "#ffffff",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
+
+  dark: "#231f1f",
+  darkText: "#fffee9",
 };
 
 import { motion } from "framer-motion";
@@ -115,26 +119,37 @@ ${FONTS}
 }
 `;
 
-const TAGS = ["Brand Identity","Visual Language","Digital Creatives","Offline Print","Banners & Standees","Brochures","Packaging","On-Ground Execution"];
+const TAGS = [
+  "Brand Identity",
+  "Visual Language",
+  "Digital Creatives",
+  "Offline Print",
+  "Banners & Standees",
+  "Brochures",
+  "Packaging",
+  "On-Ground Execution",
+];
 
 export default function Branding() {
   return (
     <section className="br-section">
       <style>{CSS}</style>
-      <div className="br-rule"/>
+      <div className="br-rule" />
 
       <div className="br-inner">
-
         {/* ── LEFT IMAGE ── */}
         <motion.div
           className="br-img-col"
-          initial={{ x:-100, opacity:0 }}
-          whileInView={{ x:0, opacity:1 }}
-          viewport={{ once:false, amount:.3 }}
-          transition={{ duration:.75, ease:[.16,1,.3,1] }}
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src="https://dummyimage.com/720x900/F2EDE0/A8832A&text=Branding" alt="Vision9 Branding" />
-          <div className="br-img-accent"/>
+          <img
+            src="https://dummyimage.com/720x900/F2EDE0/A8832A&text=Branding"
+            alt="Vision9 Branding"
+          />
+          <div className="br-img-accent" />
         </motion.div>
 
         {/* ── RIGHT CONTENT ── */}
@@ -142,33 +157,77 @@ export default function Branding() {
           className="br-content"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once:false, amount:.3 }}
-          variants={{ hidden:{}, visible:{ transition:{ staggerChildren:.18 } } }}
+          viewport={{ once: false, amount: 0.3 }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.18 } },
+          }}
         >
-          <motion.div className="br-eyebrow" variants={{ hidden:{opacity:0,y:20}, visible:{opacity:1,y:0} }}>
-            <span/>Branding &amp; Designing
+          <motion.div
+            className="br-eyebrow"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            <span />
+            Branding &amp; Designing
           </motion.div>
 
-          <motion.h2 className="br-h" variants={{ hidden:{opacity:0,y:30}, visible:{opacity:1,y:0} }} transition={{duration:.7}}>
+          <motion.h2
+            className="br-h"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.7 }}
+          >
             Building Brands <em>That Stand Out</em>
           </motion.h2>
 
           {/* HyperText animated description */}
-          <motion.div className="br-desc" variants={{ hidden:{opacity:0,y:20}, visible:{opacity:1,y:0} }}>
-            <HyperText style={{ fontFamily:"'DM Sans',sans-serif", color:T.textSec, fontSize:"inherit", lineHeight:1.9, display:"block" }}>
-              From brand identity and visual language to digital and offline creatives,
-              we deliver end-to-end branding solutions — including design, printing, and
-              on-ground execution of banners, brochures, pamphlets, standees, and more —
-              ensuring consistent brand visibility across every touchpoint.
+          <motion.div
+            className="br-desc"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            <HyperText
+              style={{
+                fontFamily: "'DM Sans',sans-serif",
+                color: T.textSec,
+                fontSize: "inherit",
+                lineHeight: 1.9,
+                display: "block",
+              }}
+            >
+              From brand identity and visual language to digital and offline
+              creatives, we deliver end-to-end branding solutions — including
+              design, printing, and on-ground execution of banners, brochures,
+              pamphlets, standees, and more — ensuring consistent brand
+              visibility across every touchpoint.
             </HyperText>
           </motion.div>
 
           {/* tag pills */}
-          <motion.div className="br-tags" variants={{ hidden:{opacity:0}, visible:{opacity:1} }}>
-            {TAGS.map((t,i) => <span key={i} className="br-tag">{t}</span>)}
+          <motion.div
+            className="br-tags"
+            variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
+          >
+            {TAGS.map((t, i) => (
+              <span key={i} className="br-tag">
+                {t}
+              </span>
+            ))}
           </motion.div>
 
-          <motion.div variants={{ hidden:{opacity:0,y:20}, visible:{opacity:1,y:0} }}>
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
             <a href="/branding" className="br-cta">
               Explore Branding &amp; Designing
               <span className="br-cta-arrow">→</span>
@@ -177,7 +236,7 @@ export default function Branding() {
         </motion.div>
       </div>
 
-      <div className="br-rule"/>
+      <div className="br-rule" />
     </section>
   );
 }

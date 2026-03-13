@@ -1,8 +1,24 @@
 "use client";
-const T={accent:"#A8832A",accentLight:"#D4B86A",accentMid:"#C4A24E",accentDark:"#6B5010",bg:"#FAF8F2",bgAlt:"#F2EDE0",text:"#1C1A14",textSec:"#56503E",muted:"#9A8E72",border:"rgba(168,131,42,0.20)",waGreen:"#25D366"};
-import{useEffect}from"react";
-const FONTS=`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
-const CSS=`
+const T = {
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f5f2c8",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
+
+  waGreen: "#25D366",
+};
+import { useEffect } from "react";
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
+const CSS = `
 ${FONTS}
 .fc-section{background:${T.bgAlt};padding:clamp(7rem,16vh,12rem) clamp(1.5rem,5vw,4rem);font-family:'DM Sans',sans-serif;position:relative;overflow:hidden;text-align:center}
 .fc-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:clamp(5rem,18vw,18rem);color:transparent;-webkit-text-stroke:1px ${T.border};white-space:nowrap;pointer-events:none;font-weight:900;animation:fcPulse 8s ease-in-out infinite}
@@ -25,18 +41,50 @@ ${FONTS}
 .fc-d1{transition-delay:.1s}.fc-d2{transition-delay:.2s}.fc-d3{transition-delay:.3s}
 @media(max-width:480px){.fc-btns{flex-direction:column;align-items:center}}
 `;
-export default function FinalCTA(){
-  useEffect(()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)}})},{threshold:.15});document.querySelectorAll(".fc-rv").forEach(el=>obs.observe(el));return()=>obs.disconnect();},[]);
-  return(
-    <section className="fc-section"><style>{CSS}</style>
+export default function FinalCTA() {
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    document.querySelectorAll(".fc-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <section className="fc-section">
+      <style>{CSS}</style>
       <div className="fc-ghost">VISION9</div>
-      <div className="fc-orn fc-rv"><span/>Ready to grow?<span/></div>
-      <h2 className="fc-h fc-rv fc-d1">Ready to Grow with a <em>Strategic Marketing Partner?</em></h2>
-      <p className="fc-sub fc-rv fc-d2">Let's discuss how Vision9 can help your brand achieve clarity, consistency, and scalable growth.</p>
+      <div className="fc-orn fc-rv">
+        <span />
+        Ready to grow?
+        <span />
+      </div>
+      <h2 className="fc-h fc-rv fc-d1">
+        Ready to Grow with a <em>Strategic Marketing Partner?</em>
+      </h2>
+      <p className="fc-sub fc-rv fc-d2">
+        Let's discuss how Vision9 can help your brand achieve clarity,
+        consistency, and scalable growth.
+      </p>
       <div className="fc-btns fc-rv fc-d3">
-        <a href="#contact" className="fc-btn-solid">Book a Strategy Call</a>
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" className="fc-btn-out">
-          <span className="fc-wa-dot"/>Connect on WhatsApp
+        <a href="#contact" className="fc-btn-solid">
+          Book a Strategy Call
+        </a>
+        <a
+          href="https://wa.me/91XXXXXXXXXX"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fc-btn-out"
+        >
+          <span className="fc-wa-dot" />
+          Connect on WhatsApp
         </a>
       </div>
     </section>

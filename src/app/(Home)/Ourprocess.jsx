@@ -1,16 +1,29 @@
 "use client";
 
 const T = {
-  accent:"#A8832A",accentLight:"#D4B86A",accentMid:"#C4A24E",accentDark:"#6B5010",
-  bg:"#FAF8F2",bgAlt:"#F2EDE0",card:"#FFFFFF",dark:"#1C1A14",
-  text:"#1C1A14",textSec:"#56503E",muted:"#9A8E72",border:"rgba(168,131,42,0.20)",
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f5f2c8",
+  card: "#ffffff",
+
+  dark: "#231f1f",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
 };
 
 import { useEffect } from "react";
 
-const FONTS=`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
 
-const CSS=`
+const CSS = `
 ${FONTS}
 .op-section{background:${T.dark};padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);font-family:'DM Sans',sans-serif;position:relative;overflow:hidden}
 .op-glow{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(ellipse,rgba(168,131,42,.08) 0%,transparent 65%);pointer-events:none}
@@ -38,29 +51,62 @@ ${FONTS}
 @media(max-width:520px){.op-steps{grid-template-columns:1fr}}
 `;
 
-const STEPS=[
-  {n:"01",tag:"Discovery",h:"Discovery",p:"Understanding your business, market position, target audience, and growth objectives in depth."},
-  {n:"02",tag:"Strategy",h:"Strategy",p:"Developing a tailored roadmap and campaign architecture aligned precisely with your goals."},
-  {n:"03",tag:"Execution",h:"Execution",p:"Implementing campaigns, creatives, and systems with precision and structured accountability."},
-  {n:"04",tag:"Optimise",h:"Optimization & Scale",p:"Continuous performance analysis, iteration, and scaling to maximise ROI and sustainable growth."},
+const STEPS = [
+  {
+    n: "01",
+    tag: "Discovery",
+    h: "Discovery",
+    p: "Understanding your business, market position, target audience, and growth objectives in depth.",
+  },
+  {
+    n: "02",
+    tag: "Strategy",
+    h: "Strategy",
+    p: "Developing a tailored roadmap and campaign architecture aligned precisely with your goals.",
+  },
+  {
+    n: "03",
+    tag: "Execution",
+    h: "Execution",
+    p: "Implementing campaigns, creatives, and systems with precision and structured accountability.",
+  },
+  {
+    n: "04",
+    tag: "Optimise",
+    h: "Optimization & Scale",
+    p: "Continuous performance analysis, iteration, and scaling to maximise ROI and sustainable growth.",
+  },
 ];
 
 export default function OurProcess() {
-  useEffect(()=>{
-    const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)}})},{threshold:.12});
-    document.querySelectorAll(".op-rv").forEach(el=>obs.observe(el));
-    return()=>obs.disconnect();
-  },[]);
-  return(
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document.querySelectorAll(".op-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  return (
     <section className="op-section">
       <style>{CSS}</style>
-      <div className="op-glow"/>
-      <div className="op-rv"><div className="op-eyebrow">Our Process</div>
-        <h2 className="op-h">How we <em>work with you</em></h2>
+      <div className="op-glow" />
+      <div className="op-rv">
+        <div className="op-eyebrow">Our Process</div>
+        <h2 className="op-h">
+          How we <em>work with you</em>
+        </h2>
       </div>
       <div className="op-steps">
-        {STEPS.map((s,i)=>(
-          <div key={i} className={`op-step op-rv op-d${i+1}`}>
+        {STEPS.map((s, i) => (
+          <div key={i} className={`op-step op-rv op-d${i + 1}`}>
             <span className="op-step-n">{s.n}</span>
             <span className="op-step-tag">{s.tag}</span>
             <div className="op-step-h">{s.h}</div>

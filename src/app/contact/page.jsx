@@ -6,39 +6,83 @@ import Header from "../../components/custom/Header";
    THEME — edit here to retheme the entire page
    Every color in this file flows from these tokens only.
 ═══════════════════════════════════════════════════════════════ */
-const THEME = {
-  accent: "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid: "#C4A24E",
-  accentDark: "#6B5010",
-  pageBg: "#FAF8F2",
-  pageBgAlt: "#F2EDE0",
-  cardBg: "#FFFFFF",
-  navBg: "rgba(250,248,242,0.93)",
-  textPrimary: "#1C1A14",
-  textSecondary: "#56503E",
-  textMuted: "#9A8E72",
-  border: "rgba(168,131,42,0.20)",
-  borderFaint: "rgba(168,131,42,0.10)",
-  cursorFill: "#A8832A",
-  cursorRing: "rgba(168,131,42,0.28)",
-  btnSolidBg: "#A8832A",
-  btnSolidText: "#FAF8F2",
-  btnSolidHover: "#C4A24E",
-  btnOutlineBorder: "rgba(168,131,42,0.38)",
-  btnOutlineText: "#1C1A14",
-  btnOutlineHover: "#A8832A",
-  scanLineColor: "rgba(168,131,42,0.20)",
-  successBorder: "#A8832A",
-  successBg: "rgba(168,131,42,0.04)",
-  successText: "#A8832A",
-  waGreen: "#25D366",
-  fieldBorder: "rgba(168,131,42,0.22)",
-  fieldFocusBorder: "#A8832A",
-  tagBorder: "rgba(168,131,42,0.30)",
-  tagText: "#A8832A",
-};
+// const THEME = {
+//   accent: "#A8832A",
+//   accentLight: "#D4B86A",
+//   accentMid: "#C4A24E",
+//   accentDark: "#6B5010",
+//   pageBg: "#FAF8F2",
+//   pageBgAlt: "#F2EDE0",
+//   cardBg: "#FFFFFF",
+//   navBg: "rgba(250,248,242,0.93)",
+//   textPrimary: "#1C1A14",
+//   textSecondary: "#56503E",
+//   textMuted: "#9A8E72",
+//   border: "rgba(168,131,42,0.20)",
+//   borderFaint: "rgba(168,131,42,0.10)",
+//   cursorFill: "#A8832A",
+//   cursorRing: "rgba(168,131,42,0.28)",
+//   btnSolidBg: "#A8832A",
+//   btnSolidText: "#FAF8F2",
+//   btnSolidHover: "#C4A24E",
+//   btnOutlineBorder: "rgba(168,131,42,0.38)",
+//   btnOutlineText: "#1C1A14",
+//   btnOutlineHover: "#A8832A",
+//   scanLineColor: "rgba(168,131,42,0.20)",
+//   successBorder: "#A8832A",
+//   successBg: "rgba(168,131,42,0.04)",
+//   successText: "#A8832A",
+//   waGreen: "#25D366",
+//   fieldBorder: "rgba(168,131,42,0.22)",
+//   fieldFocusBorder: "#A8832A",
+//   tagBorder: "rgba(168,131,42,0.30)",
+//   tagText: "#A8832A",
+// };
 
+const THEME = {
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  pageBg: "#fffee9",
+  pageBgAlt: "#f5f2c8",
+  cardBg: "#ffffff",
+
+  navBg: "rgba(255,252,214,0.93)",
+
+  textPrimary: "#231f1f",
+  textSecondary: "#58564d",
+  textMuted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
+  borderFaint: "rgba(115,112,23,0.10)",
+
+  cursorFill: "#a6a216",
+  cursorRing: "rgba(166,162,22,0.28)",
+
+  btnSolidBg: "#a6a216",
+  btnSolidText: "#fffee9",
+  btnSolidHover: "#d2ce12",
+
+  btnOutlineBorder: "rgba(115,112,23,0.38)",
+  btnOutlineText: "#231f1f",
+  btnOutlineHover: "#a6a216",
+
+  scanLineColor: "rgba(115,112,23,0.20)",
+
+  successBorder: "#a6a216",
+  successBg: "rgba(166,162,22,0.06)",
+  successText: "#a6a216",
+
+  waGreen: "#25D366",
+
+  fieldBorder: "rgba(115,112,23,0.22)",
+  fieldFocusBorder: "#a6a216",
+
+  tagBorder: "rgba(115,112,23,0.30)",
+  tagText: "#a6a216",
+};
 const v = (t) =>
   [
     `--accent:${t.accent}`,

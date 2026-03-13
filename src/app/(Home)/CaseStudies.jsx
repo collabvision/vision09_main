@@ -1,15 +1,27 @@
 "use client";
 
 const T = {
-  accent:"#A8832A",accentLight:"#D4B86A",accentMid:"#C4A24E",accentDark:"#6B5010",
-  bg:"#FAF8F2",bgAlt:"#F2EDE0",card:"#FFFFFF",text:"#1C1A14",textSec:"#56503E",muted:"#9A8E72",border:"rgba(168,131,42,0.20)",
+  accent: "#a6a216",
+  accentLight: "#ebe60c",
+  accentMid: "#d2ce12",
+  accentDark: "#737017",
+
+  bg: "#fffee9",
+  bgAlt: "#f4f1c5",
+  card: "#ffffff",
+
+  text: "#231f1f",
+  textSec: "#58564d",
+  muted: "#a19f8a",
+
+  border: "rgba(115,112,23,0.20)",
 };
 
 import { useEffect } from "react";
 
-const FONTS=`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
 
-const CSS=`
+const CSS = `
 ${FONTS}
 .case-section{background:${T.bgAlt};padding:clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem);font-family:'DM Sans',sans-serif;position:relative}
 .case-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:center;max-width:1280px;margin:0 auto}
@@ -40,36 +52,77 @@ ${FONTS}
 @media(max-width:480px){.case-cards{grid-template-columns:1fr}}
 `;
 
-const MOCK_CASES=[
-  {tag:"Healthcare",h:"Shree Ortho & Trauma Centre",stat:"4×",lbl:"Lead growth in 90 days"},
-  {tag:"Education",h:"Cornerstone Academia",stat:"60%",lbl:"Rise in parent enquiries"},
-  {tag:"Real Estate · Dubai",h:"Leads Finder Group",stat:"3×",lbl:"International investor reach"},
-  {tag:"Spiritual",h:"Shivoham Spiritual Hub",stat:"500M+",lbl:"Total platform views"},
+const MOCK_CASES = [
+  {
+    tag: "Healthcare",
+    h: "Shree Ortho & Trauma Centre",
+    stat: "4×",
+    lbl: "Lead growth in 90 days",
+  },
+  {
+    tag: "Education",
+    h: "Cornerstone Academia",
+    stat: "60%",
+    lbl: "Rise in parent enquiries",
+  },
+  {
+    tag: "Real Estate · Dubai",
+    h: "Leads Finder Group",
+    stat: "3×",
+    lbl: "International investor reach",
+  },
+  {
+    tag: "Spiritual",
+    h: "Shivoham Spiritual Hub",
+    stat: "500M+",
+    lbl: "Total platform views",
+  },
 ];
 
 export default function CaseStudies() {
-  useEffect(()=>{
-    const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("on");obs.unobserve(e.target)}})},{threshold:.12});
-    document.querySelectorAll(".case-rv").forEach(el=>obs.observe(el));
-    return()=>obs.disconnect();
-  },[]);
-  return(
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (es) => {
+        es.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("on");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document.querySelectorAll(".case-rv").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  return (
     <section className="case-section">
       <style>{CSS}</style>
       <div className="case-inner">
         <div>
-          <div className="case-rv"><div className="case-eyebrow"><span/>Case Studies</div>
-            <h2 className="case-h">Proven strategies. <em>Real outcomes.</em></h2>
-            <p className="case-p">Explore how Vision9 has helped brands strengthen their presence, improve reach, and generate measurable growth across industries.</p>
-            <a href="/case-studies" className="case-cta">View Case Studies <span className="case-arrow">→</span></a>
+          <div className="case-rv">
+            <div className="case-eyebrow">
+              <span />
+              Case Studies
+            </div>
+            <h2 className="case-h">
+              Proven strategies. <em>Real outcomes.</em>
+            </h2>
+            <p className="case-p">
+              Explore how Vision9 has helped brands strengthen their presence,
+              improve reach, and generate measurable growth across industries.
+            </p>
+            <a href="/case-studies" className="case-cta">
+              View Case Studies <span className="case-arrow">→</span>
+            </a>
           </div>
         </div>
         <div className="case-cards">
-          {MOCK_CASES.map((c,i)=>(
-            <div key={i} className={`case-card case-rv case-d${i+1}`}>
+          {MOCK_CASES.map((c, i) => (
+            <div key={i} className={`case-card case-rv case-d${i + 1}`}>
               <span className="case-card-tag">{c.tag}</span>
               <div className="case-card-h">{c.h}</div>
-              <div style={{marginTop:"1.2rem"}}>
+              <div style={{ marginTop: "1.2rem" }}>
                 <div className="case-card-stat">{c.stat}</div>
                 <span className="case-card-stat-lbl">{c.lbl}</span>
               </div>

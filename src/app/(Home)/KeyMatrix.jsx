@@ -4,17 +4,21 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent:      "#A8832A",
-  accentLight: "#D4B86A",
-  accentMid:   "#C4A24E",
-  accentDark:  "#6B5010",
-  bg:          "#FAF8F2",
-  bgAlt:       "#F2EDE0",
-  card:        "#FFFFFF",
-  text:        "#1C1A14",
-  textSec:     "#56503E",
-  muted:       "#9A8E72",
-  border:      "rgba(168,131,42,0.20)",
+  accent:      "#a6a216",          // main brand color
+  accentLight: "#ebe60c",          // highlight / hover
+  accentMid:   "#d2ce12",          // mid accent
+  accentDark:  "#737017",          // darker accent
+
+  bg:          "#fffee9",          // main background
+  bgAlt:       "#f5f2c8",          // soft alt background
+
+  card:        "#ffffff",          // cards
+
+  text:        "#231f1f",          // main text
+  textSec:     "#58564d",          // secondary text
+  muted:       "#a19f8a",          // muted text
+
+  border:      "rgba(115,112,23,0.20)",
 };
 
 import { useEffect, useRef, useState } from "react";

@@ -1,5 +1,5 @@
 "use client"; // Add this at the top to handle state
-
+// import "../../public/fonts/custom-fonts.css";
 import { useEffect, useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp"
-          className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#A8832A] text-white"
+          className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#a6a216] text-white"
         >
           <FaWhatsapp size={30} />
           {/* <span className="absolute inset-0 rounded-full bg-[#FAF8F2] opacity-20 animate-ping -z-10" /> */}
@@ -94,7 +94,7 @@ function Loader() {
         transition={{ delay: 0.5 }}
         className="mt-4 text-[10px] uppercase tracking-[0.3em] text-[#5a5a5a]"
       >
-        Engineering Growth
+       Growth
       </motion.p>
     </motion.div>
   );
