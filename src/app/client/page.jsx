@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import Header from "../../components/custom/Header";
+import Footer from "../../components/custom/Footer";
 
 /* ═══════════════════════════════════════════════════════════════
    THEME — edit here to retheme the entire page
@@ -743,6 +744,7 @@ export default function ClientsPage() {
           </a>
         </div>
       </section>
+      <Footer/>
     </>
   );
 }

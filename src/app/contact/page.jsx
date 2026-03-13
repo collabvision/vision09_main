@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Header from "../../components/custom/Header";
-
+import Footer from "../../components/custom/Footer";
 /* ═══════════════════════════════════════════════════════════════
    THEME — edit here to retheme the entire page
    Every color in this file flows from these tokens only.
@@ -710,6 +710,7 @@ export default function ContactPage() {
           </a>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

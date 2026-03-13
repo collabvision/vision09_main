@@ -37,6 +37,8 @@ import OurProcess from "./(Home)/Ourprocess";
 import CaseStudies from "./(Home)/CaseStudies";
 import ClientsTeaser from "./(Home)/ClientsTeaser";
 import FinalCTA from "./(Home)/FinalCTA";
+import Footer from "../components/custom/Footer";
+import Companies from "./(Home)/Companies";
 
 /* ─── Shared inline overrides for third-party wrappers ─── */
 const GLOBAL_OVERRIDES = `
@@ -122,13 +124,21 @@ export default function Home() {
       <Header />
 
       {/* ── FULL-WIDTH WRAPPER ── */}
-      <div style={{ width:"100%", position:"relative", background:"var(--bg)" }}>
-
+      <div
+        style={{ width: "100%", position: "relative", background: "var(--bg)" }}
+      >
         {/* ── 2. HERO ── */}
         <Hero />
 
         {/* ── 3. CURVED MARQUEE ── */}
-        <div style={{ background:"transparent ", paddingBottom:"1.5rem", marginTop:"3rem", overflow:"hidden" }}>
+        <div
+          style={{
+            background: "transparent ",
+            paddingBottom: "1.5rem",
+            marginTop: "3rem",
+            overflow: "hidden",
+          }}
+        >
           <CurvedLoop
             marqueeText="We Make It Viral ✦"
             speed={0.9}
@@ -146,7 +156,7 @@ export default function Home() {
         <ScrollVelocity
           texts={[
             "Healthcare • Education • Real Estate • FMCG • Hospitality",
-            "Service Brands • Astrology • Spiritual • Fashion • Recruitment • ETC"
+            "Service Brands • Astrology • Spiritual • Fashion • Recruitment • ETC",
           ]}
           velocity={80}
           className="custom-scroll-text"
@@ -154,6 +164,8 @@ export default function Home() {
 
         {/* ── 6. ABOUT ── */}
         <HomeAbout />
+
+        <Companies />
 
         {/* ── 7. CORE SERVICES (NEW) ── */}
         <CoreServices />
@@ -175,8 +187,8 @@ export default function Home() {
 
         {/* ── 13. FINAL CTA (NEW) ── */}
         <FinalCTA />
-
       </div>
+      <Footer />
     </>
   );
 }

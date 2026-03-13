@@ -337,9 +337,9 @@
     right: 0;
   }
 
-  .staggered-menu-wrapper[data-open] .sm-logo-img {
+  /* .staggered-menu-wrapper[data-open] .sm-logo-img {
     filter: invert(100%);
-  }
+  } */
 }
 
 @media (max-width: 640px) {
@@ -349,9 +349,9 @@
     right: 0;
   }
 
-  .staggered-menu-wrapper[data-open] .sm-logo-img {
+  /* .staggered-menu-wrapper[data-open] .sm-logo-img {
     filter: invert(100%);
-  }
+  } */
 }
 
 .staggered-menu-wrapper:has(#staggered-menu-panel[aria-hidden="true"]) {
