@@ -51,7 +51,7 @@ const GLOBAL_OVERRIDES = `
   --accent-mid: #d2ce12;
   --accent-dark: #737017;
 
-  --bg: #fffee9;
+  --bg: #f5f2c8;
   --bg-alt: #f5f2c8;
 
   --text: #231f1f;
@@ -103,8 +103,8 @@ const GLOBAL_OVERRIDES = `
 header,
 [class*="Header"],
 [class*="header"] {
-  background: var(--nav-bg) !important;
-  backdrop-filter: blur(16px) !important;
+  // background: var(--nav-bg) !important;
+  // backdrop-filter: blur(16px) !important;
   border-bottom: 1px solid var(--border-light) !important;
 }
 
