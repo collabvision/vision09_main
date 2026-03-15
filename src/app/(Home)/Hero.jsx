@@ -8,19 +8,14 @@ const T = {
   accentLight: "#ebe60c",
   accentMid: "#a6a216",
   accentDark: "#737017",
-
   bg: "#fffee9",
   bgAlt: "#a19f8a",
-
   text: "#231f1f",
   textSec: "#58564d",
   muted: "#3f3c15",
-
   border: "rgba(166,162,22,0.20)",
   navBg: "rgba(255,252,214,0.93)",
-
   waGreen: "#25D366",
-
   btnSolidBg: "#d2ce12",
   btnSolidTxt: "#231f1f",
 };
@@ -33,16 +28,28 @@ const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Di
 const CSS = `
 ${FONTS}
 .v9-hero-wrap{font-family:'DM Sans',sans-serif;position:relative;overflow:hidden;background:${T.bg}}
-/* Override HeroParallax default dark bg */
 .v9-hero-wrap [class*="dark"]{background-color:${T.bg} !important}
 .v9-hero-wrap .bg-black{background:${T.bg} !important}
 .v9-hero-wrap .dark\\:bg-black{background:${T.bg} !important}
-/* Header overlay that sits above the parallax */
+
+/* ── THE FIX:
+   The overlay itself must NOT block mouse events (pointer-events:none)
+   so the parallax scroll beneath still works.
+   But the text + buttons INSIDE it need pointer-events re-enabled.   ── */
 .v9-hero-overlay{
-  position:absolute;top:0;left:0;right:0;
+  position:absolute;top:0;left:0;right:0;z-index:40;
   padding:clamp(7rem,14vh,10rem) clamp(1.5rem,6vw,5rem) 0;
-  pointer-events:none;
+  pointer-events:none;          /* overlay itself: transparent to mouse */
 }
+.v9-hero-overlay *{
+  pointer-events:none;          /* default everything off */
+}
+.v9-hero-btns,
+.v9-hero-btns *,
+.v9-hero-btns a{
+  pointer-events:all !important; /* buttons & links: fully clickable */
+}
+
 .v9-hero-kicker{
   font-family:'Tenor Sans',sans-serif;font-size:.78rem;letter-spacing:.28em;
   text-transform:uppercase;color:${T.accent};margin-bottom:1.4rem;
@@ -71,7 +78,7 @@ ${FONTS}
 .v9-hero-btns{
   margin-top:2.2rem;display:flex;gap:1rem;flex-wrap:wrap;
   opacity:0;animation:v9FadeUp .8s 1.2s forwards;
-  pointer-events:all;
+  cursor:pointer;
 }
 .v9-btn-solid{
   background:${T.btnSolidBg};color:${T.btnSolidTxt};
@@ -92,68 +99,26 @@ ${FONTS}
   background:transparent;color:${T.text};
   font-family:'Playfair Display',serif;font-size:.85rem;font-weight:600;
   letter-spacing:.16em;padding:.9rem 2.4rem;
-  border:1px solid rgba(168,131,42,.38);cursor:pointer;
+  border:1px solid rgba(166,162,22,.38);cursor:pointer;
   text-transform:uppercase;text-decoration:none;display:inline-flex;
   align-items:center;gap:.6rem;transition:border-color .3s,color .3s,transform .3s;
 }
 .v9-btn-wa:hover{border-color:${T.waGreen};color:${T.waGreen};transform:translateY(-2px)}
 .v9-wa-dot{width:8px;height:8px;background:${T.waGreen};border-radius:50%;flex-shrink:0}
-/* tint the parallax thumbnails slightly for our light bg */
 .v9-hero-wrap [class*="group"] img{filter:brightness(.92) saturate(.9)}
 @keyframes v9FadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes v9ClipUp{to{clip-path:inset(0 0 0% 0)}}
 `;
 
 export const products = [
-  {
-    title: "Kle",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
-  },
-  {
-    title: "Cursor",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
-  },
-  {
-    title: "Rogue",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
-  },
-  {
-    title: "Editorially",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
-  },
-  {
-    title: "Kle",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
-  },
-  {
-    title: "Cursor",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
-  },
-  {
-    title: "Rogue",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
-  },
-  {
-    title: "Editorially",
-    link: "/case_studies/Kle",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
-  },
- 
+  { title:"Kle",        link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png" },
+  { title:"Cursor",     link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/cursor.png" },
+  { title:"Rogue",      link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/rogue.png" },
+  { title:"Editorially",link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/editorially.png" },
+  { title:"Kle 2",      link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png" },
+  { title:"Cursor 2",   link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/cursor.png" },
+  { title:"Rogue 2",    link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/rogue.png" },
+  { title:"Editorially 2",link:"/case_studies/Kle",thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/editorially.png" },
 ];
 
 const Hero = () => {
@@ -165,7 +130,7 @@ const Hero = () => {
       <div className="v9-hero-overlay">
         <p className="v9-hero-kicker">
           Vision9
-          <br /> Performance Marketing Agency
+          <br />Performance Marketing Agency
         </p>
         <h1 className="v9-hero-title">
           <span className="ln ln1">EVERYONE IS</span>
@@ -176,12 +141,14 @@ const Hero = () => {
           At Vision9, we drive measurable sales and leads through performance
           marketing, strategic branding, and high-impact UGC content.
         </p>
+
+        {/* Buttons are inside the overlay but pointer-events:all re-enables them */}
         <div className="v9-hero-btns">
           <a href="#contact" className="v9-btn-solid">
             Book a Strategy Call
           </a>
           <a
-          href="https://wa.me/918147637913"
+            href="https://wa.me/918147637913"
             target="_blank"
             rel="noopener noreferrer"
             className="v9-btn-wa"
