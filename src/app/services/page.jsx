@@ -698,20 +698,29 @@ export default function ServicesPage() {
 
   return (
     <>
-      <style>{`
-      ${FONTS}
-      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-      :root{${v(THEME)}}
-      html,body{width:100%;height:100%;overflow:hidden;background:var(--bg)}
-      @keyframes fadeTitle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-    `}</style>
+     <style>{`
+  ${FONTS}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{${v(THEME)}}
+  
+  /* CHANGE THIS: allow vertical scroll, only hide horizontal */
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden; 
+    overflow-y: auto;
+    background: var(--bg);
+  }
+
+  @keyframes fadeTitle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+`}</style>
       <Header></Header>
       <div
         style={{
           display: "flex",
           width: "100vw",
           height: "100vh",
-          overflow: "hidden",
+          overflow: "auto",
           background: "var(--bg)",
           flexDirection: isMobile ? "column" : "row",
         }}
@@ -1020,7 +1029,7 @@ export default function ServicesPage() {
           </div>
         )}
       </div>
-      <Footer/>
+      <Footer></Footer>
     </>
   );
 }

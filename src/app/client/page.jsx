@@ -736,12 +736,10 @@ export default function ClientsPage() {
           execution to measurable growth.
         </p>
         <div className="cta-btns rv d3">
-          <a href="#" className="btn-solid">
+          <a href="/contact" className="btn-solid">
             Book a Strategy Call
           </a>
-          <a href="#" className="btn-outline">
-            Contact Us
-          </a>
+         
         </div>
       </section>
       <Footer/>

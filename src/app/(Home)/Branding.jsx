@@ -228,7 +228,7 @@ export default function Branding() {
               visible: { opacity: 1, y: 0 },
             }}
           >
-            <a href="/branding" className="br-cta">
+            <a href="/services" className="br-cta">
               Explore Branding &amp; Designing
               <span className="br-cta-arrow">→</span>
             </a>

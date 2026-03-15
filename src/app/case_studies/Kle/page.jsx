@@ -1157,8 +1157,8 @@ export default function page() {
         <h2 className="cta-h">Let's Build Brands<br />That <em>Perform</em></h2>
         <p className="cta-p">Partner with Vision9 to move from ideas to execution — and from execution to measurable growth that compounds over time.</p>
         <div className="cta-btns">
-          <a href="#" className="btn-solid">Book a Strategy Call</a>
-          <a href="#" className="btn-outline">View More Case Studies</a>
+          <a href="/contact" className="btn-solid">Book a Strategy Call</a>
+          <a href="/case_studies" className="btn-outline">View More Case Studies</a>
         </div>
       </div>
     </section>

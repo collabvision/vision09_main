@@ -74,11 +74,11 @@ export default function FinalCTA() {
         consistency, and scalable growth.
       </p>
       <div className="fc-btns fc-rv fc-d3">
-        <a href="#contact" className="fc-btn-solid">
+        <a href="/contact" className="fc-btn-solid">
           Book a Strategy Call
         </a>
         <a
-          href="https://wa.me/91XXXXXXXXXX"
+          href="https://wa.me/918147637913"
           target="_blank"
           rel="noopener noreferrer"
           className="fc-btn-out"

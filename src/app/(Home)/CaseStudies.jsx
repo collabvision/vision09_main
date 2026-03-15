@@ -112,7 +112,7 @@ export default function CaseStudies() {
               Explore how Vision9 has helped brands strengthen their presence,
               improve reach, and generate measurable growth across industries.
             </p>
-            <a href="/case-studies" className="case-cta">
+            <a href="/case_studies" className="case-cta">
               View Case Studies <span className="case-arrow">→</span>
             </a>
           </div>

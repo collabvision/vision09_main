@@ -507,12 +507,10 @@ export default function AboutPage() {
           execution to measurable growth.
         </p>
         <div className="cta-btns rv d3">
-          <a href="#" className="btn-gold">
+          <a href="/contact" className="btn-gold">
             Book a Strategy Call
           </a>
-          <a href="#" className="btn-out">
-            Contact Us
-          </a>
+          
         </div>
       </section>
       <Footer/>

@@ -106,95 +106,54 @@ ${FONTS}
 
 export const products = [
   {
-    title: "Moonbeam",
-    link: "#",
+    title: "Kle",
+    link: "/case_studies/Kle",
     thumbnail:
       "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
   },
   {
     title: "Cursor",
-    link: "#",
+    link: "/case_studies/Kle",
     thumbnail:
       "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
   },
   {
     title: "Rogue",
-    link: "#",
+    link: "/case_studies/Kle",
     thumbnail:
       "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
   },
   {
     title: "Editorially",
-    link: "#",
+    link: "/case_studies/Kle",
     thumbnail:
       "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
   },
   {
-    title: "Editrix AI",
-    link: "#",
+    title: "Kle",
+    link: "/case_studies/Kle",
     thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/editrix.png",
+      "https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png",
   },
   {
-    title: "Pixel Perfect",
-    link: "#",
+    title: "Cursor",
+    link: "/case_studies/Kle",
     thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+      "https://www.aceternity.com/images/products/thumbnails/new/cursor.png",
   },
   {
-    title: "Algochurn",
-    link: "#",
+    title: "Rogue",
+    link: "/case_studies/Kle",
     thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/algochurn.png",
+      "https://www.aceternity.com/images/products/thumbnails/new/rogue.png",
   },
   {
-    title: "Aceternity UI",
-    link: "#",
+    title: "Editorially",
+    link: "/case_studies/Kle",
     thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/aceternityui.png",
+      "https://www.aceternity.com/images/products/thumbnails/new/editorially.png",
   },
-  {
-    title: "Tailwind MK",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
-  },
-  {
-    title: "SmartBridge",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/smartbridge.png",
-  },
-  {
-    title: "Renderwork",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/renderwork.png",
-  },
-  {
-    title: "Creme Digital",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/cremedigital.png",
-  },
-  {
-    title: "Golden Bells",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-  },
-  {
-    title: "Invoker Labs",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/invoker.png",
-  },
-  {
-    title: "E Free Inv",
-    link: "#",
-    thumbnail:
-      "https://www.aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
-  },
+ 
 ];
 
 const Hero = () => {
@@ -222,7 +181,7 @@ const Hero = () => {
             Book a Strategy Call
           </a>
           <a
-            href="https://wa.me/91XXXXXXXXXX"
+          href="https://wa.me/918147637913"
             target="_blank"
             rel="noopener noreferrer"
             className="v9-btn-wa"
