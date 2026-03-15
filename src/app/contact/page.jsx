@@ -1180,8 +1180,8 @@ export default function ContactPage() {
             style={{ borderTop: "1px solid var(--border-f)" }}
           >
             {[
-              { icon: "✉", l: "Email", v: "info@vision9.in" },
-              { icon: "📱", l: "Phone / WhatsApp", v: "+91 XXXXX XXXXX" },
+              { icon: "✉", l: "Email", v: "business@vision9.com" },
+              { icon: "📱", l: "Phone / WhatsApp", v: "+91 81476 37913" },
               {
                 icon: "📍",
                 l: "Location",
