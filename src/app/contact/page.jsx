@@ -1007,16 +1007,22 @@ export default function ContactPage() {
         message: form.message || "Testing Google Script API",
       };
 
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbyAlBdUp12f6LNc3L-6g2s0Ly7pr8xc_2-wB0oUS1lmILKsXOdOzzGQRPp3AOT77nAB/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8",
-          },
-          body: JSON.stringify(payload),
-        },
+      // const id = process.env.VISION9_LEADSHEET_APPSCRIPT_API_ID;
+      const id = process.env.NEXT_PUBLIC_VISION9_LEADSHEET_APPSCRIPT_API_ID;
+      console.log(
+        "click form :" +
+          id +
+          `https://script.google.com/macros/s/${process.env.NEXT_PUBLIC_VISION9_LEADSHEET_APPSCRIPT_API_ID}/exec`,
       );
+
+      const res = await fetch(`https://script.google.com/macros/s/${id}/exec`, {
+        method: "POST",
+        headers: {
+          // Keep this as text/plain to avoid complex CORS pre-flight checks
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(payload),
+      });
 
       const data = await res.json();
 
@@ -1223,49 +1229,48 @@ export default function ContactPage() {
               style={{ position: "relative", overflow: "hidden" }}
             > */}
 
-              {/* The Actual Map Embed */}
-              <iframe
-                title="Belagavi Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122894.13527263918!2d74.4367341071424!3d15.855427993072216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf669f50963673%3A0x1da3209503b1378b!2sBelagavi%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710500000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0, borderRadius: "8px" }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              
+            {/* The Actual Map Embed */}
+            <iframe
+              title="Belagavi Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122894.13527263918!2d74.4367341071424!3d15.855427993072216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf669f50963673%3A0x1da3209503b1378b!2sBelagavi%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1710500000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0, borderRadius: "8px" }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
 
-              {/* Overlay Label (Optional: Keep if you want the text to float over the map) */}
+            {/* Overlay Label (Optional: Keep if you want the text to float over the map) */}
+            <div
+              style={{
+                textAlign: "center",
+                position: "absolute",
+                bottom: "20px",
+                left: "50%",
+                transform: "translateX(-50%)",
+                zIndex: 1,
+                backgroundColor: "rgba(255,255,255,0.8)",
+                padding: "10px 20px",
+                borderRadius: "4px",
+                pointerEvents: "none", // Allows users to still click the map underneath
+              }}
+            >
+              <div style={{ fontSize: "1.5rem", marginBottom: ".2rem" }}>
+                📍
+              </div>
               <div
                 style={{
-                  textAlign: "center",
-                  position: "absolute",
-                  bottom: "20px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  zIndex: 1,
-                  backgroundColor: "rgba(255,255,255,0.8)",
-                  padding: "10px 20px",
-                  borderRadius: "4px",
-                  pointerEvents: "none", // Allows users to still click the map underneath
+                  fontFamily: "'Playfair Display',serif",
+                  fontSize: "0.9rem",
+                  letterSpacing: ".1em",
+                  color: "var(--accent)",
+                  fontWeight: 600,
                 }}
               >
-                <div style={{ fontSize: "1.5rem", marginBottom: ".2rem" }}>
-                  📍
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Playfair Display',serif",
-                    fontSize: "0.9rem",
-                    letterSpacing: ".1em",
-                    color: "var(--accent)",
-                    fontWeight: 600,
-                  }}
-                >
-                  BELAGAVI, INDIA
-                </div>
+                BELAGAVI, INDIA
               </div>
+            </div>
             {/* </div> */}
           </div>
         </div>

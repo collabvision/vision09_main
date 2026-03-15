@@ -239,6 +239,7 @@ const footerColumns = [
         url: "https://www.linkedin.com/company/the-vision9/",
       },
       { name: "WhatsApp", url: "https://wa.me/918147637913" },
+      { name: "business@vision9.com", url: "mailto:business@vision9.com" },
     ],
   },
 ];
