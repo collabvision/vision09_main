@@ -1,7 +1,7 @@
 "use client";
 
 /* ═══════════════════════════════════════════════════
-   THEME — change here to retheme this entire file
+   THEME change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
   accent:      "#a6a216",          // main brand color
@@ -181,7 +181,7 @@ export default function KeyMatrix() {
       </div>
 
       {/*
-        NOTE: MagicBento is kept below as an optional overlay — uncomment if you want
+        NOTE: MagicBento is kept below as an optional overlay uncomment if you want
         the Magic UI bento in addition to / instead of the custom grid above.
         Its glowColor is tuned to the gold accent (168,131,42).
       */}

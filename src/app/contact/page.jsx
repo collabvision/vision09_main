@@ -3,7 +3,7 @@
 // import Header from "../../components/custom/Header";
 // import Footer from "../../components/custom/Footer";
 // /* ═══════════════════════════════════════════════════════════════
-//    THEME — edit here to retheme the entire page
+//    THEME edit here to retheme the entire page
 //    Every color in this file flows from these tokens only.
 // ═══════════════════════════════════════════════════════════════ */
 // // const THEME = {
@@ -420,7 +420,7 @@
 //         </h1>
 //         <p className="hero-sub">
 //           Whether you're looking to generate leads, build a strong brand, or
-//           scale your digital presence — Vision9 is here to help. Tell us about
+//           scale your digital presence Vision9 is here to help. Tell us about
 //           your business and goals.
 //         </p>
 //       </section>
@@ -431,7 +431,7 @@
 //       <section className="cgrid">
 //         <div>
 //           <div className="rv">
-//             <div className="sec-orn">01 — Start The Conversation</div>
+//             <div className="sec-orn">01 Start The Conversation</div>
 //             <h2 className="ch">
 //               Fill out the form and our team will <em>reach back shortly</em>
 //             </h2>
@@ -526,7 +526,7 @@
 
 //         <div>
 //           <div className="rv">
-//             <div className="sec-orn">02 — Contact Details</div>
+//             <div className="sec-orn">02 Contact Details</div>
 //             <h2 className="ch">
 //               Reach us <em>directly</em>
 //             </h2>
@@ -541,7 +541,7 @@
 //               {
 //                 icon: "📍",
 //                 l: "Location",
-//                 v: "Belagavi, India — Serving clients globally",
+//                 v: "Belagavi, India Serving clients globally",
 //               },
 //             ].map((d, i) => (
 //               <div key={i} className="drow">
@@ -617,7 +617,7 @@
 //       {/* WHY VISION9 */}
 //       <section className="why">
 //         <div className="rv">
-//           <div className="sec-orn">03 — Why Contact Vision9</div>
+//           <div className="sec-orn">03 Why Contact Vision9</div>
 //           <h2
 //             style={{
 //               fontFamily: "'Playfair Display',serif",
@@ -628,7 +628,7 @@
 //               color: "var(--text)",
 //             }}
 //           >
-//             No generic pitches — only{" "}
+//             No generic pitches only{" "}
 //             <em style={{ color: "var(--accent)", fontStyle: "italic" }}>
 //               relevant solutions
 //             </em>
@@ -639,7 +639,7 @@
 //             {
 //               n: "01",
 //               t: "Strategy-First Consultation",
-//               d2: "Every consultation starts with understanding your business goals — not a pre-packaged pitch.",
+//               d2: "Every consultation starts with understanding your business goals not a pre-packaged pitch.",
 //               d: "d1",
 //             },
 //             {
@@ -683,7 +683,7 @@
 //           <em>clarity &amp; consistency</em>
 //         </h2>
 //         <p className="cta-sub rv d2">
-//           Partner with Vision9 to move from ideas to execution — and from
+//           Partner with Vision9 to move from ideas to execution and from
 //           execution to measurable growth.
 //         </p>
 //         <div className="cta-btns rv d3">
@@ -1064,7 +1064,7 @@ export default function ContactPage() {
         </h1>
         <p className="hero-sub">
           Whether you're looking to generate leads, build a strong brand, or
-          scale your digital presence — Vision9 is here to help. Tell us about
+          scale your digital presence Vision9 is here to help. Tell us about
           your business and goals.
         </p>
       </section>
@@ -1074,7 +1074,7 @@ export default function ContactPage() {
       <section className="cgrid">
         <div>
           <div className="rv">
-            <div className="sec-orn">01 — Start The Conversation</div>
+            <div className="sec-orn">01 Start The Conversation</div>
             <h2 className="ch">
               Fill out the form and our team will <em>reach back shortly</em>
             </h2>
@@ -1170,7 +1170,7 @@ export default function ContactPage() {
 
         <div>
           <div className="rv">
-            <div className="sec-orn">02 — Contact Details</div>
+            <div className="sec-orn">02 Contact Details</div>
             <h2 className="ch">
               Reach us <em>directly</em>
             </h2>
@@ -1185,7 +1185,7 @@ export default function ContactPage() {
               {
                 icon: "📍",
                 l: "Location",
-                v: "Belagavi, India — Serving clients globally",
+                v: "Belagavi, India Serving clients globally",
               },
             ].map((d, i) => (
               <div key={i} className="drow">
@@ -1280,7 +1280,7 @@ export default function ContactPage() {
 
       <section className="why">
         <div className="rv">
-          <div className="sec-orn">03 — Why Contact Vision9</div>
+          <div className="sec-orn">03 Why Contact Vision9</div>
           <h2
             style={{
               fontFamily: "'Playfair Display',serif",
@@ -1291,7 +1291,7 @@ export default function ContactPage() {
               color: "var(--text)",
             }}
           >
-            No generic pitches — only{" "}
+            No generic pitches only{" "}
             <em style={{ color: "var(--accent)", fontStyle: "italic" }}>
               relevant solutions
             </em>
@@ -1302,7 +1302,7 @@ export default function ContactPage() {
             {
               n: "01",
               t: "Strategy-First Consultation",
-              d2: "Every consultation starts with understanding your business goals — not a pre-packaged pitch.",
+              d2: "Every consultation starts with understanding your business goals not a pre-packaged pitch.",
               d: "d1",
             },
             {
@@ -1345,7 +1345,7 @@ export default function ContactPage() {
           <em>clarity &amp; consistency</em>
         </h2>
         <p className="cta-sub rv d2">
-          Partner with Vision9 to move from ideas to execution — and from
+          Partner with Vision9 to move from ideas to execution and from
           execution to measurable growth.
         </p>
         <div className="cta-btns rv d3">

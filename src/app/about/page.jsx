@@ -187,6 +187,35 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   .vm-grid{grid-template-columns:1fr}.f-grid{grid-template-columns:1fr}.dt{font-size:1rem}
 }
 @media(max-width:480px){.hero-title{font-size:clamp(3rem,18vw,6rem)}.cta-btns{flex-direction:column;align-items:center}}
+/* ── FOUNDER AVATAR ── */
+.f-avatar {
+  position: absolute;
+  top: 1.7rem;
+  right: 1.7rem;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--gold-border);
+  background: rgba(166,162,22,0.08);
+  transition: border-color .4s;
+  flex-shrink: 0;
+}
+.f-card:hover .f-avatar {
+  border-color: var(--gold);
+}
+.f-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter .4s, transform .4s;
+}
+.f-card:hover .f-avatar img {
+  filter: grayscale(0%);
+  transform: scale(1.06);
+}
 `;
 
 export default function AboutPage() {
@@ -306,17 +335,17 @@ export default function AboutPage() {
       {/* STORY */}
       <section className="story">
         <div className="story-left rv">
-          <div className="sec-eyebrow">01 — Our Story</div>
-          <div className="story-ghost">01</div>
+          <div className="sec-eyebrow">01 Our Story</div>
+          {/* <div className="story-ghost">01</div> */}
           <h2 className="story-h">
             Marketing should drive <em>results,</em> not just visibility.
           </h2>
         </div>
         <div>
           {[
-            "Founded in early 2024 by Om Shetti, Sanyam Kalmani, and Murad Madarsha, Vision9 was created with a simple belief — marketing should drive results, not just visibility.",
+            "Founded in early 2024 by Om Shetti, Sanyam Kalmani, and Murad Madarsha, Vision9 was created with a simple belief marketing should drive results, not just visibility.",
             "What began as a focused creative collaboration quickly evolved into a structured agency built on original thinking, trend awareness, and performance-driven execution. By combining creative strength with strategic clarity, the founders set out to bridge the gap between ideas and measurable outcomes.",
-            "Vision9 works as an extended marketing partner, aligning every campaign and creative decision with clearly defined growth objectives. We don't just produce content — we engineer systems that compound over time.",
+            "Vision9 works as an extended marketing partner, aligning every campaign and creative decision with clearly defined growth objectives. We don't just produce content we engineer systems that compound over time.",
           ].map((p, i) => (
             <p key={i} className={`body-txt rv d${i + 1}`}>
               {p}
@@ -330,7 +359,7 @@ export default function AboutPage() {
       {/* VISION & MISSION */}
       <section className="vm-section">
         <div className="rv">
-          <div className="sec-eyebrow">02 — Direction</div>
+          <div className="sec-eyebrow">02 Direction</div>
           <h2
             style={{
               fontFamily: "'Playfair Display',serif",
@@ -373,7 +402,7 @@ export default function AboutPage() {
       {/* FOUNDERS */}
       <section className="founders">
         <div className="rv">
-          <div className="sec-eyebrow">03 — The People</div>
+          <div className="sec-eyebrow">03 The People</div>
           <h2
             style={{
               fontFamily: "'Playfair Display',serif",
@@ -396,8 +425,9 @@ export default function AboutPage() {
         <div className="f-grid">
           {[
             {
-              n: "01",
+              // n: "01",
               name: "OM SHETTI",
+                img: "/asset/about/om.jpeg",   // ← add this
               role: "Co-Founder · Performance",
               bio: "Leads ads and performance division, ensuring clients receive quality leads through Meta, Google, and other platforms with every campaign tied to measurable results.",
               focus:
@@ -405,16 +435,18 @@ export default function AboutPage() {
               d: "d1",
             },
             {
-              n: "02",
+              // n: "02",
               name: "SANYAM KALMANI",
+                img: "/asset/about/sanyam.jpeg",   // ← add this
               role: "Co-Founder · R&D",
-              bio: "Studies how content systems behave over time — what compounds, what breaks, what scales — and turns those findings into faceless growth frameworks for brands.",
+              bio: "Studies how content systems behave over time what compounds, what breaks, what scales and turns those findings into faceless growth frameworks for brands.",
               focus: '"Engineer growth built to last."',
               d: "d2",
             },
             {
-              n: "03",
+              // n: "03",
               name: "MURAD MADARSHA",
+                img: "/asset/about/murad.jpeg",   // ← add this
               role: "Co-Founder · Creative",
               bio: "Leads creative direction for faceless content and organic strategies that help brands scale their digital presence. Every piece of content is a growth asset.",
               focus: '"Every post has one job: make the brand remembered."',
@@ -422,6 +454,11 @@ export default function AboutPage() {
             },
           ].map((f, i) => (
             <div key={i} className={`f-card rv ${f.d}`}>
+              {/* Circular image top right */}
+              <div className="f-avatar">
+                <img src={f.img} alt={f.name} />
+              </div>
+
               <div className="f-num">{f.n}</div>
               <div className="f-name">{f.name}</div>
               <span className="f-role">{f.role}</span>
@@ -438,7 +475,7 @@ export default function AboutPage() {
       {/* DIFFERENTIATORS */}
       <section className="diff">
         <div className="rv">
-          <div className="sec-eyebrow">04 — What Sets Us Apart</div>
+          <div className="sec-eyebrow">04 What Sets Us Apart</div>
           <h2
             style={{
               fontFamily: "'Playfair Display',serif",
@@ -503,17 +540,16 @@ export default function AboutPage() {
           Let's Build Brands That <em>Perform</em>
         </h2>
         <p className="cta-sub rv d2">
-          Partner with Vision9 to move from ideas to execution — and from
+          Partner with Vision9 to move from ideas to execution and from
           execution to measurable growth.
         </p>
         <div className="cta-btns rv d3">
           <a href="/contact" className="btn-gold">
             Book a Strategy Call
           </a>
-          
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -43,7 +43,7 @@ ${FONTS}
   font-family:'DM Sans',sans-serif;position:relative;overflow:hidden;
 }
 .ha-eyebrow{
-  font-family:'Tenor Sans',sans-serif;font-size:.55rem;letter-spacing:.3em;
+  font-family:'Tenor Sans',sans-serif;font-size:25px !important;letter-spacing:.3em;
   text-transform:uppercase;color:${T.accent};margin-bottom:.9rem;
   display:flex;align-items:center;gap:.7rem;
 }
@@ -135,7 +135,7 @@ const FEATURES = [
   {
     title: "Integrated Marketing",
     icon: <IconHierarchy3 size={26} />,
-    desc: "From digital campaigns to PR and social media — complete marketing under one roof.",
+    desc: "From digital campaigns to PR and social media complete marketing under one roof.",
   },
   {
     title: "Growth-Focused Partnerships",
@@ -177,12 +177,12 @@ export default function HomeAbout() {
 
       {/* eyebrow + SplitText heading */}
       <div style={{ textAlign: "center" }}>
-        <div className="ha-eyebrow ha-rv" style={{ justifyContent: "center" }}>
+        <div className="ha-eyebrow ha-rv" style={{ justifyContent: "center", fontSize: ".65rem" }}>
           About Vision9
         </div>
 
         <div className="ha-title-wrap">
-          <SplitText
+          {/* <SplitText
             text="At Vision9, We Build"
             className="ha-rv"
             style={{
@@ -229,13 +229,13 @@ export default function HomeAbout() {
             threshold={0.1}
             rootMargin="-80px"
             textAlign="center"
-          />
+          /> */}
         </div>
 
         <p className="ha-intro ha-rv ha-d2">
           At Vision9, we help brands drive growth through strategic thinking,
           impactful design, and result-oriented communication. We work as an{" "}
-          <em>extended marketing partner</em> — from strategy to execution —
+          <em>extended marketing partner</em> from strategy to execution —
           ensuring every campaign, creative, and decision is built to generate
           measurable business outcomes.
         </p>

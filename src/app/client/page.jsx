@@ -4,7 +4,7 @@ import Header from "../../components/custom/Header";
 import Footer from "../../components/custom/Footer";
 
 /* ═══════════════════════════════════════════════════════════════
-   THEME — edit here to retheme the entire page
+   THEME edit here to retheme the entire page
    Every color in this file flows from these tokens only.
 ═══════════════════════════════════════════════════════════════ */
 // const THEME = {
@@ -233,7 +233,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   padding:clamp(1.5rem,3vw,2.5rem);scroll-snap-align:start;position:relative;overflow:hidden;
   box-shadow:0 2px 16px var(--border-f);transition:border-color .4s,transform .4s,box-shadow .4s}
 .tc:hover{border-color:var(--accent-m);transform:translateY(-5px);box-shadow:0 16px 48px var(--border)}
-.tc::before{content:'\x201C';font-family:'Playfair Display',serif;font-size:6rem;line-height:.7;
+.tc::before{font-family:'Playfair Display',serif;font-size:6rem;line-height:.7;
   color:var(--border);position:absolute;top:.8rem;right:1.2rem;pointer-events:none;font-weight:400}
 .tc::after{content:'';position:absolute;bottom:12px;right:12px;width:16px;height:16px;
   border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
@@ -519,7 +519,7 @@ export default function ClientsPage() {
       r: "CEO · Admifit Career Consultancy LLP",
     },
     {
-      q: "We were in real estate and recruiting business in Dubai — Vision9 changed everything, bringing us global investors and strong hires from multiple countries.",
+      q: "We were in real estate and recruiting business in Dubai Vision9 changed everything, bringing us global investors and strong hires from multiple countries.",
       n: "Atiq Naikwadi",
       r: "Leads Finder Group · Dubai",
     },
@@ -600,7 +600,7 @@ export default function ClientsPage() {
 
       {/* INDUSTRIES */}
       <section className="ind">
-        <div className="sec-orn rv">01 — Industries</div>
+        <div className="sec-orn rv">01 Industries</div>
         <h2 className="sec-h rv d1">
           We speak every <em>industry's</em> language
         </h2>
@@ -627,7 +627,7 @@ export default function ClientsPage() {
       {/* EXPERIENCE */}
       <section className="exp">
         <div className="exp-l">
-          <div className="sec-orn rv">02 — Founders' Experience</div>
+          <div className="sec-orn rv">02 Founders' Experience</div>
           <h2 className="sec-h rv d1" style={{ marginBottom: "1.5rem" }}>
             Experience that goes <em>beyond</em> one agency
           </h2>
@@ -676,7 +676,7 @@ export default function ClientsPage() {
 
       {/* TESTIMONIALS */}
       <section className="testi">
-        <div className="sec-orn rv">03 — Testimonials</div>
+        <div className="sec-orn rv">03 Testimonials</div>
         <h2 className="sec-h rv d1">
           Straight from the <em>brands</em> we've built
         </h2>
@@ -707,7 +707,7 @@ export default function ClientsPage() {
 
       {/* LOGOS */}
       <section className="logos">
-        <div className="sec-orn rv">04 — Our Clients</div>
+        <div className="sec-orn rv">04 Our Clients</div>
         <h2 className="sec-h rv d1">
           Brands that <em>trust</em> Vision9
         </h2>
@@ -732,7 +732,7 @@ export default function ClientsPage() {
           Let's Build Brands That <em>Perform</em>
         </h2>
         <p className="cta-sub rv d2">
-          Partner with Vision9 to move from ideas to execution — and from
+          Partner with Vision9 to move from ideas to execution and from
           execution to measurable growth.
         </p>
         <div className="cta-btns rv d3">

@@ -59,12 +59,12 @@ const MOCK_CASES = [
     stat: "4×",
     lbl: "Lead growth in 90 days",
   },
-  {
-    tag: "Education",
-    h: "Cornerstone Academia",
-    stat: "60%",
-    lbl: "Rise in parent enquiries",
-  },
+  // {
+  //   tag: "Education",
+  //   h: "Cornerstone Academia",
+  //   stat: "60%",
+  //   lbl: "Rise in parent enquiries",
+  // },
   {
     tag: "Real Estate · Dubai",
     h: "Leads Finder Group",

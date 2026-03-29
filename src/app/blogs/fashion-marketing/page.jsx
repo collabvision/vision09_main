@@ -185,7 +185,7 @@ export default function BlogPage() {
               fontSize: "1.1rem",
             }}
           >
-            Admissions don’t close with visibility alone — they close with
+            Admissions don’t close with visibility alone they close with
             strategy, targeting, and meaningful engagement.
           </div>
 

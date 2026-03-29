@@ -203,9 +203,9 @@ export default function Branding() {
               }}
             >
               From brand identity and visual language to digital and offline
-              creatives, we deliver end-to-end branding solutions — including
+              creatives, we deliver end-to-end branding solutions including
               design, printing, and on-ground execution of banners, brochures,
-              pamphlets, standees, and more — ensuring consistent brand
+              pamphlets, standees, and more ensuring consistent brand
               visibility across every touchpoint.
             </HyperText>
           </motion.div>

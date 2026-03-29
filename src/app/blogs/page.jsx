@@ -31,7 +31,7 @@ const blogs = [
   {
     slug: "digital-admissions",
     title: "Why Digital Funnels Are Replacing Traditional Admissions",
-    desc: "Traditional ads are losing effectiveness — here's why targeted funnels win.",
+    desc: "Traditional ads are losing effectiveness here's why targeted funnels win.",
     img: "https://dummyimage.com/720x450/2a2622/a6a216&text=Digital+Funnels",
   },
   {

@@ -53,25 +53,25 @@ ${FONTS}
 
 const STEPS = [
   {
-    n: "01",
+    // n: "01",
     tag: "Discovery",
     h: "Discovery",
     p: "Understanding your business, market position, target audience, and growth objectives in depth.",
   },
   {
-    n: "02",
+    // n: "02",
     tag: "Strategy",
     h: "Strategy",
     p: "Developing a tailored roadmap and campaign architecture aligned precisely with your goals.",
   },
   {
-    n: "03",
+    // n: "03",
     tag: "Execution",
     h: "Execution",
     p: "Implementing campaigns, creatives, and systems with precision and structured accountability.",
   },
   {
-    n: "04",
+    // n: "04",
     tag: "Optimise",
     h: "Optimization & Scale",
     p: "Continuous performance analysis, iteration, and scaling to maximise ROI and sustainable growth.",

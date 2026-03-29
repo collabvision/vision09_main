@@ -294,7 +294,7 @@ export default function WhyVision() {
               Seven reasons brands <em>choose us</em>
             </h2>
             <p className="wv-sub">
-              We're not just a marketing agency — we're a strategic growth
+              We're not just a marketing agency we're a strategic growth
               partner. Every decision, every creative, every campaign is built
               with your business outcomes at the core.
             </p>

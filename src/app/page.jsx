@@ -140,7 +140,7 @@ export default function Home() {
           }}
         >
           <CurvedLoop
-            marqueeText="We Make It Viral ✦"
+            marqueeText="We Just Make It Viral ✦"
             speed={0.9}
             curveAmount={250}
             direction="left"

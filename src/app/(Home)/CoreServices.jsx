@@ -106,24 +106,24 @@ ${FONTS}
 
 const SERVICES = [
   {
-    n: "01",
+    // n: "01",
     tag: "Performance",
     h: "Lead Generation & Performance Marketing",
     p: "Data-driven campaigns designed to deliver consistent, high-quality leads across Meta and Google platforms. Every rupee tracked, every outcome measured.",
     link: "/services/performance",
   },
   {
-    n: "02",
+    // n: "02",
     tag: "Branding",
     h: "Branding & Social Media Marketing",
     p: "End-to-end brand building through strategic positioning, content creation, and social media management. Building brands that audiences recognise and trust.",
     link: "/services/branding",
   },
   {
-    n: "03",
+    // n: "03",
     tag: "Content",
     h: "Video, Reels & UGC Content Creation",
-    p: "Authentic, high-performing content built to increase engagement, trust, and advertising efficiency. From scripting to final edit — we own the process.",
+    p: "Authentic, high-performing content built to increase engagement, trust, and advertising efficiency. From scripting to final edit we own the process.",
     link: "/services/content",
   },
 ];

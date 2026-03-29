@@ -78,7 +78,7 @@ export default function ClientsTeaser() {
           </h2>
           <p className="ct-p">
             Delivering consistent results for brands across healthcare,
-            education, real estate, FMCG, and service industries — through
+            education, real estate, FMCG, and service industries through
             structured marketing systems and long-term partnerships.
           </p>
           <a href="/clients" className="ct-link">

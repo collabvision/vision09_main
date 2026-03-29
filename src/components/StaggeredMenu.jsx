@@ -365,7 +365,7 @@ export const StaggeredMenu = ({
         })()}
       </div>
       <header className="staggered-menu-header" aria-label="Main navigation header">
-        <div className="sm-logo" aria-label="Logo">
+        <div className="sm-logo" aria-label="Logo"   onClick={() => window.location.href = "/"}>
           <img
             src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
             alt="Logo"
