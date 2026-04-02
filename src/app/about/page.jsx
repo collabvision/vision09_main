@@ -311,7 +311,7 @@ export default function AboutPage() {
         </h1>
         <p className="hero-sub">
           In a space where everyone is creating content, we focus on building
-          systems that convert—combining strategy, creativity, performance
+          systems that convert combining strategy, creativity, performance
           marketing, and execution to deliver real business impact.
         </p>
         <div className="hero-badge">
@@ -495,7 +495,7 @@ export default function AboutPage() {
           {[
             {
               n: "01",
-              t: "Strategy-first mindset with business outcomes at the core",
+              t: "Strategy first mindset with business outcomes at the core",
               d: "d1",
             },
             {
@@ -505,17 +505,17 @@ export default function AboutPage() {
             },
             {
               n: "03",
-              t: "Industry-specific experience across high-impact sectors",
+              t: "Industry specific experience across high impact sectors",
               d: "d3",
             },
             {
               n: "04",
-              t: "International-quality standards and transparent reporting",
+              t: "International quality standards and transparent reporting",
               d: "d4",
             },
             {
               n: "05",
-              t: "Long-term partnerships over short-term campaigns",
+              t: "Long term partnerships over short term campaigns",
               d: "",
             },
           ].map((item, i) => (

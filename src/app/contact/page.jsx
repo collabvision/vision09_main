@@ -1300,25 +1300,21 @@ export default function ContactPage() {
         <div className="wgrid">
           {[
             {
-              n: "01",
               t: "Strategy-First Consultation",
               d2: "Every consultation starts with understanding your business goals not a pre-packaged pitch.",
               d: "d1",
             },
             {
-              n: "02",
               t: "Clear Understanding",
               d2: "We take time to fully understand where your brand is and where you want it to go.",
               d: "d2",
             },
             {
-              n: "03",
               t: "Practical Recommendations",
               d2: "Actionable, result-oriented recommendations built around your actual situation and budget.",
               d: "d3",
             },
             {
-              n: "04",
               t: "Tailored Only",
               d2: "No two businesses are alike. Our recommendations are built from scratch for your context.",
               d: "d4",

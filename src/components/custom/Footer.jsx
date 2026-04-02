@@ -192,6 +192,7 @@
 // }
 
 "use client";
+import { Instagram, Facebook, Linkedin, MessageCircle, Mail } from "lucide-react";
 
 const T = {
   accent: "#a6a216",
@@ -205,7 +206,15 @@ const T = {
   border: "rgba(166,162,22,0.18)",
 };
 
-// 1. DATA STRUCTURE WITH LINKS
+// Map names to icons
+const iconMap = {
+  Instagram: <Instagram size={18} />,
+  Facebook: <Facebook size={18} />,
+  LinkedIn: <Linkedin size={18} />,
+  WhatsApp: <MessageCircle size={18} />,
+  "business@vision9.com": <Mail size={18} />,
+};
+
 const footerColumns = [
   {
     title: "Navigation",
@@ -228,16 +237,11 @@ const footerColumns = [
   },
   {
     title: "Social",
+    isSocial: true, // Flag to identify social column
     links: [
       { name: "Instagram", url: "https://www.instagram.com/thevision9.co" },
-      {
-        name: "Facebook",
-        url: "https://www.facebook.com/people/Vision9/61576259486894/",
-      },
-      {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/company/the-vision9/",
-      },
+      { name: "Facebook", url: "https://www.facebook.com/people/Vision9/61576259486894/" },
+      { name: "LinkedIn", url: "https://www.linkedin.com/company/the-vision9/" },
       { name: "WhatsApp", url: "https://wa.me/918147637913" },
       { name: "business@vision9.com", url: "mailto:business@vision9.com" },
     ],
@@ -270,15 +274,17 @@ export default function Footer() {
               fontSize: "1.6rem",
               marginBottom: "12px",
               color: T.text,
+              fontWeight: 700,
             }}
           >
-            Vision9
+            Vision<span style={{ color: T.accent }}>9</span>
           </h2>
           <p
             style={{
               fontSize: ".9rem",
               lineHeight: 1.8,
               color: T.textSec,
+              maxWidth: "300px",
             }}
           >
             We build brands, design experiences, and create high-impact digital
@@ -286,7 +292,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* 2. DYNAMIC COLUMNS MAPPING WITH ANCHORS */}
+        {/* DYNAMIC COLUMNS */}
         {footerColumns.map((col, index) => (
           <div key={index}>
             <h4
@@ -296,44 +302,65 @@ export default function Footer() {
                 fontSize: ".7rem",
                 textTransform: "uppercase",
                 color: T.accent,
-                marginBottom: "16px",
+                marginBottom: "24px",
               }}
             >
               {col.title}
             </h4>
-            {col.links.map((link, i) => (
-              <a
-                key={i}
-                href={link.url}
-                target={link.url.startsWith("http") ? "_blank" : "_self"}
-                rel={link.url.startsWith("http") ? "noopener noreferrer" : ""}
-                style={{
-                  display: "block", // Makes the whole line clickable
-                  fontSize: ".9rem",
-                  marginBottom: "10px",
-                  color: T.textSec,
-                  textDecoration: "none",
-                  transition: "all .3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.color = T.accent;
-                  e.target.style.transform = "translateX(5px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.color = T.textSec;
-                  e.target.style.transform = "translateX(0px)";
-                }}
-              >
-                {link.name}
-              </a>
-            ))}
+            
+            <div style={{ display: col.isSocial ? "flex" : "block", gap: "12px", flexWrap: "wrap" }}>
+              {col.links.map((link, i) => (
+                <a
+                  key={i}
+                  href={link.url}
+                  target={link.url.startsWith("http") ? "_blank" : "_self"}
+                  rel={link.url.startsWith("http") ? "noopener noreferrer" : ""}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    fontSize: ".9rem",
+                    marginBottom: col.isSocial ? "0" : "12px",
+                    color: T.textSec,
+                    textDecoration: "none",
+                    transition: "all .3s ease",
+                    // Social specific styling
+                    width: col.isSocial ? "40px" : "auto",
+                    height: col.isSocial ? "40px" : "auto",
+                    justifyContent: col.isSocial ? "center" : "flex-start",
+                    borderRadius: col.isSocial ? "50%" : "0",
+                    border: col.isSocial ? `1px solid ${T.border}` : "none",
+                    background: col.isSocial ? "transparent" : "transparent",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = T.accent;
+                    if (col.isSocial) {
+                      e.currentTarget.style.borderColor = T.accent;
+                      e.currentTarget.style.background = "rgba(166,162,22,0.05)";
+                    } else {
+                      e.currentTarget.style.transform = "translateX(5px)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = T.textSec;
+                    if (col.isSocial) {
+                      e.currentTarget.style.borderColor = T.border;
+                      e.currentTarget.style.background = "transparent";
+                    } else {
+                      e.currentTarget.style.transform = "translateX(0px)";
+                    }
+                  }}
+                  title={link.name}
+                >
+                  {col.isSocial ? iconMap[link.name] : link.name}
+                </a>
+              ))}
+            </div>
           </div>
         ))}
       </div>
 
-      <div
-        style={{ height: "1px", background: T.border, marginBottom: "30px" }}
-      />
+      <div style={{ height: "1px", background: T.border, marginBottom: "30px" }} />
 
       <div
         style={{

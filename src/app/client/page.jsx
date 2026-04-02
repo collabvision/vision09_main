@@ -254,7 +254,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 /* LOGOS */
 .logos{padding:clamp(4rem,8vh,6rem) clamp(1.5rem,5vw,4rem);border-top:1px solid var(--border);background:var(--bg)}
 .lg-grid{display:flex;flex-wrap:wrap;border:1px solid var(--border);margin-top:clamp(2rem,4vh,3rem)}
-.lg-cell{flex:1 0 calc(25% - 0px);min-width:160px;padding:clamp(1.2rem,2.5vw,2rem) clamp(1rem,2vw,1.8rem);
+.lg-cell{flex:1 0 calc(25% - 0px);min-width:160px;;
   border-right:1px solid var(--border);border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;
   font-size:clamp(.8rem,1.6vw,1.1rem);font-weight:400;letter-spacing:.08em;
@@ -262,8 +262,8 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   background:var(--card);transition:color .4s}
 .lg-cell::after{content:'';position:absolute;inset:0;background:var(--logo-hbg);
   transform:translateY(102%);transition:transform .4s cubic-bezier(.16,1,.3,1);z-index:0}
-.lg-cell:hover::after{transform:translateY(0)}
-.lg-cell:hover{color:var(--logo-htxt)}
+// .lg-cell:hover::after{transform:translateY(0)}
+// .lg-cell:hover{color:var(--logo-htxt)}
 .lg-cell span{position:relative;z-index:1;white-space:pre-line;text-align:center;font-weight:600}
 
 /* CTA */
@@ -306,8 +306,79 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes gPulse{0%,100%{opacity:.4;letter-spacing:.02em}50%{opacity:.9;letter-spacing:.1em}}
-@media(max-width:768px){.exp{grid-template-columns:1fr}.exp-l{position:static}.stats{display:none}.lg-cell{flex:1 0 50%}}
-@media(max-width:480px){.lg-cell{flex:1 0 50%}.cta-btns{flex-direction:column;align-items:stretch}}
+@media(max-width:768px){.exp{grid-template-columns:1fr}.exp-l{position:static}.stats{display:none}.lg-cell{flex:1 0 20%}}
+@media(max-width:480px){.lg-cell{flex:1 0 20%}.cta-btns{flex-direction:column;align-items:stretch}}
+
+/* Add this inside your CSS string */
+.t-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.t-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%; /* Circular */
+  object-fit: cover;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+  /* Update these in your CSS constant */
+
+.lg-cell {
+  flex: 1 0 calc(12% - 0px);
+  aspect-ratio: 1 / 1; /* Forces a perfect square */
+  min-width: 160px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+  cursor: none;
+}
+
+.lg-img {
+  width: 70%; /* Adjust based on how much padding you want */
+  height: 70%;
+  object-fit: contain; /* Keeps logo proportions, fits in box */
+  transition: transform .4s ease, opacity .4s ease;
+  opacity: 0.8;
+}
+
+// .lg-cell:hover .lg-img {
+//   transform: scale(0.8);
+//   opacity: 0.1; /* Fade out logo to show text */
+//   filter: grayscale(0%);
+// }
+
+.lg-cell span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 1rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(.8rem, 1.6vw, 1.1rem);
+  font-weight: 600;
+  color: var(--logo-htxt);
+  background: var(--logo-hbg);
+  opacity: 0; /* Hidden by default */
+  transform: translateY(10%);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+  white-space: pre-line;
+}
+
+// .lg-cell:hover span {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
 `;
 
 export default function ClientsPage() {
@@ -482,65 +553,157 @@ export default function ClientsPage() {
       q: "Vision9 captured the essence of our spiritual work without ever losing its authenticity. Their faceless content brought in meaningful engagement and followers who resonate with our values.",
       n: "Dr Sphoorthi Mastiholi",
       r: "CEO · Shivoham Spiritual Hub",
+      img: "/asset/clients/testimonials/DRSPHOORTHIMASTIHOLI.png", // Path to your image
     },
     {
       q: "We wanted to take our household plastic mall online, and Vision9 made it happen in style. Their video content and creative reels brought local visibility and foot traffic to the store.",
       n: "Sheetal Bogar",
       r: "Bogar Enterprises",
+      img: "/asset/clients/testimonials/SHEETALBOGAR.png", // Path to your image
     },
     {
       q: "Working with Vision9 gave our coaching classes the push we needed online. Their team understood how to speak to parents and students through impactful content.",
       n: "Richa Rashmi",
       r: "CEO · Cornerstone Academia",
+      img: "/asset/clients/testimonials/RICHARASHMI.png", // Path to your image
     },
+
     {
       q: "Vision9 has transformed our page into a visually appealing platform through their expert editing skills and well-planned content strategies.",
       n: "Prof. Mahantesh C.",
       r: "Principal · KLE's Institute of Fashion Technology",
+      img: "/asset/clients/testimonials/PROF.MAHANTESHC.png", // Path to your image
     },
     {
       q: "Working with Vision9 has been a game-changer for CubicCode. Their team brought unmatched creativity and consistency to our community page.",
       n: "Sarvesh K",
       r: "Co-Founder · CubicCode",
+      img: "/asset/clients/testimonials/SARVESHK.png", // Path to your image
     },
     {
       q: "Reshaped our branding through identity design, banners, and OPD improvements while promoting government healthcare schemes.",
       n: "Dr. Devagoudah I",
       r: "Shree Ortho and Trauma Centre",
+      img: "/asset/clients/testimonials/DR.DEVAGOUDHI.png", // Path to your image
     },
     {
       q: "Strengthened our branding with impactful hoardings and graphic design, helping us communicate care and professionalism.",
       n: "Dr. Ishrrat Tigadi",
       r: "Ashirwad Hospital",
+      img: "/asset/clients/testimonials/DR.ISHRRATTIGADI.png", // Path to your image
     },
+
     {
       q: "Their team demonstrated strong expertise, strategic planning, and consistent performance in managing our campaigns.",
       n: "Vineethkumar M B",
       r: "CEO · Admifit Career Consultancy LLP",
+      img: "/asset/clients/testimonials/VINEETHKUMARM B.png", // Path to your image
     },
     {
       q: "We were in real estate and recruiting business in Dubai Vision9 changed everything, bringing us global investors and strong hires from multiple countries.",
       n: "Atiq Naikwadi",
       r: "Leads Finder Group · Dubai",
+      img: "/asset/clients/testimonials/ATIQNAIKWADI.png", // Path to your image
     },
   ];
   const logos = [
-    "SHIVOHAM\nSPIRITUAL HUB",
-    "BOGAR\nENTERPRISES",
-    "CORNERSTONE\nACADEMIA",
-    "KLE INSTITUTE\nOF FASHION",
-    "CUBICCODE",
-    "SHREE ORTHO &\nTRAUMA CENTRE",
-    "ASHIRWAD\nHOSPITAL",
-    "ADMIFIT CAREER\nCONSULTANCY",
-    "LEADS FINDER\nGROUP · DUBAI",
-    "SMALL\nMIRACLES",
-    "REAL ESTATE\nSTORIES",
-    "ROYAL MAJESTIC\nYACHTS",
-    "ASTRO\nHAPPINESS",
-    "MISTERCHEF",
-    "HEADLINE\nJUNCTION",
-    "+ MORE\nBRANDS",
+    {
+      name: "admi\nfit",
+      img: "/asset/clients/workedWith/admifit.png",
+    },
+    {
+      name: "barely",
+      img: "/asset/clients/workedWith/barely.png",
+    },
+    {
+      name: "bo",
+      img: "/asset/clients/workedWith/bo.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/cornerstone.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/cubecode.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/eurokids.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/groundstories.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/headline.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/hospigrow.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/ipopicker.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/leadsfinder.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/lingayat.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/newvalley.png",
+    },
+    {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/realestate.png",
+    },
+     {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/safina.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/shivoham.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/shree.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/shreeinstitute.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/siddharth.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/smallmiracles.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/smartsutra.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/uk1.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/uk2.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/uk3.png",
+    },
+      {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/uk4.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/vidya.png",
+    }, {
+      name: "SHIVOHAM\nSPIRITUAL HUB",
+      img: "/asset/clients/workedWith/wavekota.png",
+    }
   ];
 
   return (
@@ -692,8 +855,20 @@ export default function ClientsPage() {
               <div key={i} className="tc">
                 <p className="tq">{t.q}</p>
                 <div className="t-div" />
-                <div className="tn">{t.n}</div>
-                <span className="tr">{t.r}</span>
+                <div className="t-user">
+                  {t.img && (
+                    <img
+                      src={t.img}
+                      alt={t.n}
+                      className="t-img"
+                      onError={(e) => (e.target.style.display = "none")}
+                    />
+                  )}
+                  <div className="t-info">
+                    <div className="tn">{t.n}</div>
+                    <span className="tr">{t.r}</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -712,9 +887,13 @@ export default function ClientsPage() {
           Brands that <em>trust</em> Vision9
         </h2>
         <div className="lg-grid rv d2">
-          {logos.map((n, i) => (
+          {logos.map((logo, i) => (
             <div key={i} className="lg-cell">
-              <span>{n}</span>
+              {/* Logo Image */}
+              <img src={logo.img} alt={logo.name} className="lg-img" />
+
+              {/* Hover Brand Name */}
+              <span>{logo.name}</span>
             </div>
           ))}
         </div>
@@ -739,10 +918,9 @@ export default function ClientsPage() {
           <a href="/contact" className="btn-solid">
             Book a Strategy Call
           </a>
-         
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </>
   );
 }
