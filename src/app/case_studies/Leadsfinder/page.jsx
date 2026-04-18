@@ -2058,7 +2058,7 @@ export default function Page() {
           </div>
           <h2 className="s1-h rv d1">A premium <em>multi-vertical</em><br/>Dubai group</h2>
           <p className="s1-p rv d2">Leadsfinder Group is a premium, multi-vertical group of companies headquartered in Dubai, UAE. Operating across real estate, recruitment, HR services, marketing, and company formation — catering to both local and international markets.</p>
-          <p className="s1-p rv d2">With ambitious expansion goals and multiple service lines, Leadsfinder Group partnered with Vision9 to design performance-led growth systems to attract investors, clients, job seekers, and entrepreneurs across different geographies.</p>
+          <p className="s1-p rv d2">With ambitious expansion goals and multiple service lines, Leadsfinder Group partnered with Vision9 to design performance led growth systems to attract investors, clients, job seekers, and entrepreneurs across different geographies.</p>
 
           <div className="vert-pills rv d3">
             {[
@@ -2118,7 +2118,7 @@ export default function Page() {
       <div className="s2-pillars rv d2">
         {[
           "Market-specific psychology — distinct messages for India, Morocco, Lebanon, Myanmar, Arab Nations",
-          "Performance-driven creatives built around investor intent, hiring needs, and business formation goals",
+          "Performance driven creatives built around investor intent, hiring needs, and business formation goals",
           "WhatsApp-first and form-based lead capture matched to each vertical's conversion behaviour",
           "Continuous cross-market optimisation — learnings from one region applied to others",
         ].map((r,i)=>(

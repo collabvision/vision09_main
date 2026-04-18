@@ -182,7 +182,7 @@ const SERVICE_DATA = {
     points: [
       "Reels & short-form video production",
       "Brand films & story videos",
-      "Performance-focused ad creatives",
+      "Performance focused ad creatives",
       "Editing & post-production",
       "UGC content creation",
     ],

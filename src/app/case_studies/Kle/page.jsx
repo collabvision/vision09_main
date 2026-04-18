@@ -985,19 +985,19 @@ export default function page() {
       <div className="noise-layer" />
       <div className="s1-grid">
         <div>
-          <div className="sec-eyebrow s1-eyebrow">01 — The Challenge</div>
+          <div className="sec-eyebrow s1-eyebrow">01 The Challenge</div>
           <h2 className="sec-h s1-h" style={{ color: T.cream, marginBottom:"1.5rem" }}>
             When Traditional<br /><em>Marketing Failed</em>
           </h2>
           <p className="sec-p s1-p">K.L.E Institute of Fashion Technology & Apparel Design is one of the most reputed fashion institutes in North Karnataka. During admission season, a critical challenge emerged.</p>
-          <p className="sec-p s1-p">Out of 40 allotted seats, <strong style={{ color:T.cream, fontWeight:600 }}>17–18 admissions were still vacant</strong> with the deadline fast approaching. The institute had already spent heavily on conventional channels — with zero return.</p>
+          <p className="sec-p s1-p">Out of 40 allotted seats, <strong style={{ color:T.cream, fontWeight:600 }}>17 to 18 admissions were still vacant</strong> with the deadline fast approaching. The institute had already spent heavily on conventional channels with zero return.</p>
        
         </div>
 
         <div>
           <div className="problem-box">
             <p className="problem-quote">
-              "The problem wasn't awareness — it was <em>reach without intent.</em> Visibility without targeting is just noise."
+              "The problem wasn't awareness it was <em>reach without intent.</em> Visibility without targeting is just noise."
             </p>
             <span className="problem-attr">Vision9 Assessment</span>
           </div>
@@ -1071,7 +1071,7 @@ export default function page() {
             color:T.muted,
             marginBottom:"1rem"
           }}>
-            {ci === 0 ? "Page state before engagement" : "Transformed — 30-day execution"}
+            {ci === 0 ? "Page state before engagement" : "Transformed 30 day execution"}
           </p>
 
           {/* 🔥 Before vs After images */}
@@ -1137,7 +1137,7 @@ export default function page() {
     <section id="s3">
       <div className="s3-inner">
         <div>
-          <div className="sec-eyebrow" style={{ color:T.accent }}>03 — Strategy</div>
+          <div className="sec-eyebrow" style={{ color:T.accent }}>03 Strategy</div>
           <h2 className="strategy-h">Rethinking <em>the approach</em></h2>
           <p className="strategy-p">Instead of mass marketing, Vision9 proposed a focused digital admission funnel built around three pillars.</p>
           <div className="pillar-list">
@@ -1158,9 +1158,9 @@ export default function page() {
           <div className="exec-grid">
             {[
               { n:"25", tag:"Total Content Pieces", title:"High Quality Creatives", desc:"A full content suite designed around one goal: driving admission inquiries." },
-              { n:"10", tag:"Video Content",        title:"Reels & Video Posts",    desc:"Campus life, courses, career scope — storytelling that built trust and intent." },
-              { n:"15", tag:"Static & Carousel",    title:"Posters & Info Cards",   desc:"Admission-open posters plus value-driven content to warm audiences." },
-              { n:"03", tag:"Target Regions",       title:"Geo-Targeted Campaigns", desc:"Karnataka (Belagavi & nearby) · Goa · Maharashtra border regions." },
+              { n:"10", tag:"Video Content",        title:"Reels & Video Posts",    desc:"Campus life, courses, career scope storytelling that built trust and intent." },
+              { n:"15", tag:"Static & Carousel",    title:"Posters & Info Cards",   desc:"Admission open posters plus value driven content to warm audiences." },
+              { n:"03", tag:"Target Regions",       title:"Geo Targeted Campaigns", desc:"Karnataka (Belagavi & nearby) · Goa · Maharashtra border regions." },
             ].map((c, i) => (
               <div key={i} className="exec-card">
                 <div className="exec-n">{c.n}</div>
@@ -1200,13 +1200,13 @@ export default function page() {
     <section id="s4">
       <div className="s4-glow" />
       <div className="noise-layer" style={{ opacity:.025 }} />
-      <div className="sec-eyebrow" style={{ color:T.accent, marginBottom:"1.2rem" }}>04 — Campaign Results</div>
+      <div className="sec-eyebrow" style={{ color:T.accent, marginBottom:"1.2rem" }}>04 Campaign Results</div>
       <h2 className="results-h">The <em>numbers</em><br />speak.</h2>
       <div className="r-grid">
         {[
           { raw:"219",     suffix:"+",  lbl:"WhatsApp Leads",    desc:"High intent messaging leads generated through focused targeting and creatives." },
           { raw:"97460",   suffix:"",   lbl:"Users Reached",     desc:"Unique people reached across Karnataka, Goa, and Maharashtra border regions." },
-          { raw:"186541",  suffix:"",   lbl:"Total Impressions", desc:"Combined impressions across all campaigns during the 30-day window." },
+          { raw:"186541",  suffix:"",   lbl:"Total Impressions", desc:"Combined impressions across all campaigns during the 30 day window." },
           { raw:"20",      suffix:".29 CPL", lbl:"₹ Cost Per Lead", desc:"Achieved efficient CPL with strategic budget allocation and optimised creatives." },
         ].map((c, i) => (
           <div key={i} className="r-card">
@@ -1222,8 +1222,8 @@ export default function page() {
       <div className="ad-row" style={{ marginTop:"2rem" }}>
         {[
           { big:"₹2.66", lbl:"Cost Per Click", p:"Drove consistent, high quality traffic at exceptional efficiency with strong creative resonance." },
-          { big:"186K+",  lbl:"Total Impressions", p:"Massive impression volume across the 30-day campaign window, building awareness and recall." },
-          { big:"94%",    lbl:"Campaign Success Rate", p:"Across all ads run — precise targeting, strong creatives, and optimised bidding." },
+          { big:"186K+",  lbl:"Total Impressions", p:"Massive impression volume across the 30 day campaign window, building awareness and recall." },
+          { big:"94%",    lbl:"Campaign Success Rate", p:"Across all ads run precise targeting, strong creatives, and optimised bidding." },
         ].map((a, i) => (
           <div key={i} className="ad-card">
             <span className="ad-big">{a.big}</span>
@@ -1238,11 +1238,11 @@ export default function page() {
     <section id="s5">
       <div className="noise-layer" />
       <div className="outcome-bg-word">CLOSED</div>
-      <div className="sec-eyebrow" style={{ color:T.accent, marginBottom:"1.2rem" }}>05 — The Outcome</div>
+      <div className="sec-eyebrow" style={{ color:T.accent, marginBottom:"1.2rem" }}>05 The Outcome</div>
       <h2 className="outcome-h">What <em>actually happened</em></h2>
       <div className="oc-grid">
         {[
-          { raw:"230",  suffix:"+",   lbl:"Qualified Leads",   desc:"Total qualified admission leads generated within the 30-day campaign window.", ghost:"01" },
+          { raw:"230",  suffix:"+",   lbl:"Qualified Leads",   desc:"Total qualified admission leads generated within the 30 day campaign window.", ghost:"01" },
           { raw:"40",   suffix:"/40", lbl:"Seats Filled",      desc:"Every single seat was filled. Additional interested candidates couldn't be accommodated.", ghost:"02" },
           { raw:"0",    suffix:"",    lbl:"Seats Remaining",   desc:"What ₹55,000+ in traditional spend failed to achieve, a digital strategy delivered in 30 days.", ghost:"03" },
         ].map((c, i) => (
@@ -1257,7 +1257,7 @@ export default function page() {
       </div>
       <div className="outcome-bottom">
         <p className="outcome-quote">
-          "What traditional advertising failed to achieve with heavy spending, a strategic, performance-led digital approach delivered in just <em>one month.</em>"
+          "What traditional advertising failed to achieve with heavy spending, a strategic, performance led digital approach delivered in just <em>one month.</em>"
         </p>
         <div className="mini-stats">
           {[
@@ -1282,7 +1282,7 @@ export default function page() {
       <div className="testi-inner">
         <span className="testi-mark">❝</span>
         <p className="testi-q">
-          "Vision9 has transformed our page into a visually appealing platform through their expert editing skills and well-planned content strategies. Their services enabled us to connect with a wide audience of fashion enthusiasts and significantly increased our digital presence."
+          "Vision9 has transformed our page into a visually appealing platform through their expert editing skills and well planned content strategies. Their services enabled us to connect with a wide audience of fashion enthusiasts and significantly increased our digital presence."
         </p>
         <div className="testi-divider" />
         <div className="testi-name">Prof. Mahantesh C.</div>
@@ -1297,7 +1297,7 @@ export default function page() {
       <div className="cta-inner">
         <div className="cta-eyebrow"><span />Ready to grow?<span /></div>
         <h2 className="cta-h">Let's Build Brands<br />That <em>Perform</em></h2>
-        <p className="cta-p">Partner with Vision9 to move from ideas to execution — and from execution to measurable growth that compounds over time.</p>
+        <p className="cta-p">Partner with Vision9 to move from ideas to execution and from execution to measurable growth that compounds over time.</p>
         <div className="cta-btns">
           <a href="/contact" className="btn-solid">Book a Strategy Call</a>
           <a href="/case_studies" className="btn-outline">View More Case Studies</a>

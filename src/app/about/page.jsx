@@ -357,7 +357,7 @@ export default function AboutPage() {
         <div>
           {[
             "Founded in early 2024 by Om Shetti, Sanyam Kalmani, and Murad Madarsha, Vision9 was created with a simple belief marketing should drive results, not just visibility.",
-            "What began as a focused creative collaboration quickly evolved into a structured agency built on original thinking, trend awareness, and performance-driven execution. By combining creative strength with strategic clarity, the founders set out to bridge the gap between ideas and measurable outcomes.",
+            "What began as a focused creative collaboration quickly evolved into a structured agency built on original thinking, trend awareness, and performance driven execution. By combining creative strength with strategic clarity, the founders set out to bridge the gap between ideas and measurable outcomes.",
             "Vision9 works as an extended marketing partner, aligning every campaign and creative decision with clearly defined growth objectives. We don't just produce content we engineer systems that compound over time.",
           ].map((p, i) => (
             <p key={i} className={`body-txt rv d${i + 1}`}>
@@ -393,7 +393,7 @@ export default function AboutPage() {
             {
               tag: "Vision",
               title: "BUILD TO SCALE",
-              text: "To build brands that scale sustainably through strategic thinking, strong brand systems, and performance-driven execution.",
+              text: "To build brands that scale sustainably through strategic thinking, strong brand systems, and performance driven execution.",
             },
             {
               tag: "Mission",
@@ -433,7 +433,7 @@ export default function AboutPage() {
         <p className="intro-txt rv d1">
           Strategists, creatives, marketers, editors, designers, and campaign
           managers who work together with a shared focus on quality and results.
-          Creative thinking meets data-backed execution.
+          Creative thinking meets data backed execution.
         </p>
         <div className="f-grid">
           {[
@@ -441,7 +441,7 @@ export default function AboutPage() {
               // n: "01",
               name: "OM SHETTI",
               img: "/asset/about/om.jpeg", // ← add this
-              role: "Co-Founder · Performance",
+              role: "Co Founder · Performance",
               bio: "Leads ads and performance division, ensuring clients receive quality leads through Meta, Google, and other platforms with every campaign tied to measurable results.",
               focus:
                 "\"Marketing isn't about posting. It's about building systems that convert.\"",
@@ -451,7 +451,7 @@ export default function AboutPage() {
               // n: "02",
               name: "SANYAM KALMANI",
               img: "/asset/about/sanyam.jpeg", // ← add this
-              role: "Co-Founder · R&D",
+              role: "Co Founder · R&D",
               bio: "Studies how content systems behave over time what compounds, what breaks, what scales and turns those findings into faceless growth frameworks for brands.",
               focus: '"Engineer growth built to last."',
               d: "d2",
@@ -460,7 +460,7 @@ export default function AboutPage() {
               // n: "03",
               name: "MURAD MADARSHA",
               img: "/asset/about/murad.jpeg", // ← add this
-              role: "Co-Founder · Creative",
+              role: "Co Founder · Creative",
               bio: "Leads creative direction for faceless content and organic strategies that help brands scale their digital presence. Every piece of content is a growth asset.",
               focus: '"Every post has one job: make the brand remembered."',
               d: "d3",

@@ -575,9 +575,9 @@ export default function ClientsPage() {
       img: "/asset/clients/testimonials/PROF.MAHANTESHC.png", // Path to your image
     },
     {
-      q: "Working with Vision9 has been a game-changer for CubicCode. Their team brought unmatched creativity and consistency to our community page.",
+      q: "Working with Vision9 has been a game changer for CubicCode. Their team brought unmatched creativity and consistency to our community page.",
       n: "Sarvesh K",
-      r: "Co-Founder · CubicCode",
+      r: "Co Founder · CubicCode",
       img: "/asset/clients/testimonials/SARVESHK.png", // Path to your image
     },
     {
@@ -636,7 +636,7 @@ const logos = Array.from({ length: 39 }, (_, i) => i + 4)
         </h1>
         <p className="hero-sub">
           Strategic marketing, branding, performance campaigns, and content
-          execution—aligned with business goals. We work as an extended partner.
+          execution aligned with business goals. We work as an extended partner.
         </p>
         <div className="stats">
           {[
@@ -702,7 +702,7 @@ const logos = Array.from({ length: 39 }, (_, i) => i + 4)
             Experience that goes <em>beyond</em> one agency
           </h2>
           <p className="exp-body rv d2">
-            The founders bring extensive hands-on experience from managing and
+            The founders bring extensive hands on experience from managing and
             contributing to multiple brand pages, campaigns, and digital
             properties across industries.
           </p>

@@ -13,7 +13,7 @@ export const metadata = {
   icons: {
     icon: "/icon.png"
   },
-  description: "Vision9 is a performance-driven marketing and branding agency.",
+  description: "Vision9 is a performance driven marketing and branding agency.",
 };
 
 export default function RootLayout({ children }) {
