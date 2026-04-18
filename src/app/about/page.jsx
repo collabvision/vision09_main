@@ -65,7 +65,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   line-height:.87;letter-spacing:-.02em;overflow:hidden;font-weight:900}
 .hero-title .ln{display:block;opacity:0;transform:translateY(105%);animation:slideUp .95s cubic-bezier(.16,1,.3,1) forwards}
 .ln1{animation-delay:.5s}.ln2{animation-delay:.65s;color:var(--gold);font-style:italic}.ln3{animation-delay:.8s}
-.hero-sub{max-width:480px;margin-top:2.5rem;font-size:clamp(.88rem,1.4vw,1rem);line-height:1.85;
+.hero-sub{margin-top:2.5rem;font-size:clamp(.88rem,1.4vw,1rem);line-height:1.85;
   color:rgba(245,240,232,.5);opacity:0;animation:fadeUp .8s 1.05s forwards}
 .hero-badge{position:absolute;right:clamp(1.5rem,6vw,6rem);bottom:clamp(4rem,9vh,7rem);
   text-align:right;opacity:0;animation:fadeUp .8s 1.3s forwards}
@@ -188,19 +188,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 }
 @media(max-width:480px){.hero-title{font-size:clamp(3rem,18vw,6rem)}.cta-btns{flex-direction:column;align-items:center}}
 /* ── FOUNDER AVATAR ── */
-.f-avatar {
-  position: absolute;
-  top: 1.7rem;
-  right: 1.7rem;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--gold-border);
-  background: rgba(166,162,22,0.08);
-  transition: border-color .4s;
-  flex-shrink: 0;
-}
+
 .f-card:hover .f-avatar {
   border-color: var(--gold);
 }
@@ -215,6 +203,31 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 .f-card:hover .f-avatar img {
   filter: grayscale(0%);
   transform: scale(1.06);
+}
+
+.f-avatar {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;   /* keeps portrait shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--gold-border);
+  background: rgba(166,162,22,0.05); /* fills empty space nicely */
+}
+
+.f-avatar img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;   /* ✅ FULL IMAGE, NO CROP */
+  display: block;
+}
+
+.f-card:hover .f-avatar img {
+  transform: scale(1.05);
 }
 `;
 
@@ -304,11 +317,11 @@ export default function AboutPage() {
           Strategic Marketing &amp; Brand Communication
           <span />
         </p>
-        <h1 className="hero-title">
-          <span className="ln ln1">WHO</span>
-          <span className="ln ln2">WE</span>
-          <span className="ln ln3">ARE</span>
-        </h1>
+          <h1 className="hero-title">
+            <span className="ln ln1">
+              WHO <span className="ln2">WE</span> ARE
+            </span>
+          </h1>
         <p className="hero-sub">
           In a space where everyone is creating content, we focus on building
           systems that convert combining strategy, creativity, performance
@@ -427,7 +440,7 @@ export default function AboutPage() {
             {
               // n: "01",
               name: "OM SHETTI",
-                img: "/asset/about/om.jpeg",   // ← add this
+              img: "/asset/about/om.jpeg", // ← add this
               role: "Co-Founder · Performance",
               bio: "Leads ads and performance division, ensuring clients receive quality leads through Meta, Google, and other platforms with every campaign tied to measurable results.",
               focus:
@@ -437,7 +450,7 @@ export default function AboutPage() {
             {
               // n: "02",
               name: "SANYAM KALMANI",
-                img: "/asset/about/sanyam.jpeg",   // ← add this
+              img: "/asset/about/sanyam.jpeg", // ← add this
               role: "Co-Founder · R&D",
               bio: "Studies how content systems behave over time what compounds, what breaks, what scales and turns those findings into faceless growth frameworks for brands.",
               focus: '"Engineer growth built to last."',
@@ -446,7 +459,7 @@ export default function AboutPage() {
             {
               // n: "03",
               name: "MURAD MADARSHA",
-                img: "/asset/about/murad.jpeg",   // ← add this
+              img: "/asset/about/murad.jpeg", // ← add this
               role: "Co-Founder · Creative",
               bio: "Leads creative direction for faceless content and organic strategies that help brands scale their digital presence. Every piece of content is a growth asset.",
               focus: '"Every post has one job: make the brand remembered."',
