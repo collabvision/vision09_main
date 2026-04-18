@@ -106,7 +106,7 @@ const THEME = {
 //   },
 //   "E-COMMERCE": {
 //     title: "E-Commerce",
-//     description: "End-to-end strategies built to drive sales, retention, and scalable growth.",
+//     description: "End to end strategies built to drive sales, retention, and scalable growth.",
 //     points: ["Product listing optimization","Performance ads for marketplaces & D2C","Retention & remarketing strategies","Analytics, tracking & revenue optimization"],
 //     image: "/asset/services/serv_ecom.png",
 //   },
@@ -152,7 +152,7 @@ const SERVICE_DATA = {
 
   COMMUNITY: {
     title: "COMMUNITY BUILDING",
-    description: "We help brands create loyal, engaged communities that support long-term growth.",
+    description: "We help brands create loyal, engaged communities that support long term growth.",
     points: [
       "Community engagement strategies",
       "Moderation & interaction management",
@@ -255,7 +255,7 @@ const SERVICE_DATA = {
 
   DESIGNING: {
     title: "DESIGNING & OFFLINE CREATIVES",
-    description: "Complete in-house design, printing, and on-ground branding execution.",
+    description: "Complete in-house design, printing, and on ground branding execution.",
     points: [
       "Banners & posters",
       "Auto & bus branding creatives",
@@ -269,7 +269,7 @@ const SERVICE_DATA = {
 
   "E-COMMERCE": {
     title: "E-COMMERCE",
-    description: "End-to-end strategies built to drive sales, retention, and scalable growth.",
+    description: "End to end strategies built to drive sales, retention, and scalable growth.",
     points: [
       "Product listing optimization",
       "Performance ads for marketplaces & D2C",

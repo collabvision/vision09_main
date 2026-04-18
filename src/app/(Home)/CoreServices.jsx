@@ -116,14 +116,14 @@ const SERVICES = [
     // n: "02",
     tag: "Branding",
     h: "Branding & Social Media Marketing",
-    p: "End-to-end brand building through strategic positioning, content creation, and social media management. Building brands that audiences recognise and trust.",
+    p: "End to end brand building through strategic positioning, content creation, and social media management. Building brands that audiences recognise and trust.",
     link: "/services/branding",
   },
   {
     // n: "03",
     tag: "Content",
     h: "Video, Reels & UGC Content Creation",
-    p: "Authentic, high-performing content built to increase engagement, trust, and advertising efficiency. From scripting to final edit we own the process.",
+    p: "Authentic, high performing content built to increase engagement, trust, and advertising efficiency. From scripting to final edit we own the process.",
     link: "/services/content",
   },
 ];

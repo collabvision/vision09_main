@@ -2176,7 +2176,7 @@ export default function Page() {
         </div>
         <div className="vb-body">
           <div className="vb-desc">
-            <p>Generating high-intent international investors for Azizi Milan and DAMAC Dubai required precision targeting far beyond standard property ads.</p>
+            <p>Generating high intent international investors for Azizi Milan and DAMAC Dubai required precision targeting far beyond standard property ads.</p>
             <p>Vision9 developed region-specific creatives highlighting investment value, then ran Meta Ads with country-wise segmentation optimised for investor psychology per market.</p>
             <div className="mkt-row">
               {["India","Morocco","Lebanon","Dubai","Abu Dhabi"].map((m,i)=>(
@@ -2276,13 +2276,13 @@ export default function Page() {
         </div>
         <div className="vb-body">
           <div className="vb-desc">
-            <p>Company formation is a high-consideration decision. Entrepreneurs need trust before they act. Vision9 built trust-driven messaging with UGC-style content to simplify complex concepts.</p>
-            <p>WhatsApp-first lead funnels enabled immediate, high-intent conversations with prospective business owners.</p>
+            <p>Company formation is a high consideration decision. Entrepreneurs need trust before they act. Vision9 built trust-driven messaging with UGC-style content to simplify complex concepts.</p>
+            <p>WhatsApp-first lead funnels enabled immediate, high intent conversations with prospective business owners.</p>
           </div>
           <div>
             <p style={{fontFamily:"'Tenor Sans',sans-serif",fontSize:".46rem",letterSpacing:".18em",textTransform:"uppercase",color:T.muted,marginBottom:".8rem"}}>Execution</p>
             <div className="exec-steps">
-              {["Developed UGC-style content simplifying company formation process","Built trust-first messaging for entrepreneurs and business owners","Used WhatsApp-first lead funnels for direct, high-intent conversations","Supported with brand awareness campaigns across UAE markets"]
+              {["Developed UGC-style content simplifying company formation process","Built trust-first messaging for entrepreneurs and business owners","Used WhatsApp-first lead funnels for direct, high intent conversations","Supported with brand awareness campaigns across UAE markets"]
                 .map((s,i)=>(
                   <div key={i} className="exec-step">
                     <span className="es-n">0{i+1}</span>

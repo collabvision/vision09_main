@@ -136,10 +136,10 @@ const WHY_REASONS = [
   "Strategy first approach backed by high impact creative execution",
   "Industry specific expertise across healthcare, education, real estate, FMCG, and service brands",
   "International standard quality, processes, and performance reporting",
-  "End to end execution across digital, offline, and on-ground branding",
+  "End to end execution across digital, offline, and on ground branding",
   "Performance driven mindset focused on leads, sales, and ROI",
   "Dedicated account ownership with transparent communication",
-  "Long-term partnerships built for sustainable and scalable growth",
+  "Long term partnerships built for sustainable and scalable growth",
 ];
 
 const Square = forwardRef(({ className, children, isCenter }, ref) => (

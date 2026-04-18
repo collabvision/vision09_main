@@ -1097,7 +1097,7 @@ export default function page() {
       {
         img: "/asset/caseStudy/CS1/proof1.png",
         title: "Campaign",
-        desc: "Ad Results Generated 219 high-intent messaging leads through focused targeting and creatives"
+        desc: "Ad Results Generated 219 high intent messaging leads through focused targeting and creatives"
       },
       {
         img: "/asset/caseStudy/CS1/proof2.png",
@@ -1180,7 +1180,7 @@ export default function page() {
         {[
           { n:"97,460",   l:"Unique Users Reached",   d:"Across Karnataka, Goa & Maharashtra" },
           { n:"186,541",  l:"Total Impressions",       d:"Combined across all campaigns" },
-          { n:"219+",     l:"WhatsApp Leads",          d:"High-intent direct conversations" },
+          { n:"219+",     l:"WhatsApp Leads",          d:"High intent direct conversations" },
           { n:"₹20.29",   l:"Cost Per Lead",           d:"Achieved with strategic allocation" },
           { n:"₹2.66",    l:"Cost Per Click",          d:"Efficient traffic across all ads" },
           { n:"40/40",    l:"Seats Filled",            d:"Every allotted seat, zero remaining" },
@@ -1204,7 +1204,7 @@ export default function page() {
       <h2 className="results-h">The <em>numbers</em><br />speak.</h2>
       <div className="r-grid">
         {[
-          { raw:"219",     suffix:"+",  lbl:"WhatsApp Leads",    desc:"High-intent messaging leads generated through focused targeting and creatives." },
+          { raw:"219",     suffix:"+",  lbl:"WhatsApp Leads",    desc:"High intent messaging leads generated through focused targeting and creatives." },
           { raw:"97460",   suffix:"",   lbl:"Users Reached",     desc:"Unique people reached across Karnataka, Goa, and Maharashtra border regions." },
           { raw:"186541",  suffix:"",   lbl:"Total Impressions", desc:"Combined impressions across all campaigns during the 30-day window." },
           { raw:"20",      suffix:".29 CPL", lbl:"₹ Cost Per Lead", desc:"Achieved efficient CPL with strategic budget allocation and optimised creatives." },

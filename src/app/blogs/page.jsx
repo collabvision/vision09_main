@@ -25,7 +25,7 @@ const blogs = [
   {
     slug: "fashion-marketing",
     title: "How Fashion Institutes Can Attract More Admissions",
-    desc: "A guide on digital strategies that help fashion institutes attract high-intent students.",
+    desc: "A guide on digital strategies that help fashion institutes attract high intent students.",
     img: "https://dummyimage.com/720x450/2a2622/a6a216&text=Fashion+Marketing",
   },
   {
