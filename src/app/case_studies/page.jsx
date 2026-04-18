@@ -37,26 +37,11 @@ const caseStudies = [
     img: "asset/caseStudy/CS1/main.png",
   },
     {
-    slug: "Kle",
+    slug: "Leadsfinder",
     title: "Closing Admissions in 30 Days",
     desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
     img: "asset/caseStudy/CS1/main.png",
-  },  {
-    slug: "Kle",
-    title: "Closing Admissions in 30 Days",
-    desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "asset/caseStudy/CS1/main.png",
-  },  {
-    slug: "Kle",
-    title: "Closing Admissions in 30 Days",
-    desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "asset/caseStudy/CS1/main.png",
-  },  {
-    slug: "Kle",
-    title: "Closing Admissions in 30 Days",
-    desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "asset/caseStudy/CS1/main.png",
-  },
+  }
 ];
 
 export default function CaseStudies() {

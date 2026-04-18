@@ -531,7 +531,7 @@ function ServicePopup({ serviceKey, onClose }) {
             src={data.image} alt={data.title}
             style={{
               width:"100%", height:"100%",
-              objectFit:"cover",
+              objectFit:"contain",
               display:"block",
             }}
           />
@@ -685,7 +685,7 @@ function RailCard({ s, isActive, svcData, direction, onHover, onCardClick, onOpe
             alt={s.label}
             style={{
               width:"100%", height:"100%",
-              objectFit:"cover",
+              objectFit:"contain",
               display:"block",
               transition:"transform 0.45s ease",
               transform: hovered || isActive ? "scale(1.06)" : "scale(1)",
