@@ -484,6 +484,93 @@ body{background:${T.bgDark};color:${T.cream};font-family:'DM Sans',sans-serif;fo
   .cta-btns{flex-direction:column;align-items:center}
   .oc-grid{grid-template-columns:1fr}
 }
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.proof-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.proof-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.15);
+}
+
+/* Image */
+.proof-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.proof-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.proof-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Content */
+.proof-content {
+  padding: 1.2rem 1.4rem 1.6rem;
+}
+
+.proof-content h3 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.proof-content p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+  .proof-content {
+  padding: 1.2rem 1.4rem 1.6rem;
+}
+
+/* Title → same as headings in your site */
+.proof-content h3 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* Description → clean readable body */
+.proof-content p {
+  font-family: 'DM Sans', sans-serif;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Optional: small label (if you add tag like "CASE STUDY") */
+.proof-label {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.5rem;
+  display: block;
+}
 `;
 
 /* ────── COUNTER HOOK ────── */
@@ -904,21 +991,7 @@ export default function page() {
           </h2>
           <p className="sec-p s1-p">K.L.E Institute of Fashion Technology & Apparel Design is one of the most reputed fashion institutes in North Karnataka. During admission season, a critical challenge emerged.</p>
           <p className="sec-p s1-p">Out of 40 allotted seats, <strong style={{ color:T.cream, fontWeight:600 }}>17–18 admissions were still vacant</strong> with the deadline fast approaching. The institute had already spent heavily on conventional channels — with zero return.</p>
-          <div style={{ marginTop:"2rem" }}>
-            {[
-              { a:"₹30,000 – ₹35,000", l:"Newspaper Advertisements", r:"Zero admission inquiries" },
-              { a:"₹25,000 – ₹30,000", l:"Instagram Page Collaborations", r:"Zero admission inquiries" },
-            ].map((s, i) => (
-              <div key={i} className="spend-card">
-                <span className="spend-amt">{s.a}</span>
-                <span className="spend-lbl">{s.l}</span>
-                <div className="spend-result">
-                  <span className="zero-pill">Result</span>
-                  <span className="spend-res-txt">{s.r}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+       
         </div>
 
         <div>
@@ -943,52 +1016,122 @@ export default function page() {
           </div>
         </div>
       </div>
+         <div className="flex gap-2 justify-around items-center flex-wrap min-w-2" style={{ marginTop:"2rem" }}>
+            {[
+              { a:"₹30,000 – ₹35,000", l:"Newspaper Advertisements", r:"Zero admission inquiries" },
+              { a:"₹25,000 – ₹30,000", l:"Instagram Page Collaborations", r:"Zero admission inquiries" },
+            ].map((s, i) => (
+              <div key={i} className="spend-card ">
+                <span className="spend-amt">{s.a}</span>
+                <span className="spend-lbl">{s.l}</span>
+                <div className="spend-result">
+                  <span className="zero-pill">Result</span>
+                  <span className="spend-res-txt">{s.r}</span>
+                </div>
+              </div>
+            ))}
+          </div>
     </section>
 
     {/* ════ S2 — BEFORE / AFTER ════ */}
-    <section id="s2" style={{ background:T.bgDarkAlt, padding:"clamp(6rem,14vh,12rem) clamp(1.5rem,6vw,6rem)" }}>
-      <div className="noise-layer" />
-      <h2 className="transform-h" style={{ color: T.cream }}>
-        The <em>transformation</em> in 30 days
-      </h2>
-      <div className="ba-strip">
-        {[
-          {
-            title:"Before Vision9", badge:"before",
-            points:["Irregular, inconsistent posting schedule","No visual coherence or brand language","Content not aligned with admission goals","High spend, zero qualified leads"],
-            good: false
-          },
-          {
-            title:"After Vision9", badge:"after",
-            points:["Strategic content planning & cohesive aesthetic","25 high-quality posts — reels, statics, carousels","Intent-driven audience targeting across 3 states","230+ qualified leads · All 40 seats filled"],
-            good: true
-          }
-        ].map((col, ci) => (
-          <div key={ci} className="ba-col">
-            <div className="ba-col-head">
-              <span className="ba-col-title">{col.title}</span>
-              <span className={`ba-badge ${col.badge}`}>{col.badge === "before" ? "Before" : "After"}</span>
-            </div>
-            <div style={{ padding:"1.8rem" }}>
-              <p style={{ fontFamily:"'Tenor Sans',sans-serif", fontSize:".48rem", letterSpacing:".18em", textTransform:"uppercase", color:T.muted, marginBottom:".8rem" }}>
-                {ci === 0 ? "Page state before engagement" : "Transformed — 30-day execution"}
-              </p>
-              <div className="ig-grid">
-                {IG_POSTS.map((p, i) => (
-                  <div key={i} className={`ig-cell${ci === 1 ? " active" : ""}`}>
-                    <div className="shimmer" />
-                    <div className="ig-overlay"><div className="ig-overlay-txt">{p}</div></div>
-                  </div>
-                ))}
-              </div>
-              <ul className={`ba-points${col.good ? " good" : ""}`} style={{ marginTop:"1.5rem" }}>
-                {col.points.map((pt, i) => <li key={i}>{pt}</li>)}
-              </ul>
-            </div>
+<section id="s2" style={{ background:T.bgDarkAlt, padding:"clamp(6rem,14vh,12rem) clamp(1.5rem,6vw,6rem)" }}>
+  <div className="noise-layer" />
+
+  <h2 className="transform-h" style={{ color: T.cream }}>
+    The <em>transformation</em> in 30 days
+  </h2>
+
+  <div className="ba-strip">
+    {[
+      {
+        title:"Before Vision9",
+        badge:"before",
+        image:"/asset/caseStudy/CS1/before.png"
+      },
+      {
+        title:"After Vision9",
+        badge:"after",
+        image:"/asset/caseStudy/CS1/after.png"
+      }
+    ].map((col, ci) => (
+      <div key={ci} className="ba-col">
+        <div className="ba-col-head">
+          <span className="ba-col-title">{col.title}</span>
+          <span className={`ba-badge ${col.badge}`}>
+            {col.badge === "before" ? "Before" : "After"}
+          </span>
+        </div>
+
+        <div style={{ padding:"1.8rem" }}>
+          <p style={{
+            fontFamily:"'Tenor Sans',sans-serif",
+            fontSize:".48rem",
+            letterSpacing:".18em",
+            textTransform:"uppercase",
+            color:T.muted,
+            marginBottom:"1rem"
+          }}>
+            {ci === 0 ? "Page state before engagement" : "Transformed — 30-day execution"}
+          </p>
+
+          {/* 🔥 Before vs After images */}
+          <div className="ba-image-wrap flex justify-center">
+            <img src={col.image} alt={col.title} className="ba-main-img" />
           </div>
-        ))}
+
+        </div>
       </div>
-    </section>
+    ))}
+  </div>
+</section>
+    
+    
+
+    <section id="proof" style={{ background: T.bgDark, padding:"clamp(5rem,12vh,10rem) clamp(1.5rem,6vw,6rem)" }}>
+  <h2 className="transform-h" style={{ color: T.cream, marginBottom:"3rem" }}>
+    Proof of <em>Work</em>
+  </h2>
+
+  <div className="proof-grid">
+    {[
+      {
+        img: "/asset/caseStudy/CS1/proof1.png",
+        title: "Campaign",
+        desc: "Ad Results Generated 219 high-intent messaging leads through focused targeting and creatives"
+      },
+      {
+        img: "/asset/caseStudy/CS1/proof2.png",
+        title: "reach",
+        desc: "Reached 97,460 users with 186,541 impressions across campaigns"
+      },
+      {
+        img: "/asset/caseStudy/CS1/proof3.png",
+        title: "Clicks",
+        desc: "Drove consistent clicks at ₹2.66 CPC with strong engagement."
+      },
+      {
+        img: "/asset/caseStudy/CS1/proof4.png",
+        title: "Leads",
+        desc: "Achieved ₹20.29 cost per lead with efficient budget optimization."
+      }
+    ].map((card, i) => (
+      <div key={i} className="proof-card">
+        
+        {/* Image */}
+        <div className="proof-img-wrap">
+          <img src={card.img} alt={card.title} />
+        </div>
+
+        {/* Content */}
+        <div className="proof-content">
+          <h3>{card.title}</h3>
+          <p>{card.desc}</p>
+        </div>
+
+      </div>
+    ))}
+  </div>
+</section>
 
     {/* ════ S3 — STRATEGY ════ */}
     <section id="s3">

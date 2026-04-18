@@ -189,22 +189,72 @@ ${FONTS}
   .ct-logo { flex: 1 0 33.33%; }
   .ct-img { width: 75%; height: 75%; }
 }
+  /* Grid container */
+.ct-logos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.2rem;
+  width: 100%;
+}
+
+/* Each logo box */
+.ct-logo {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  border: 1px solid rgba(168,131,42,0.12);
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect (premium feel) */
+.ct-logo:hover {
+  border-color: rgba(168,131,42,0.4);
+  transform: translateY(-3px);
+  background: rgba(168,131,42,0.04);
+}
+
+/* Image handling */
+.ct-img {
+  max-width: 100%;
+  max-height: 40px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(0.7);
+  transition: all 0.3s ease;
+}
+
+.ct-logo:hover .ct-img {
+  filter: grayscale(0%) opacity(1);
+}
+
+/* Text fallback */
+.ct-text {
+  font-family: 'Tenor Sans', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+}
 `;
 
 // 1. UPDATE DATA STRUCTURE WITH IMAGE PATHS
 const LOGOS = [
   { name: "Shivoham", src: "/asset/brands/camp_airtel.png" },
-  { name: "Shivoham", src: "/asset/brands/camp_Amazon.png" },
-  { name: "Shivoham", src: "/asset/brands/camp_ather.jpg" },
+  { name: "Shivoham", src: "/asset/brands/imgSet/47.png" },
+  { name: "Shivoham", src: "/asset/brands/imgSet/57.png" },
   { name: "Shivoham", src: "/asset/brands/camp_bisleri.png" },
   { name: "Shivoham", src: "/asset/brands/camp_bjp.webp" },
   { name: "Shivoham", src: "/asset/brands/camp_bmw.webp" },
-  { name: "Shivoham", src: "/asset/brands/camp_boldfit.avif" },
+  { name: "Shivoham", src: "/asset/brands/3.png" },
   { name: "Shivoham", src: "/asset/brands/camp_canva.jpg" },
   { name: "Shivoham", src: "/asset/brands/camp_Cars24.png" },
   { name: "Shivoham", src: "/asset/brands/camp_DityaBirla.png" },
   { name: "Shivoham", src: "/asset/brands/camp_fevicol.jpg" },
-  { name: "Shivoham", src: "/asset/brands/camp_flipkart.png" },
+  { name: "Shivoham", src: "/asset/brands/imgSet/44.png" },
   { name: "Shivoham", src: "/asset/brands/camp_images.png" },
   { name: "Shivoham", src: "/asset/brands/camp_jio.png" },
   { name: "Shivoham", src: "/asset/brands/camp_lenskart.png" },
@@ -212,13 +262,15 @@ const LOGOS = [
   { name: "Shivoham", src: "/asset/brands/camp_mcdonalds.png" },
   { name: "Shivoham", src: "/asset/brands/camp_myntra.png" },
   { name: "Shivoham", src: "/asset/brands/camp_nykaa.webp" },
+  { name: "Shivoham", src: "/asset/brands/2.png" },
+
   { name: "Shivoham", src: "/asset/brands/camp_oyo.avif" },
   { name: "Shivoham", src: "/asset/brands/camp_puma.png" },
   { name: "Shivoham", src: "/asset/brands/camp_rapido.webp" },
   { name: "Shivoham", src: "/asset/brands/camp_sofy.jpg" },
   { name: "Shivoham", src: "/asset/brands/camp_tata.webp" },
   { name: "Shivoham", src: "/asset/brands/camp_vantara.jpg" },
-  { name: "Shivoham", src: "/asset/brands/camp_whisper.png" },
+  { name: "Shivoham", src: "/asset/brands/imgSet/53.png" },
   { name: "Shivoham", src: "/asset/brands/camp_openai.png" },
 ];
 
@@ -248,7 +300,7 @@ export default function ClientsTeaser() {
         {/* TEXT CONTENT (Top Block) */}
         <div className="ct-rv ct-d1" style={{ maxWidth: "800px" }}>
           <h2 className="ct-h">
-           Big Brands Bigger Campaigns <em>across India</em>
+            Big Brands Bigger Campaigns <em>across India</em>
           </h2>
           <p className="ct-p">
             We’ve executed campaigns for some of the biggest brands in the
@@ -264,20 +316,21 @@ export default function ClientsTeaser() {
         </div>
 
         {/* LOGO GRID (Bottom Block - Now Full Width) */}
-        <div className="ct-logos ct-rv ct-d2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-1 w-full">
           {LOGOS.map((l, i) => (
-            <div key={i} className="ct-logo" title={l.name}>
+            <div
+              key={i}
+              className="relative w-full aspect-square overflow-hidden border border-white/10"
+              title={l.name}
+            >
               {l.src ? (
-                <img src={l.src} alt={l.name} className="ct-img" />
+                <img
+                  src={l.src}
+                  alt={l.name}
+                  className="w-full h-full object-cover"
+                />
               ) : (
-                <span
-                  style={{
-                    fontFamily: "'Tenor Sans', sans-serif",
-                    fontSize: ".5rem",
-                    color: T.muted,
-                    textAlign: "center",
-                  }}
-                >
+                <span className="absolute inset-0 flex items-center justify-center text-[0.5rem] tracking-widest uppercase text-white/50 font-['Tenor_Sans']">
                   {l.name}
                 </span>
               )}
