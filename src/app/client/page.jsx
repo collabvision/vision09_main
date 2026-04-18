@@ -606,105 +606,12 @@ export default function ClientsPage() {
       img: "/asset/clients/testimonials/ATIQNAIKWADI.png", // Path to your image
     },
   ];
-  const logos = [
-    {
-      name: "admi\nfit",
-      img: "/asset/clients/workedWith/admifit.png",
-    },
-    {
-      name: "barely",
-      img: "/asset/clients/workedWith/barely.png",
-    },
-    {
-      name: "bo",
-      img: "/asset/clients/workedWith/bo.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/cornerstone.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/cubecode.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/eurokids.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/groundstories.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/headline.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/hospigrow.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/ipopicker.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/leadsfinder.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/lingayat.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/newvalley.png",
-    },
-    {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/realestate.png",
-    },
-     {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/safina.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/shivoham.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/shree.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/shreeinstitute.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/siddharth.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/smallmiracles.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/smartsutra.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/uk1.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/uk2.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/uk3.png",
-    },
-      {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/uk4.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/vidya.png",
-    }, {
-      name: "SHIVOHAM\nSPIRITUAL HUB",
-      img: "/asset/clients/workedWith/wavekota.png",
-    }
-  ];
+const logos = Array.from({ length: 39 }, (_, i) => i + 4)
+  .filter((num) => num !== 15)
+  .map((num) => ({
+    name: "Shivoham",
+    img: `/asset/brands/imgSet/${num}.png`,
+  }));
 
   return (
     <>
@@ -886,17 +793,24 @@ export default function ClientsPage() {
         <h2 className="sec-h rv d1">
           Brands that <em>trust</em> Vision9
         </h2>
-        <div className="lg-grid rv d2">
-          {logos.map((logo, i) => (
-            <div key={i} className="lg-cell">
-              {/* Logo Image */}
-              <img src={logo.img} alt={logo.name} className="lg-img" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-1.5">
+    {logos.map((logo, i) => (
+      <div
+        key={i}
+        className="relative aspect-square overflow-hidden border border-white/10 group"
+      >
+        {/* Image fills full box */}
+        <img
+          src={logo.img}
+          alt={logo.name}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
 
-              {/* Hover Brand Name */}
-              <span>{logo.name}</span>
-            </div>
-          ))}
-        </div>
+        {/* Hover overlay */}
+    
+      </div>
+    ))}
+  </div>
       </section>
 
       {/* CTA */}

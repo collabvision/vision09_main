@@ -44,9 +44,9 @@ ${FONTS}
   width:48%;flex-shrink:0;overflow:hidden;position:relative;
 }
 .br-img-col img{
-  width:100%;height:100%;object-fit:cover;
-  border-radius:0 clamp(3rem,8vw,7rem) clamp(3rem,8vw,7rem) 0;
-  display:block;
+  width:100%;
+  height:80%;
+  object-fit:contain;   /* ✅ shows full image */
 }
 .br-img-col::after{
   content:'';position:absolute;inset:0;
@@ -146,7 +146,7 @@ export default function Branding() {
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
         >
           <img
-            src="https://dummyimage.com/720x900/F2EDE0/A8832A&text=Branding"
+            src="asset/home/branding.png"
             alt="Vision9 Branding"
           />
           <div className="br-img-accent" />

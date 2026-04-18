@@ -111,14 +111,14 @@ ${FONTS}
 `;
 
 export const products = [
-  { title:"Kle",        link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png" },
-  { title:"Cursor",     link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/cursor.png" },
-  { title:"Rogue",      link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/rogue.png" },
-  { title:"Editorially",link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/editorially.png" },
-  { title:"Kle 2",      link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/moonbeam.png" },
-  { title:"Cursor 2",   link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/cursor.png" },
-  { title:"Rogue 2",    link:"/case_studies/Kle", thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/rogue.png" },
-  { title:"Editorially 2",link:"/case_studies/Kle",thumbnail:"https://www.aceternity.com/images/products/thumbnails/new/editorially.png" },
+  { title:"Kle",        link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Cursor",     link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Rogue",      link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Editorially",link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Kle 2",      link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Cursor 2",   link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Rogue 2",    link:"/case_studies/Kle", thumbnail:"asset/caseStudy/CS1/main.png" },
+  { title:"Editorially 2",link:"/case_studies/Kle",thumbnail:"asset/caseStudy/CS1/main.png" },
 ];
 
 const Hero = () => {

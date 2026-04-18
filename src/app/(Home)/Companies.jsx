@@ -15,28 +15,12 @@ const T = {
 
 /* CLIENTS */
 
-const companies = [
-  {
-    name: "KLE Fashion Institute",
-    img: "https://dummyimage.com/500x320/2a2622/a6a216&text=KLE",
-  },
-  {
-    name: "Fashion Brand",
-    img: "https://dummyimage.com/500x320/2a2622/a6a216&text=Brand",
-  },
-  {
-    name: "Startup SaaS",
-    img: "https://dummyimage.com/500x320/2a2622/a6a216&text=SaaS",
-  },
-  {
-    name: "Education Institute",
-    img: "https://dummyimage.com/500x320/2a2622/a6a216&text=Institute",
-  },
-  {
-    name: "Retail Brand",
-    img: "https://dummyimage.com/500x320/2a2622/a6a216&text=Retail",
-  },
-];
+const companies = Array.from({ length: 39 }, (_, i) => i + 4)
+  .filter((num) => num !== 15)
+  .map((num) => ({
+    name: "Shivoham",
+    img: `/asset/brands/imgSet/${num}.png`,
+  }));
 
 const firstRow = companies.slice(0, companies.length / 2);
 const secondRow = companies.slice(companies.length / 2);
@@ -47,7 +31,7 @@ const CompanyCard = ({ img, name }) => {
   return (
     <figure
       className={cn(
-        "relative w-80 cursor-pointer overflow-hidden border transition-all duration-300"
+        "relative w-80 h-80 cursor-pointer overflow-hidden border transition-all duration-300"
       )}
       style={{
         background: T.card,
@@ -55,16 +39,16 @@ const CompanyCard = ({ img, name }) => {
       }}
     >
       {/* IMAGE */}
-      <div className="w-full h-[180px] overflow-hidden">
+      <div className="w-full h-full overflow-hidden">
         <img
           src={img}
-          alt={name}
+          // alt={name}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
         />
       </div>
 
       {/* TITLE */}
-      <figcaption
+      {/* <figcaption
         style={{
           fontFamily: "'Playfair Display', serif",
           color: T.text,
@@ -74,7 +58,7 @@ const CompanyCard = ({ img, name }) => {
         }}
       >
         {name}
-      </figcaption>
+      </figcaption> */}
     </figure>
   );
 };
@@ -92,7 +76,7 @@ export default function Companies() {
     >
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
 
-        <Marquee pauseOnHover className="[--duration:20s]">
+        <Marquee pauseOnHover className="mb-4 [--duration:20s]">
           {firstRow.map((company) => (
             <CompanyCard key={company.name} {...company} />
           ))}
