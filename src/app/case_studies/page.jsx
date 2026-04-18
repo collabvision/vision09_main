@@ -34,28 +34,28 @@ const caseStudies = [
     slug: "Kle",
     title: "Closing Admissions in 30 Days",
     desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "https://dummyimage.com/720x900/2A2722/A6A216&text=KLE+Fashion+Institute",
+    img: "asset/caseStudy/CS1/main.png",
   },
     {
     slug: "Kle",
     title: "Closing Admissions in 30 Days",
     desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "https://dummyimage.com/720x900/2A2722/A6A216&text=KLE+Fashion+Institute",
+    img: "asset/caseStudy/CS1/main.png",
   },  {
     slug: "Kle",
     title: "Closing Admissions in 30 Days",
     desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "https://dummyimage.com/720x900/2A2722/A6A216&text=KLE+Fashion+Institute",
+    img: "asset/caseStudy/CS1/main.png",
   },  {
     slug: "Kle",
     title: "Closing Admissions in 30 Days",
     desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "https://dummyimage.com/720x900/2A2722/A6A216&text=KLE+Fashion+Institute",
+    img: "asset/caseStudy/CS1/main.png",
   },  {
     slug: "Kle",
     title: "Closing Admissions in 30 Days",
     desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
-    img: "https://dummyimage.com/720x900/2A2722/A6A216&text=KLE+Fashion+Institute",
+    img: "asset/caseStudy/CS1/main.png",
   },
 ];
 
