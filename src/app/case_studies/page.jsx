@@ -38,8 +38,8 @@ const caseStudies = [
   },
     {
     slug: "Leadsfinder",
-    title: "Closing Admissions in 30 Days",
-    desc: "Vision9 helped KLE Institute fill all 40 seats within one month through a focused digital admission funnel and WhatsApp lead strategy.",
+    title: "Building International Funnels at Scale",
+    desc: "Vision9 scaled multi-vertical international funnels, generating 369+ qualified leads through precision strategy.",
     img: "asset/caseStudy/CS1/main.png",
   }
 ];

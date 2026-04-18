@@ -232,7 +232,7 @@ const footerColumns = [
     title: "Case Studies",
     links: [
       { name: "kle", url: "/case_studies/Kle" },
-      { name: "soulflower", url: "/case_studies/soulflower" },
+      { name: "Leadsfinder", url: "/case_studies/Leadsfinder" },
     ],
   },
   {
