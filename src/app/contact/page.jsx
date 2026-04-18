@@ -1213,7 +1213,7 @@ export default function ContactPage() {
               WhatsApp.
             </p>
             <div className="avail-tags">
-              {["India", "Dubai", "Global Markets", "Remote-First"].map(
+              {["India", "Dubai", "Global Markets", "Remote First"].map(
                 (t, i) => (
                   <span key={i} className="atag">
                     {t}
@@ -1300,8 +1300,8 @@ export default function ContactPage() {
         <div className="wgrid">
           {[
             {
-              t: "Strategy-First Consultation",
-              d2: "Every consultation starts with understanding your business goals not a pre-packaged pitch.",
+              t: "Strategy First Consultation",
+              d2: "Every consultation starts with understanding your business goals not a pre packaged pitch.",
               d: "d1",
             },
             {
