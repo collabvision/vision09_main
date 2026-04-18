@@ -109,7 +109,7 @@ const SERVICES = [
     // n: "01",
     tag: "Performance",
     h: "Lead Generation & Performance Marketing",
-    p: "Data-driven campaigns designed to deliver consistent, high-quality leads across Meta and Google platforms. Every rupee tracked, every outcome measured.",
+    p: "Data driven campaigns designed to deliver consistent, high quality leads across Meta and Google platforms. Every rupee tracked, every outcome measured.",
     link: "/services/performance",
   },
   {

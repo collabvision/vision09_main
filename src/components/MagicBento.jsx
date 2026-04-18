@@ -34,7 +34,7 @@ const cardData = [
     color: "#ffffff",
     title: "1,000+ ",
     subTitle: "Influencers",
-    description: "Pan-India creator & influencer community",
+    description: "Pan India creator & influencer community",
     label: "Creators",
   },
   {

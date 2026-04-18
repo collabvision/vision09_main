@@ -287,7 +287,7 @@ export default function Footer() {
               maxWidth: "300px",
             }}
           >
-            We build brands, design experiences, and create high-impact digital
+            We build brands, design experiences, and create high impact digital
             strategies that drive growth and engagement.
           </p>
         </div>

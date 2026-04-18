@@ -109,7 +109,7 @@ const METRICS = [
   { num:"500M+",  lbl:"Views Generated",  desc:"Across digital platforms" },
   { num:"28+",    lbl:"Brands Partnered", desc:"Across multiple industries" },
   { num:"20,000+",lbl:"Pages Reach",      desc:"Managed across social media" },
-  { num:"1,000+", lbl:"Influencers",      desc:"Pan-India creator community" },
+  { num:"1,000+", lbl:"Influencers",      desc:"Pan India creator community" },
   { num:"350+",   lbl:"Campaigns",        desc:"Successfully planned & executed" },
   { num:"5,000+", lbl:"Publications",     desc:"International & national media" },
   { num:"30+",    lbl:"Active Clients",   desc:"Ongoing growth partnerships" },
@@ -164,8 +164,8 @@ export default function KeyMatrix() {
         <div className="km-eyebrow">Impact &amp; Scale</div>
         <h2 className="km-h">Numbers that prove <em>real results</em></h2>
         <p className="km-sub">
-          Measurable outcomes across every campaign, client, and platform —
-          this is what performance-driven marketing looks like.
+          Measurable outcomes across every campaign, client, and platform
+          this is what performance driven marketing looks like.
         </p>
       </div>
 

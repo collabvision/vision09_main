@@ -1311,7 +1311,7 @@ export default function ContactPage() {
             },
             {
               t: "Practical Recommendations",
-              d2: "Actionable, result-oriented recommendations built around your actual situation and budget.",
+              d2: "Actionable, result oriented recommendations built around your actual situation and budget.",
               d: "d3",
             },
             {

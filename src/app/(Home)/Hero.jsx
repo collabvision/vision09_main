@@ -139,7 +139,7 @@ const Hero = () => {
         </h1>
         <p className="v9-hero-sub">
           At Vision9, we drive measurable sales and leads through performance
-          marketing, strategic branding, and high-impact UGC content.
+          marketing, strategic branding, and high impact UGC content.
         </p>
 
         {/* Buttons are inside the overlay but pointer-events:all re-enables them */}

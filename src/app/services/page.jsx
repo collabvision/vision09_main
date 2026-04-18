@@ -178,7 +178,7 @@ const SERVICE_DATA = {
 
   VIDEO: {
     title: "VIDEO & CONTENT PRODUCTION",
-    description: "High-impact content built for virality, storytelling, and performance.",
+    description: "High impact content built for virality, storytelling, and performance.",
     points: [
       "Reels & short-form video production",
       "Brand films & story videos",

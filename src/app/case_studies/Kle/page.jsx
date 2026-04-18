@@ -1157,7 +1157,7 @@ export default function page() {
           <p style={{ fontFamily:"'Tenor Sans',sans-serif", fontSize:".5rem", letterSpacing:".2em", textTransform:"uppercase", color:T.muted, marginBottom:"1.2rem" }}>Content Execution</p>
           <div className="exec-grid">
             {[
-              { n:"25", tag:"Total Content Pieces", title:"High-Quality Creatives", desc:"A full content suite designed around one goal: driving admission inquiries." },
+              { n:"25", tag:"Total Content Pieces", title:"High Quality Creatives", desc:"A full content suite designed around one goal: driving admission inquiries." },
               { n:"10", tag:"Video Content",        title:"Reels & Video Posts",    desc:"Campus life, courses, career scope — storytelling that built trust and intent." },
               { n:"15", tag:"Static & Carousel",    title:"Posters & Info Cards",   desc:"Admission-open posters plus value-driven content to warm audiences." },
               { n:"03", tag:"Target Regions",       title:"Geo-Targeted Campaigns", desc:"Karnataka (Belagavi & nearby) · Goa · Maharashtra border regions." },
@@ -1221,7 +1221,7 @@ export default function page() {
       </div>
       <div className="ad-row" style={{ marginTop:"2rem" }}>
         {[
-          { big:"₹2.66", lbl:"Cost Per Click", p:"Drove consistent, high-quality traffic at exceptional efficiency with strong creative resonance." },
+          { big:"₹2.66", lbl:"Cost Per Click", p:"Drove consistent, high quality traffic at exceptional efficiency with strong creative resonance." },
           { big:"186K+",  lbl:"Total Impressions", p:"Massive impression volume across the 30-day campaign window, building awareness and recall." },
           { big:"94%",    lbl:"Campaign Success Rate", p:"Across all ads run — precise targeting, strong creatives, and optimised bidding." },
         ].map((a, i) => (

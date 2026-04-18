@@ -233,7 +233,7 @@ export default function BlogPage() {
               marginBottom: "50px",
             }}
           >
-            <li>High-quality campus visuals and reels</li>
+            <li>High quality campus visuals and reels</li>
             <li>Course highlights and placement outcomes</li>
             <li>Targeted digital advertising campaigns</li>
             <li>WhatsApp-first lead generation systems</li>
@@ -290,7 +290,7 @@ export default function BlogPage() {
             As digital platforms continue to evolve, institutes that embrace
             modern marketing strategies will stand out in an increasingly
             competitive environment. The future of admissions lies in
-            storytelling, data-driven targeting, and digital engagement.
+            storytelling, data driven targeting, and digital engagement.
           </p>
         </div>
       </article>

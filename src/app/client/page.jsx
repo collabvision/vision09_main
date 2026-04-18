@@ -726,7 +726,7 @@ const logos = Array.from({ length: 39 }, (_, i) => i + 4)
             {[
               { t: "500", l: "Million+ Views Generated" },
               { t: "350", l: "Campaigns Executed" },
-              { t: "1000", l: "Influencers · Pan-India" },
+              { t: "1000", l: "Influencers · Pan India" },
               { t: "20000", l: "Social Pages Reach" },
               { t: "28", l: "Brands Served" },
               { t: "30", l: "Active Clients" },
