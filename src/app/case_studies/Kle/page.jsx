@@ -1247,7 +1247,6 @@ export default function page() {
           { raw:"0",    suffix:"",    lbl:"Seats Remaining",   desc:"What ₹55,000+ in traditional spend failed to achieve, a digital strategy delivered in 30 days.", ghost:"03" },
         ].map((c, i) => (
           <div key={i} className="oc-card">
-            <div className="oc-ghost">{c.ghost}</div>
             <span className="oc-num">
               <CountNum raw={c.raw} suffix={c.suffix} active={ocCountersOn} />
             </span>

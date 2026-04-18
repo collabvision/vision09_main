@@ -208,7 +208,7 @@ const Header = () => {
         <StaggeredMenu
           position="right"
           items={menuItems}
-          socialItems={socialItems}
+          // socialItems={socialItems}
           displaySocials={true}
           displayItemNumbering={true}
           menuButtonColor="transparent"

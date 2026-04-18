@@ -633,7 +633,7 @@ function ServicePopup({ serviceKey, onClose }) {
 function RailCard({ s, isActive, svcData, direction, onHover, onCardClick, onOpenPopup }) {
   const [hovered, setHovered] = useState(false);
   const isHoriz = direction === "left" || direction === "right";
-
+const isPaused = useRef(false);
   // For empty cards keep the simple coloured block
   if (!s.label) {
     return (
@@ -655,7 +655,7 @@ function RailCard({ s, isActive, svcData, direction, onHover, onCardClick, onOpe
   return (
     <div
       data-label={s.label}
-      onMouseEnter={() => { onHover?.(s.label); setHovered(true); }}
+     onMouseEnter={() => { onHover?.(s.label); setHovered(true); }}
       onMouseLeave={() => setHovered(false)}
       style={{
         background: s.bg,
@@ -754,72 +754,211 @@ function RailCard({ s, isActive, svcData, direction, onHover, onCardClick, onOpe
 }
 
 // ── VERTICAL RAIL ──
-function VerticalRail({ cards, direction, offset=0, speed=0.5, onHover, onCardClick, onOpenPopup, activeLabel }) {
+function VerticalRail({
+  cards,
+  direction,
+  offset = 0,
+  speed = 0.5,
+  onHover,
+  onCardClick,
+  onOpenPopup,
+  activeLabel,
+  pauseUntil,
+  isMobile,
+}) {
   const ref = useRef(null);
   const pos = useRef(offset);
   const loop = useRef(0);
   const rafRef = useRef(null);
+  const isPaused = useRef(false);
 
   useEffect(() => {
-    const el = ref.current; if (!el) return;
+    const el = ref.current;
+    if (!el) return;
+
+    // calculate height
     let h = 0;
-    for (let i=0;i<cards.length;i++) h += el.children[i]?.getBoundingClientRect().height??0;
-    h += GAP*(cards.length-1);
+    for (let i = 0; i < cards.length; i++) {
+      h += el.children[i]?.getBoundingClientRect().height ?? 0;
+    }
+    h += GAP * (cards.length - 1);
     loop.current = h;
+
     const tick = () => {
-      direction==="up"?(pos.current-=speed):(pos.current+=speed);
-      if(direction==="up"&&pos.current<=-loop.current) pos.current+=loop.current;
-      if(direction==="down"&&pos.current>=0) pos.current-=loop.current;
-      if(ref.current) ref.current.style.transform=`translateY(${pos.current}px)`;
-      rafRef.current=requestAnimationFrame(tick);
+      const now = Date.now();
+
+      if (!isPaused.current && now > pauseUntil && !isMobile) {
+        direction === "up"
+          ? (pos.current -= speed)
+          : (pos.current += speed);
+
+        if (direction === "up" && pos.current <= -loop.current) {
+          pos.current += loop.current;
+        }
+        if (direction === "down" && pos.current >= 0) {
+          pos.current -= loop.current;
+        }
+
+        if (ref.current) {
+          ref.current.style.transform = `translateY(${pos.current}px)`;
+        }
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
     };
-    rafRef.current=requestAnimationFrame(tick);
-    return ()=>cancelAnimationFrame(rafRef.current);
-  },[direction,speed]);
+
+    // start animation only if desktop
+    if (!isMobile) {
+      rafRef.current = requestAnimationFrame(tick);
+    }
+
+    // ✅ CLEANUP (VERY IMPORTANT)
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [direction, speed, pauseUntil, isMobile]); // ✅ correct deps
 
   return (
-    <div ref={ref} style={{position:"absolute",top:0,left:0,right:0,display:"flex",flexDirection:"column",gap:GAP,willChange:"transform",transform:`translateY(${pos.current}px)`}}>
-      {[...cards,...cards,...cards].map((s,i)=>{
-        const key=resolveKey(s.label);
-        const svcData=key?SERVICE_DATA[key]:null;
-        const isActive=!!s.label&&!!activeLabel&&s.label.split(" ")[0]===activeLabel.split(" ")[0];
-        return <RailCard key={`${s.id}-${i}`} s={s} isActive={isActive} svcData={svcData} direction={direction} onHover={onHover} onCardClick={onCardClick} onOpenPopup={onOpenPopup}/>;
+    <div
+      ref={ref}
+      onMouseEnter={() => (isPaused.current = true)}
+      onMouseLeave={() => (isPaused.current = false)}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: GAP,
+        willChange: "transform",
+        transform: `translateY(${pos.current}px)`,
+      }}
+    >
+      {[...cards, ...cards, ...cards].map((s, i) => {
+        const key = resolveKey(s.label);
+        const svcData = key ? SERVICE_DATA[key] : null;
+
+        const isActive =
+          !!s.label &&
+          !!activeLabel &&
+          s.label.split(" ")[0] === activeLabel.split(" ")[0];
+
+        return (
+          <RailCard
+            key={`${s.id}-${i}`}
+            s={s}
+            isActive={isActive}
+            svcData={svcData}
+            direction={direction}
+            onHover={onHover}
+            onCardClick={onCardClick}
+            onOpenPopup={onOpenPopup}
+          />
+        );
       })}
     </div>
   );
 }
 
 // ── HORIZONTAL RAIL ──
-function HorizontalRail({ cards, direction, offset=0, speed=0.5, onHover, onCardClick, onOpenPopup, activeLabel }) {
+function HorizontalRail({
+  cards,
+  direction,
+  offset = 0,
+  speed = 0.5,
+  onHover,
+  onCardClick,
+  onOpenPopup,
+  activeLabel,
+  pauseUntil,
+  isMobile,
+}) {
   const ref = useRef(null);
   const pos = useRef(offset);
   const loop = useRef(0);
   const rafRef = useRef(null);
+  const isPaused = useRef(false);
 
   useEffect(() => {
-    const el = ref.current; if (!el) return;
-    let w=0;
-    for(let i=0;i<cards.length;i++) w+=el.children[i]?.getBoundingClientRect().width??0;
-    w+=GAP*(cards.length-1);
-    loop.current=w;
-    const tick=()=>{
-      direction==="left"?(pos.current-=speed):(pos.current+=speed);
-      if(direction==="left"&&pos.current<=-loop.current) pos.current+=loop.current;
-      if(direction==="right"&&pos.current>=0) pos.current-=loop.current;
-      if(ref.current) ref.current.style.transform=`translateX(${pos.current}px)`;
-      rafRef.current=requestAnimationFrame(tick);
+    const el = ref.current;
+    if (!el) return;
+
+    // calculate total width
+    let w = 0;
+    for (let i = 0; i < cards.length; i++) {
+      w += el.children[i]?.getBoundingClientRect().width ?? 0;
+    }
+    w += GAP * (cards.length - 1);
+    loop.current = w;
+
+    const tick = () => {
+      const now = Date.now();
+
+      if (!isPaused.current && now > pauseUntil && !isMobile) {
+        direction === "left"
+          ? (pos.current -= speed)
+          : (pos.current += speed);
+
+        if (direction === "left" && pos.current <= -loop.current) {
+          pos.current += loop.current;
+        }
+        if (direction === "right" && pos.current >= 0) {
+          pos.current -= loop.current;
+        }
+
+        if (ref.current) {
+          ref.current.style.transform = `translateX(${pos.current}px)`;
+        }
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
     };
-    rafRef.current=requestAnimationFrame(tick);
-    return ()=>cancelAnimationFrame(rafRef.current);
-  },[direction,speed]);
+
+    // start animation only if not mobile
+    if (!isMobile) {
+      rafRef.current = requestAnimationFrame(tick);
+    }
+
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [direction, speed, pauseUntil, isMobile]); // ✅ IMPORTANT
 
   return (
-    <div ref={ref} style={{position:"absolute",top:0,left:0,bottom:0,display:"flex",flexDirection:"row",gap:GAP,willChange:"transform",transform:`translateX(${pos.current}px)`}}>
-      {[...cards,...cards,...cards].map((s,i)=>{
-        const key=resolveKey(s.label);
-        const svcData=key?SERVICE_DATA[key]:null;
-        const isActive=!!s.label&&!!activeLabel&&s.label.split(" ")[0]===activeLabel.split(" ")[0];
-        return <RailCard key={`${s.id}-${i}`} s={s} isActive={isActive} svcData={svcData} direction={direction} onHover={onHover} onCardClick={onCardClick} onOpenPopup={onOpenPopup}/>;
+    <div
+      ref={ref}
+      onMouseEnter={() => (isPaused.current = true)}
+      onMouseLeave={() => (isPaused.current = false)}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        display: "flex",
+        flexDirection: "row",
+        gap: GAP,
+        willChange: "transform",
+        transform: `translateX(${pos.current}px)`,
+      }}
+    >
+      {[...cards, ...cards, ...cards].map((s, i) => {
+        const key = resolveKey(s.label);
+        const svcData = key ? SERVICE_DATA[key] : null;
+
+        const isActive =
+          !!s.label &&
+          !!activeLabel &&
+          s.label.split(" ")[0] === activeLabel.split(" ")[0];
+
+        return (
+          <RailCard
+            key={`${s.id}-${i}`}
+            s={s}
+            isActive={isActive}
+            svcData={svcData}
+            direction={direction}
+            onHover={onHover}
+            onCardClick={onCardClick}
+            onOpenPopup={onOpenPopup}
+          />
+        );
       })}
     </div>
   );
@@ -828,6 +967,7 @@ function HorizontalRail({ cards, direction, offset=0, speed=0.5, onHover, onCard
 // ── PAGE ──
 export default function ServicesPage() {
   const [active, setActive] = useState("BRANDING");
+  const [pauseUntil, setPauseUntil] = useState(0);
   const [activeId, setActiveId] = useState(null);
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -927,7 +1067,13 @@ export default function ServicesPage() {
             {allServices.map((s,i)=>{
               const isActive=s.split(" ")[0]===active.split(" ")[0];
               return (
-                <div key={i} onClick={()=>{setActive(s);setActiveId(s);}} style={{fontFamily:"'Tenor Sans',sans-serif",fontSize:"clamp(.52rem,.78vw,.66rem)",letterSpacing:".1em",textTransform:"uppercase",color:isActive?"var(--accent)":"var(--muted)",borderLeft:!isMobile&&isActive?`2px solid var(--accent)`:"none",borderBottom:isMobile&&isActive?`2px solid var(--accent)`:"none",paddingLeft:!isMobile?"8px":0,paddingBottom:isMobile?"4px":0,whiteSpace:"nowrap",transition:"all .3s",cursor:"pointer",fontWeight:isActive?700:400}}>
+                <div key={i} onClick={() => {
+  setActive(s);
+  setActiveId(s);
+
+  const now = Date.now();
+  setPauseUntil(now + 7000); // pause 7 sec
+}} style={{fontFamily:"'Tenor Sans',sans-serif",fontSize:"clamp(.52rem,.78vw,.66rem)",letterSpacing:".1em",textTransform:"uppercase",color:isActive?"var(--accent)":"var(--muted)",borderLeft:!isMobile&&isActive?`2px solid var(--accent)`:"none",borderBottom:isMobile&&isActive?`2px solid var(--accent)`:"none",paddingLeft:!isMobile?"8px":0,paddingBottom:isMobile?"4px":0,whiteSpace:"nowrap",transition:"all .3s",cursor:"pointer",fontWeight:isActive?700:400}}>
                   {s}
                 </div>
               );
@@ -947,7 +1093,7 @@ export default function ServicesPage() {
               <span style={{color:"var(--accent)",fontSize:10}}>▶</span>
             </div>
             <div style={{overflow:"hidden",position:"relative",width:"100%",height:"100%"}}>
-              {mounted && <HorizontalRail cards={COL1} direction="left" offset={0} speed={0.3} onHover={setActive} onCardClick={handleCardClick} onOpenPopup={handleOpenPopup} activeLabel={activeId}/>}
+              {mounted && <HorizontalRail   pauseUntil={pauseUntil} isMobile={isMobile} cards={COL1} direction="left" offset={0} speed={0.3} onHover={setActive} onCardClick={handleCardClick} onOpenPopup={handleOpenPopup} activeLabel={activeId}/>}
             </div>
           </div>
         ) : (
@@ -956,10 +1102,10 @@ export default function ServicesPage() {
               <div key={p} style={{position:"absolute",[p]:0,left:0,right:0,height:"clamp(60px,12vh,110px)",background:`linear-gradient(to ${p==="top"?"bottom":"top"},var(--bg) 25%,transparent)`,zIndex:10,pointerEvents:"none"}}/>
             ))}
             <div style={{overflow:"hidden",position:"relative"}}>
-              {mounted && <VerticalRail cards={COL1} direction="up" onHover={setActive} onCardClick={handleCardClick} onOpenPopup={handleOpenPopup} activeLabel={activeId}/>}
+              {mounted && <VerticalRail   pauseUntil={pauseUntil}  isMobile={isMobile} cards={COL1} direction="up" onHover={setActive} onCardClick={handleCardClick} onOpenPopup={handleOpenPopup} activeLabel={activeId}/>}
             </div>
             <div style={{overflow:"hidden",position:"relative"}}>
-              {mounted && <VerticalRail cards={COL2} direction="down" offset={-380} onHover={setActive} onCardClick={handleCardClick} onOpenPopup={handleOpenPopup} activeLabel={activeId}/>}
+              {mounted && <VerticalRail pauseUntil={pauseUntil} isMobile={isMobile} cards={COL2} direction="down" offset={-380} onHover={setActive} onCardClick={handleCardClick} onOpenPopup={handleOpenPopup} activeLabel={activeId}/>}
             </div>
           </div>
         )}
