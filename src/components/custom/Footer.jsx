@@ -221,7 +221,7 @@ const footerColumns = [
     links: [
       { name: "Home", url: "/" },
       { name: "About", url: "/about" },
-      { name: "Clients", url: "/clients" },
+      { name: "Clients", url: "/client" },
       { name: "Services", url: "/services" },
       { name: "Case Studies", url: "/case_studies" },
       { name: "Blogs", url: "/blogs" },
