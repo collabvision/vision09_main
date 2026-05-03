@@ -38,7 +38,7 @@ const caseStudies = [
   },
     {
     slug: "Leadsfinder",
-    title: "Building International Funnels at Scale",
+    title: "Building International Funnels",
     desc: "Vision9 scaled multi-vertical international funnels, generating 369+ qualified leads through precision strategy.",
     img: "asset/caseStudy/CS1/main.png",
   }
