@@ -252,7 +252,7 @@ const LOGOS = [
   { name: "Shivoham", src: "/asset/brands/3.png" },
   { name: "Shivoham", src: "/asset/brands/camp_canva.jpg" },
   { name: "Shivoham", src: "/asset/brands/camp_Cars24.png" },
-  { name: "Shivoham", src: "/asset/brands/camp_DityaBirla.png" },
+  { name: "Shivoham", src: "/asset/brands/imgset/48.png" },
   { name: "Shivoham", src: "/asset/brands/camp_fevicol.jpg" },
   { name: "Shivoham", src: "/asset/brands/imgSet/44.png" },
   { name: "Shivoham", src: "/asset/brands/camp_images.png" },
@@ -266,7 +266,7 @@ const LOGOS = [
 
   { name: "Shivoham", src: "/asset/brands/camp_oyo.avif" },
   { name: "Shivoham", src: "/asset/brands/camp_puma.png" },
-  { name: "Shivoham", src: "/asset/brands/camp_rapido.webp" },
+  { name: "Shivoham", src: "/asset/brands/imgset/46.png" },
   { name: "Shivoham", src: "/asset/brands/camp_sofy.jpg" },
   { name: "Shivoham", src: "/asset/brands/camp_tata.webp" },
   { name: "Shivoham", src: "/asset/brands/camp_vantara.jpg" },

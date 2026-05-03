@@ -606,7 +606,7 @@ export default function ClientsPage() {
       img: "/asset/clients/testimonials/ATIQNAIKWADI.png", // Path to your image
     },
   ];
-const logos = Array.from({ length: 39 }, (_, i) => i + 4)
+const logos = Array.from({ length: 40 }, (_, i) => i + 4)
   .filter((num) => num !== 15)
   .map((num) => ({
     name: "Shivoham",
