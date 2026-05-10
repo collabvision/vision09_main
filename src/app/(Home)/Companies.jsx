@@ -30,8 +30,7 @@ const secondRow = companies.slice(companies.length / 2);
 const CompanyCard = ({ img, name }) => {
   return (
     <figure
-      className="relative w-38 h-42 md:w-46 md:h-46 cursor-pointer overflow-hidden border transition-all duration-300"
-      style={{
+className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-40 md:h-40 lg:w-46 lg:h-46 cursor-pointer overflow-hidden border transition-all duration-300"      style={{
         background: T.card,
         borderColor: T.border,
       }}

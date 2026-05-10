@@ -606,12 +606,12 @@ export default function ClientsPage() {
       img: "/asset/clients/testimonials/ATIQNAIKWADI.png", // Path to your image
     },
   ];
-const logos = Array.from({ length: 40 }, (_, i) => i + 4)
-  .filter((num) => num !== 15)
-  .map((num) => ({
-    name: "Shivoham",
-    img: `/asset/brands/imgSet/${num}.png`,
-  }));
+  const logos = Array.from({ length: 40 }, (_, i) => i + 4)
+    .filter((num) => num !== 15)
+    .map((num) => ({
+      name: "Shivoham",
+      img: `/asset/brands/imgSet/${num}.png`,
+    }));
 
   return (
     <>
@@ -793,24 +793,27 @@ const logos = Array.from({ length: 40 }, (_, i) => i + 4)
         <h2 className="sec-h rv d1">
           Brands that <em>trust</em> Vision9
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-1.5">
-    {logos.map((logo, i) => (
-      <div
-        key={i}
-        className="relative aspect-square overflow-hidden border border-white/10 group"
-      >
-        {/* Image fills full box */}
-        <img
-          src={logo.img}
-          alt={logo.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+       <div className="w-full flex justify-center">
+  <div className="w-full max-w-[900px]">
 
-        {/* Hover overlay */}
-    
-      </div>
-    ))}
+    <div className="grid grid-cols-3 lg:grid-cols-8 gap-2 md:gap-3">
+      {logos.map((logo, i) => (
+        <div
+          key={i}
+          className="relative aspect-square overflow-hidden border border-white/10 bg-white/[0.03] group"
+        >
+          {/* Image fills full box */}
+          <img
+            src={logo.img}
+            alt={logo.name}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      ))}
+    </div>
+
   </div>
+</div>
       </section>
 
       {/* CTA */}
