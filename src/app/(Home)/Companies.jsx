@@ -30,9 +30,7 @@ const secondRow = companies.slice(companies.length / 2);
 const CompanyCard = ({ img, name }) => {
   return (
     <figure
-      className={cn(
-        "relative w-80 h-80 cursor-pointer overflow-hidden border transition-all duration-300"
-      )}
+      className="relative w-38 h-42 md:w-46 md:h-46 cursor-pointer overflow-hidden border transition-all duration-300"
       style={{
         background: T.card,
         borderColor: T.border,
@@ -70,12 +68,20 @@ export default function Companies() {
     <section
       style={{
         background: T.bg,
-        padding: "120px 0",
+        padding: "40px 0",
         fontFamily: "'DM Sans', sans-serif",
       }}
     >
+          {/* <h2
+        className="text-3xl md:text-5xl font-semibold tracking-wide"
+        style={{
+          color: T.text,
+          fontFamily: "'Playfair Display', serif",
+        }}
+      >
+        Clients We Have Worked With
+      </h2> */}
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-
         <Marquee pauseOnHover className="mb-4 [--duration:20s]">
           {firstRow.map((company) => (
             <CompanyCard key={company.name} {...company} />
@@ -93,16 +99,14 @@ export default function Companies() {
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-1/4"
           style={{
-            background:
-              "linear-gradient(to right, #231f1f, transparent)",
+            background: "linear-gradient(to right, #231f1f, transparent)",
           }}
         />
 
         <div
           className="pointer-events-none absolute inset-y-0 right-0 w-1/4"
           style={{
-            background:
-              "linear-gradient(to left, #231f1f, transparent)",
+            background: "linear-gradient(to left, #231f1f, transparent)",
           }}
         />
       </div>

@@ -5,17 +5,17 @@
 ═══════════════════════════════════════════════════ */
 const T = {
   accent: "#a6a216",
-  accentLight: "#ebe60c",
+  accentLight: "white",
   accentMid: "#d2ce12",
-  accentDark: "#737017",
+  accentDark: "#2a2622",
 
   bg: "#fffee9",
   bgAlt: "#f5f2c8",
-  card: "#ffffff",
+  card: "#2a2622",
 
   text: "#231f1f",
   textSec: "#58564d",
-  muted: "#a19f8a",
+  muted: "white",
 
   border: "rgba(115,112,23,0.20)",
   borderFaint: "rgba(115,112,23,0.10)",
@@ -119,7 +119,7 @@ ${FONTS}
   border-color:${T.accent} !important;
 }
 .wv-square-center svg,.wv-square-center span{color:${T.accentLight} !important}
-.wv-square svg{color:${T.accent};stroke:${T.accent}}
+.wv-square svg{color:${T.accent};stroke:white}
 .wv-square span{
   font-family:'Tenor Sans',sans-serif;font-size:.54rem;letter-spacing:.12em;
   text-transform:uppercase;color:${T.muted};

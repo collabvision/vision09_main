@@ -316,27 +316,33 @@ export default function ClientsTeaser() {
         </div>
 
         {/* LOGO GRID (Bottom Block - Now Full Width) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-1 w-full">
-          {LOGOS.map((l, i) => (
-            <div
-              key={i}
-              className="relative w-full aspect-square overflow-hidden border border-white/10"
-              title={l.name}
-            >
-              {l.src ? (
-                <img
-                  src={l.src}
-                  alt={l.name}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <span className="absolute inset-0 flex items-center justify-center text-[0.5rem] tracking-widest uppercase text-white/50 font-['Tenor_Sans']">
-                  {l.name}
-                </span>
-              )}
-            </div>
-          ))}
+  <div className="w-full flex justify-center">
+  <div className="w-full max-w-[900px]">
+    
+    <div className="grid grid-cols-3 lg:grid-cols-7 gap-2 md:gap-3">
+      {LOGOS.map((l, i) => (
+        <div
+          key={i}
+          className="relative aspect-square overflow-hidden border border-white/10 rounded-md bg-white/[0.03]"
+          title={l.name}
+        >
+          {l.src ? (
+            <img
+              src={l.src}
+              alt={l.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <span className="absolute inset-0 flex items-center justify-center text-[0.5rem] tracking-widest uppercase text-white/50 font-['Tenor_Sans']">
+              {l.name}
+            </span>
+          )}
         </div>
+      ))}
+    </div>
+
+  </div>
+</div>
       </div>
     </section>
   );
