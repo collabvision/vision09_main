@@ -146,7 +146,7 @@ export default function Branding() {
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
         >
           <img
-            src="asset/home/branding.png"
+            src="/branding.png"
             alt="Vision9 Branding"
           />
           <div className="br-img-accent" />
