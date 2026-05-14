@@ -127,7 +127,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;
   padding:1.2rem clamp(1.5rem,5vw,4rem);z-index:200;border-bottom:1px solid var(--border);
   background:var(--nav-bg);backdrop-filter:blur(16px)}
-.logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
+.logo{font-family: Helvetica, Arial, sans-serif;;font-size:1.5rem;font-weight:700;
   letter-spacing:.06em;color:var(--text);text-decoration:none}
 .logo .g{color:var(--accent)}
 .nav-t{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
@@ -138,7 +138,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 .sec-orn::before{content:'';flex:1;max-width:40px;height:1px;background:linear-gradient(270deg,var(--accent),transparent)}
 .sec-orn::after{content:'';flex:1;max-width:40px;height:1px;background:linear-gradient(90deg,var(--accent),transparent)}
 .sec-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--accent-m),transparent);opacity:.3}
-.sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:600;
+.sec-h{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:600;
   line-height:1.15;max-width:600px;margin-bottom:3rem;color:var(--text)}
 .sec-h em{color:var(--accent);font-style:italic}
 
@@ -154,7 +154,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   color:var(--accent);margin-bottom:1.6rem;opacity:0;animation:fadeUp .7s .3s forwards;
   display:flex;align-items:center;gap:.8rem}
 .hero-kicker span{width:20px;height:1px;background:var(--accent);display:inline-block}
-.hero-title{font-family:'Playfair Display',serif;font-size:clamp(4rem,12vw,12rem);
+.hero-title{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(4rem,12vw,12rem);
   line-height:.87;letter-spacing:-.02em;overflow:hidden;font-weight:900;color:var(--text)}
 .tl{display:block;clip-path:inset(0 0 100% 0);animation:clipR .95s cubic-bezier(.16,1,.3,1) forwards}
 .tl1{animation-delay:.45s}.tl2{animation-delay:.6s;color:var(--accent);font-style:italic}.tl3{animation-delay:.75s}
@@ -168,7 +168,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 .stat{flex:1;padding:1.4rem clamp(1rem,3vw,2.5rem);border-right:1px solid var(--border);
   transition:background .3s}
 .stat:hover{background:var(--bg-alt)}.stat:last-child{border-right:none}
-.sn{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,3rem);
+.sn{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(1.6rem,3.5vw,3rem);
   line-height:1;color:var(--accent);display:block;font-weight:700}
 .sl{font-family:'Tenor Sans',sans-serif;font-size:clamp(.52rem,.85vw,.66rem);
   letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;display:block}
@@ -176,7 +176,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 /* TICKER */
 .ticker-wrap{height:52px;background:var(--tick-bg);overflow:hidden;display:flex;align-items:center}
 .tkr{display:flex;white-space:nowrap;animation:tkrAnim 22s linear infinite}
-.ti{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;letter-spacing:.2em;
+.ti{font-family: Helvetica, Arial, sans-serif;;font-size:.9rem;font-weight:700;letter-spacing:.2em;
   color:var(--tick-txt);padding:0 2.2rem;display:flex;align-items:center;gap:1.4rem;text-transform:uppercase}
 .td{width:5px;height:5px;background:var(--tick-txt);transform:rotate(45deg);opacity:.4;flex-shrink:0}
 @keyframes tkrAnim{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -189,7 +189,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 @keyframes sL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes sR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 .pill{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border);
-  padding:.65rem 1.3rem;font-family:'Playfair Display',serif;font-size:clamp(.85rem,1.7vw,1.15rem);
+  padding:.65rem 1.3rem;font-family: Helvetica, Arial, sans-serif;;font-size:clamp(.85rem,1.7vw,1.15rem);
   font-weight:400;letter-spacing:.06em;color:var(--text);white-space:nowrap;flex-shrink:0;
   background:var(--card);transition:background .3s,border-color .3s,color .3s;cursor:none}
 .pill:hover{background:var(--pill-hbg);border-color:var(--pill-hbg);color:var(--pill-htxt)}
@@ -206,7 +206,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 .ea{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);
   opacity:0;transform:translateX(-18px);transition:opacity .6s,transform .6s}
 .ea.on{opacity:1;transform:translateX(0)}
-.ea-n{font-family:'Playfair Display',serif;font-size:.88rem;color:var(--accent);min-width:2rem;padding-top:.1rem}
+.ea-n{font-family: Helvetica, Arial, sans-serif;;font-size:.88rem;color:var(--accent);min-width:2rem;padding-top:.1rem}
 .ea-t{font-size:clamp(.8rem,1.25vw,.92rem);line-height:1.7;color:var(--text-sec)}
 .cnt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
   background:var(--border);border:1px solid var(--border);margin-top:3rem}
@@ -218,7 +218,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   background:linear-gradient(90deg,var(--accent-d),var(--accent),var(--accent-m));
   transform:scaleX(0);transform-origin:left;transition:transform .5s}
 .cnt:hover::after{transform:scaleX(1)}
-.cv{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4rem);
+.cv{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(2.2rem,4.5vw,4rem);
   color:var(--accent);line-height:1;display:block;font-weight:700}
 .cl{font-family:'Tenor Sans',sans-serif;font-size:clamp(.6rem,.95vw,.72rem);
   letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;display:block}
@@ -233,14 +233,14 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   padding:clamp(1.5rem,3vw,2.5rem);scroll-snap-align:start;position:relative;overflow:hidden;
   box-shadow:0 2px 16px var(--border-f);transition:border-color .4s,transform .4s,box-shadow .4s}
 .tc:hover{border-color:var(--accent-m);transform:translateY(-5px);box-shadow:0 16px 48px var(--border)}
-.tc::before{font-family:'Playfair Display',serif;font-size:6rem;line-height:.7;
+.tc::before{font-family: Helvetica, Arial, sans-serif;;font-size:6rem;line-height:.7;
   color:var(--border);position:absolute;top:.8rem;right:1.2rem;pointer-events:none;font-weight:400}
 .tc::after{content:'';position:absolute;bottom:12px;right:12px;width:16px;height:16px;
   border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
-.tq{font-family:'Playfair Display',serif;font-size:clamp(.82rem,1.25vw,.93rem);line-height:1.88;
+.tq{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(.82rem,1.25vw,.93rem);line-height:1.88;
   color:var(--text-sec);margin-bottom:1.5rem;font-style:italic;font-weight:400}
 .t-div{width:24px;height:1px;background:linear-gradient(90deg,var(--accent),transparent);margin-bottom:1.2rem}
-.tn{font-family:'Playfair Display',serif;font-size:clamp(.95rem,1.7vw,1.2rem);
+.tn{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(.95rem,1.7vw,1.2rem);
   letter-spacing:.04em;color:var(--text);font-weight:600}
 .tr{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--accent);margin-top:.25rem;display:block}
@@ -256,7 +256,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 .lg-grid{display:flex;flex-wrap:wrap;border:1px solid var(--border);margin-top:clamp(2rem,4vh,3rem)}
 .lg-cell{flex:1 0 calc(25% - 0px);min-width:160px;;
   border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;
+  display:flex;align-items:center;justify-content:center;font-family: Helvetica, Arial, sans-serif;;
   font-size:clamp(.8rem,1.6vw,1.1rem);font-weight:400;letter-spacing:.08em;
   color:var(--muted);text-align:center;position:relative;overflow:hidden;cursor:none;
   background:var(--card);transition:color .4s}
@@ -271,20 +271,20 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   position:relative;overflow:hidden;display:flex;flex-direction:column;
   align-items:center;background:var(--bg-alt)}
 .cta-ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:'Playfair Display',serif;font-size:clamp(5rem,18vw,18rem);color:transparent;
+  font-family: Helvetica, Arial, sans-serif;;font-size:clamp(5rem,18vw,18rem);color:transparent;
   -webkit-text-stroke:1px var(--border);white-space:nowrap;pointer-events:none;
   animation:gPulse 8s ease-in-out infinite;font-weight:900}
 .cta-orn{font-family:'Tenor Sans',sans-serif;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
   color:var(--accent);margin-bottom:1.4rem;position:relative;display:flex;align-items:center;
   gap:.8rem;justify-content:center}
 .cta-orn span{width:30px;height:1px;background:var(--accent);display:inline-block}
-.cta-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,5.5vw,5rem);
+.cta-h{font-family: Helvetica, Arial, sans-serif;;font-size:clamp(2rem,5.5vw,5rem);
   font-weight:600;line-height:1.08;max-width:740px;position:relative;color:var(--text)}
 .cta-h em{color:var(--accent);font-style:italic}
 .cta-sub{margin-top:1.5rem;font-size:clamp(.85rem,1.4vw,1rem);color:var(--text-sec);
   max-width:480px;line-height:1.8;position:relative}
 .cta-btns{margin-top:2.5rem;display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;position:relative}
-.btn-solid{background:var(--btn-bg);color:var(--btn-txt);font-family:'Playfair Display',serif;
+.btn-solid{background:var(--btn-bg);color:var(--btn-txt);font-family: Helvetica, Arial, sans-serif;;
   font-size:.88rem;font-weight:700;letter-spacing:.15em;padding:1rem 2.8rem;border:none;
   cursor:none;text-decoration:none;display:inline-block;text-transform:uppercase;
   position:relative;overflow:hidden;transition:background .3s,transform .3s}
@@ -293,7 +293,7 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
   transform:translateX(-100%);transition:transform .4s}
 .btn-solid:hover::after{transform:translateX(100%)}
 .btn-solid:hover{background:var(--btn-hover);transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--btn-ot);font-family:'Playfair Display',serif;
+.btn-outline{background:transparent;color:var(--btn-ot);font-family: Helvetica, Arial, sans-serif;;
   font-size:.88rem;font-weight:600;letter-spacing:.15em;padding:1rem 2.8rem;
   border:1px solid var(--btn-ob);cursor:none;text-decoration:none;display:inline-block;
   text-transform:uppercase;transition:border-color .3s,color .3s,transform .3s}
@@ -379,6 +379,27 @@ nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-betwe
 //   opacity: 1;
 //   transform: translateY(0);
 // }
+.hero-sub,
+.exp-body,
+.ea-t,
+.tq,
+.cta-sub,
+.sl,
+.cl{
+  font-family: 'Montserrat', sans-serif;
+}
+
+em,
+.hero-title i,
+.sec-h em,
+.cta-h em{
+  font-family: 'Riccione Serial', serif;
+  font-style: italic;
+}
+  em, .tl.tl2{
+  font-family: 'Riccione Serial', serif;
+  font-style: italic;
+}
 `;
 
 export default function ClientsPage() {
@@ -800,7 +821,7 @@ export default function ClientsPage() {
       {logos.map((logo, i) => (
         <div
           key={i}
-          className="relative aspect-square overflow-hidden border border-white/10 bg-white/[0.03] group"
+          className="relative border rounded-md aspect-square overflow-hidden border border-white/10 bg-white/[0.03] group"
         >
           {/* Image fills full box */}
           <img

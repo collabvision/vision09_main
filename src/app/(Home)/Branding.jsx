@@ -23,6 +23,8 @@ const T = {
   darkText: "#fffee9",
 };
 
+
+
 import { motion } from "framer-motion";
 import { HyperText } from "../../components/ui/hyper-text";
 
@@ -36,8 +38,13 @@ ${FONTS}
 }
 .br-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,${T.accentMid},transparent);opacity:.3;margin-bottom:0}
 .br-inner{
-  display:flex;flex-direction:row;align-items:stretch;
-  min-height:clamp(420px,65vh,700px);
+  width:100%;
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:auto;
 }
 /* LEFT — image */
 .br-img-col{
@@ -73,11 +80,15 @@ ${FONTS}
 .br-h em{color:${T.accent};font-style:italic}
 /* HyperText desc override */
 .br-desc{
-  font-size:clamp(.88rem,1.4vw,1rem);line-height:1.9;
-  color:${T.textSec};max-width:520px;margin-bottom:2rem;
+  max-width:760px;
+  text-align:center;
 }
 .br-tags{
-  display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.7rem;
+  margin-bottom:2.5rem;
 }
 .br-tag{
   font-family:'Tenor Sans',sans-serif;font-size:.52rem;letter-spacing:.16em;
@@ -138,19 +149,7 @@ export default function Branding() {
 
       <div className="br-inner">
         {/* ── LEFT IMAGE ── */}
-        <motion.div
-          className="br-img-col"
-          initial={{ x: -100, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <img
-            src="/branding.png"
-            alt="Vision9 Branding"
-          />
-          <div className="br-img-accent" />
-        </motion.div>
+      
 
         {/* ── RIGHT CONTENT ── */}
         <motion.div
@@ -227,6 +226,7 @@ export default function Branding() {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
+            className="flex justify-center"
           >
             <a href="/services" className="br-cta">
               Explore Branding &amp; Designing
