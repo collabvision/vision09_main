@@ -1,8 +1,9 @@
 export default function sitemap() {
   return [
     {
-      url: "https://vision9.com",
+      url: "https://www.thevision9.com",
       lastModified: new Date(),
+      changeFrequency: "weekly",
       priority: 1,
     },
   ];
