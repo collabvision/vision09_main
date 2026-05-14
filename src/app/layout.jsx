@@ -40,7 +40,7 @@ export const metadata = {
   authors: [
     {
       name: "Vision9",
-      url: "https://vision9.com",
+      url: "https://thevision9.com",
     },
   ],
 
@@ -48,7 +48,7 @@ export const metadata = {
   publisher: "Vision9",
 
   alternates: {
-    canonical: "https://vision9.com",
+    canonical: "https://thevision9.com",
   },
 
   robots: {
@@ -68,7 +68,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://vision9.com",
+    url: "https://thevision9.com",
     siteName: "Vision9",
 
     title: "Vision9 | Performance Marketing & Branding Agency",
