@@ -6,6 +6,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://vision9.com/sitemap.xml",
+    sitemap: "https://thevision9.com/sitemap.xml",
   };
 }
