@@ -68,7 +68,7 @@ ${FONTS}
   animation:v9ClipUp .95s cubic-bezier(.16,1,.3,1) forwards;
 }
 .v9-hero-title .ln1{animation-delay:.35s}
-.v9-hero-title .ln2{animation-delay:.52s;color:${T.accent};font-style:italic}
+.v9-hero-title .ln2{animation-delay:.52s;color:${T.accent};}
 .v9-hero-title .ln3{animation-delay:.68s}
 .v9-hero-sub{
   max-width:540px;margin-top:2rem;
