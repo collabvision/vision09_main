@@ -1117,326 +1117,182 @@ export default function ServicesPage() {
       )}
       <Header />
 
-      <div
-        style={{
-          display: "flex",
-          width: "100vw",
-          height: "100vh",
-          overflow: "hidden",
-          background: "var(--bg)",
-          flexDirection: isMobile ? "column" : "row",
-        }}
-      >
-        {/* ══ LEFT PANEL ══ */}
-        <div
+      {/* ══ LEFT PANEL ══ */}
+      <div style={{margin:"5rem 2rem"}}>
+        <p
           style={{
-            width: isMobile ? "100%" : "clamp(0px,38%,420px)",
-            height: isMobile ? "auto" : "100%",
-            flexShrink: 0,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: isMobile ? "2rem 5vw 1rem" : "0 5vw",
-            background: "var(--bg)",
-            zIndex: 20,
-            borderRight: isMobile ? "none" : `1px solid var(--border)`,
-            borderBottom: isMobile ? `1px solid var(--border)` : "none",
-            position: "relative",
-            overflow: "hidden",
+            fontFamily: "'Tenor Sans',sans-serif",
+            fontSize: "clamp(.6rem,.9vw,.7rem)",
+            letterSpacing: ".3em",
+            textTransform: "uppercase",
+            color: THEME.accent,
+
+            marginTop: "clamp(80px, 8vh, 100px)",
+            marginBottom: ".75rem",
+            paddingInline: "clamp(16px, 4vw, 32px)",
           }}
         >
-          {/* corner accents */}
-          {!isMobile &&
-            [
-              { top: 24, left: 24 },
-              { top: 24, right: 0 },
-              { bottom: 24, left: 24 },
-              { bottom: 24, right: 0 },
-            ].map((pos, i) => (
+          ✦ What We Do ✦
+        </p>
+
+        <h2
+          style={{
+            fontFamily: "'Playfair Display',serif",
+            fontSize: "clamp(2rem,4vw,4rem)",
+            fontWeight: 700,
+            color: "rgb(166, 162, 22)",
+            lineHeight: 1,
+            marginBottom: "1rem",
+             padding: isMobile ? "0 1rem" : "0 5rem",
+          }}
+        >
+          Services Crafted for Growth
+        </h2>
+      </div>
+      {/* ══ SERVICES GRID ══ */}
+      <div
+        style={{
+          flex: 1,
+          overflowY: "auto",
+          padding: isMobile ? "0 1rem" : "0 5rem",
+          background: "var(--bg)",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile
+              ? "1fr"
+              : "repeat(auto-fit,minmax(280px,1fr))",
+            gap: "20px",
+            alignItems: "stretch",
+          }}
+        >
+          {[...COL1, ...COL2].map((s) => {
+            const key = resolveKey(s.label);
+            const svcData = key ? SERVICE_DATA[key] : null;
+
+            if (!s.label) return null;
+
+            return (
               <div
-                key={i}
+                key={s.id}
+                onMouseEnter={() => handleCardHover(s.label)}
+                onClick={() => handleOpenPopup(s.label)}
                 style={{
-                  position: "absolute",
-                  ...pos,
-                  width: 28,
-                  height: 28,
-                  opacity: 0.4,
-                  borderTop:
-                    pos.top !== undefined ? `1px solid var(--accent)` : "none",
-                  borderBottom:
-                    pos.bottom !== undefined
-                      ? `1px solid var(--accent)`
-                      : "none",
-                  borderLeft:
-                    pos.left !== undefined ? `1px solid var(--accent)` : "none",
-                  borderRight:
-                    pos.right !== undefined
-                      ? `1px solid var(--accent)`
-                      : "none",
+                  background: s.bg,
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+                  cursor: "pointer",
+                  transition: "transform .35s ease, box-shadow .35s ease",
+                  border: `1px solid ${THEME.border}`,
                 }}
-              />
-            ))}
-
-          <p
-            style={{
-              fontFamily: "'Tenor Sans',sans-serif",
-              fontSize: "clamp(.5rem,.9vw,.65rem)",
-              letterSpacing: ".3em",
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              marginBottom: isMobile ? ".5rem" : "1rem",
-              marginTop: isMobile ? "30px" : "0px",
-            }}
-          >
-            ✦ What We Do ✦
-          </p>
-
-          {/* animated title */}
-          <div style={{ width: "100%" }}>
-            <h1
-              ref={titleRef}
-              key={active}
-              style={{
-                fontFamily: "'Playfair Display',serif",
-                fontWeight: 900,
-                lineHeight: 0.9,
-                letterSpacing: "-.01em",
-                color: "var(--text)",
-                animation: "fadeTitle .35s ease",
-                wordBreak: "break-word",
-                width: "100%",
-                display: "block",
-                transition: "font-size .2s ease",
-              }}
-            >
-              {active.replace(/\n/g, " ")}
-            </h1>
-          </div>
-
-          <div
-            style={{
-              marginTop: isMobile ? ".8rem" : "1.4rem",
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-            }}
-          >
-            <div
-              style={{
-                flex: 1,
-                height: 1,
-                background: `linear-gradient(90deg,var(--accent),transparent)`,
-              }}
-            />
-            <span style={{ color: "var(--accent)", fontSize: 10 }}>◆</span>
-          </div>
-
-          {/* snap status indicator */}
-          <div
-            style={{
-              marginTop: ".6rem",
-              height: "1.4rem",
-              display: "flex",
-              alignItems: "center",
-              gap: ".5rem",
-              opacity: countdown ? 1 : 0,
-              transition: "opacity .3s",
-            }}
-          >
-            <div
-              style={{
-                width: 6,
-                height: 6,
-                background: THEME.accent,
-                borderRadius: "50%",
-                flexShrink: 0,
-                animation: countdown
-                  ? "snapPulse 1s ease-in-out infinite"
-                  : "none",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "'Tenor Sans',sans-serif",
-                fontSize: ".46rem",
-                letterSpacing: ".18em",
-                textTransform: "uppercase",
-                color: THEME.accentDark,
-              }}
-            >
-              {countdown ? `Resuming in ${countdown}s` : ""}
-            </span>
-          </div>
-
-          <p
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontStyle: "italic",
-              fontSize: "clamp(.72rem,1.1vw,.88rem)",
-              color: "var(--muted)",
-              marginTop: ".4rem",
-              lineHeight: 1.65,
-            }}
-          >
-            {isMobile
-              ? "Tap a card to explore"
-              : "Click a service to highlight · hover to browse"}
-          </p>
-
-          {/* service list */}
-          <div
-            className={isMobile ? "svc-pill-row" : ""}
-            style={{
-              marginTop: isMobile ? "1rem" : "1.4rem",
-              display: "flex",
-              flexDirection: isMobile ? "row" : "column",
-              gap: isMobile ? ".75rem" : 0,
-              /* mobile: scroll horizontally, never wrap */
-              overflowX: isMobile ? "auto" : "visible",
-              overflowY: "hidden",
-              flexWrap: "nowrap",
-              /* pull out to edge so pills reach screen edge */
-              marginLeft: isMobile ? "-5vw" : "0",
-              paddingLeft: isMobile ? "5vw" : "0",
-              paddingRight: isMobile ? "5vw" : "0",
-              paddingBottom: isMobile ? ".6rem" : 0,
-              /* momentum scroll on iOS */
-              WebkitOverflowScrolling: "touch",
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-              maxHeight: isMobile ? "none" : "42vh",
-            }}
-          >
-            {SIDEBAR_ITEMS.map((item, i) => {
-              const isSnapped =
-                snapTo &&
-                item.label.split(/[\n ]/)[0] === snapTo.split(/[\n ]/)[0];
-              const isActive =
-                active.split(/[\n ]/)[0] === item.label.split(/[\n ]/)[0];
-              return (
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow =
+                    "0 20px 40px rgba(0,0,0,.15)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                {/* Image */}
                 <div
-                  key={i}
-                  onClick={() => handleSidebarClick(item)}
                   style={{
-                    fontFamily: "'Tenor Sans',sans-serif",
-                    fontSize: "clamp(.52rem,.78vw,.66rem)",
-                    letterSpacing: ".1em",
-                    textTransform: "uppercase",
-                    color: isSnapped
-                      ? THEME.accent
-                      : isActive
-                        ? THEME.accentDark
-                        : "var(--muted)",
-                    borderLeft: !isMobile
-                      ? isSnapped
-                        ? `2px solid ${THEME.accent}`
-                        : isActive
-                          ? `2px solid ${THEME.accentDark}`
-                          : "2px solid transparent"
-                      : "none",
-                    borderBottom:
-                      isMobile && (isSnapped || isActive)
-                        ? `2px solid ${THEME.accent}`
-                        : isMobile
-                          ? "2px solid transparent"
-                          : "none",
-                    paddingLeft: !isMobile ? "8px" : 0,
-                    paddingBottom: isMobile ? "4px" : ".55rem",
-                    paddingTop: !isMobile ? ".55rem" : 0,
-                    whiteSpace: "nowrap",
-                    cursor: "pointer",
-                    fontWeight: isSnapped ? 700 : isActive ? 600 : 400,
-                    transition: "all .25s",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".4rem",
-                    flexShrink: 0,
+                    height: "320px",
+                    overflow: "hidden",
+                    position: "relative",
                   }}
                 >
-                  {isSnapped && (
-                    <span
+                  {svcData && (
+                    <img
+                      src={svcData.image}
+                      alt={s.label}
                       style={{
-                        display: "inline-block",
-                        width: 4,
-                        height: 4,
-                        background: THEME.accent,
-                        flexShrink: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        transition: "transform .4s ease",
                       }}
                     />
                   )}
-                  {item.label}
                 </div>
-              );
-            })}
-          </div>
+
+                {/* Content */}
+                <div
+                  style={{
+                    padding: "1.25rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: ".8rem",
+                    flex: 1,
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: "'Playfair Display',serif",
+                      fontWeight: 700,
+                      fontSize: "1.1rem",
+                      lineHeight: 1.2,
+                      color: s.color,
+                      whiteSpace: "pre-line",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {s.label}
+                  </h3>
+
+                  {svcData && (
+                    <p
+                      style={{
+                        fontFamily: "'DM Sans',sans-serif",
+                        fontSize: ".85rem",
+                        lineHeight: 1.7,
+                        color:
+                          s.color === "#fffee9"
+                            ? "rgba(255,255,255,.8)"
+                            : THEME.textSecondary,
+                        flex: 1,
+                      }}
+                    >
+                      {svcData.description}
+                    </p>
+                  )}
+
+                  {/* Existing Button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenPopup(s.label);
+                    }}
+                    style={{
+                      alignSelf: "flex-start",
+                      fontFamily: "'Tenor Sans',sans-serif",
+                      fontSize: ".6rem",
+                      letterSpacing: ".16em",
+                      textTransform: "uppercase",
+                      color: "#231f1f",
+                      background: THEME.accentLight,
+                      border: "none",
+                      cursor: "pointer",
+                      padding: ".5rem .9rem",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: ".35rem",
+                      fontWeight: 600,
+                      transition: "background .25s ease",
+                    }}
+                  >
+                    View Details
+                    <span>→</span>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
-
-        {/* ══ RAILS ══ */}
-        {mounted && (
-          <div
-            style={{
-              flex: 1,
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: GAP,
-              padding: `0 ${GAP}px`,
-              overflow: "hidden",
-              position: "relative",
-            }}
-          >
-            {/* top/bottom fade masks */}
-            {["top", "bottom"].map((pos) => (
-              <div
-                key={pos}
-                style={{
-                  position: "absolute",
-                  [pos]: 0,
-                  left: 0,
-                  right: 0,
-                  height: "clamp(60px,12vh,110px)",
-                  background: `linear-gradient(to ${pos === "top" ? "bottom" : "top"},var(--bg) 25%,transparent)`,
-                  zIndex: 10,
-                  pointerEvents: "none",
-                }}
-              />
-            ))}
-
-            {/* COL 1 — scrolls UP */}
-            <div
-              ref={col1Ref}
-              style={{ overflow: "hidden", position: "relative" }}
-            >
-              <VerticalRail
-                cards={COL1}
-                direction="up"
-                speed={0.5}
-                onHover={handleCardHover}
-                onOpenPopup={handleOpenPopup}
-                activeLabel={activeId}
-                snapTo={col1Snap}
-                containerRef={col1Ref}
-              />
-            </div>
-
-            {/* COL 2 — scrolls DOWN */}
-            <div
-              ref={col2Ref}
-              style={{ overflow: "hidden", position: "relative" }}
-            >
-              <VerticalRail
-                cards={COL2}
-                direction="down"
-                offset={-380}
-                speed={0.5}
-                onHover={handleCardHover}
-                onOpenPopup={handleOpenPopup}
-                activeLabel={activeId}
-                snapTo={col2Snap}
-                containerRef={col2Ref}
-              />
-            </div>
-          </div>
-        )}
       </div>
 
       <Footer />
