@@ -375,7 +375,14 @@ const SIDEBAR_ITEMS = [
 function ServicePopup({ serviceKey, onClose }) {
   const data = serviceKey ? SERVICE_DATA[serviceKey] : null;
   const [vis, setVis] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
 
+useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 768);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
   useEffect(() => {
     if (data) requestAnimationFrame(() => setVis(true));
     else setVis(false);
@@ -410,21 +417,15 @@ function ServicePopup({ serviceKey, onClose }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{
-          background: THEME.pageBg,
-          width: "min(820px,92vw)",
-          maxHeight: "88vh",
-          position: "relative",
-          display: "flex",
-          flexDirection: "row",
-          overflow: "hidden",
-          transform: vis
-            ? "translateY(0) scale(1)"
-            : "translateY(18px) scale(.96)",
-          opacity: vis ? 1 : 0,
-          transition:
-            "transform .32s cubic-bezier(.16,1,.3,1),opacity .28s ease",
-        }}
+       style={{
+  background: THEME.pageBg,
+  width: "min(820px,92vw)",
+  maxHeight: "88vh",
+  position: "relative",
+  display: "flex",
+  flexDirection: window.innerWidth < 768 ? "column" : "row",
+  overflow: "hidden",
+}}
       >
         <button
           onClick={onClose}
@@ -449,14 +450,15 @@ function ServicePopup({ serviceKey, onClose }) {
         </button>
 
         {/* image */}
-        <div
-          style={{
-            width: "42%",
-            flexShrink: 0,
-            overflow: "hidden",
-            position: "relative",
-          }}
-        >
+       <div
+  style={{
+    width: isMobile ? "100%" : "42%",
+    height: isMobile ? "220px" : "auto",
+    flexShrink: 0,
+    overflow: "hidden",
+    position: "relative",
+  }}
+>
           <img
             src={data.image}
             alt={data.title}
@@ -1142,7 +1144,6 @@ export default function ServicesPage() {
             fontWeight: 700,
             color: "rgb(166, 162, 22)",
             lineHeight: 1,
-            marginBottom: "1rem",
              padding: isMobile ? "0 1rem" : "0 5rem",
           }}
         >
@@ -1154,8 +1155,9 @@ export default function ServicesPage() {
         style={{
           flex: 1,
           overflowY: "auto",
-          padding: isMobile ? "0 1rem" : "0 5rem",
+          padding: isMobile ? "2 1rem" : "0 5rem",
           background: "var(--bg)",
+          marginBottom:"2rem"
         }}
       >
         <div
