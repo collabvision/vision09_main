@@ -571,6 +571,53 @@ body{background:${T.bgDark};color:${T.cream};font-family:'DM Sans',sans-serif;fo
   margin-bottom: 0.5rem;
   display: block;
 }
+
+@media (max-width: 768px){
+
+  #s0{
+    min-height:60vh;
+    height:auto;
+    align-items:flex-start;
+    justify-content:flex-start;
+    padding-top:90px;
+  }
+
+  .hero-content{
+    padding:
+      1.5rem
+      1.5rem
+      2rem
+      1.5rem;
+  }
+
+  .hero-eyebrow-row{
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-bottom:1rem;
+  }
+
+  .hero-h1{
+    font-size:clamp(2.5rem,12vw,5rem);
+    line-height:.88;
+  }
+
+  .hero-sub-row{
+    margin-top:1rem;
+    display:block;
+  }
+
+  .hero-sub-text{
+    max-width:100%;
+  }
+
+  .hero-scroll{
+    display:none;
+  }
+
+  .hero-stats{
+    display:none;
+  }
+}
 `;
 
 /* ────── COUNTER HOOK ────── */
