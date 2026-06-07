@@ -4,7 +4,7 @@
    THEME — change here to retheme this entire file
 ═══════════════════════════════════════════════════ */
 const T = {
-  accent: "#d2ce12",
+  accent: "#a6a216",
   accentLight: "#ebe60c",
   accentMid: "#a6a216",
   accentDark: "#737017",
@@ -68,7 +68,7 @@ ${FONTS}
   animation:v9ClipUp .95s cubic-bezier(.16,1,.3,1) forwards;
 }
 .v9-hero-title .ln1{animation-delay:.35s}
-.v9-hero-title .ln2{animation-delay:.52s;color:${T.accent};}
+.v9-hero-title .ln2{animation-delay:.52s;color:${T.accent}; font-style:Italic}
 .v9-hero-title .ln3{animation-delay:.68s}
 .v9-hero-sub{
   max-width:540px;margin-top:2rem;
