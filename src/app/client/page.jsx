@@ -108,7 +108,7 @@ const v = (t) =>
   ].join(";");
 
 // const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
-const FONTS = `@import url('../../public/fonts.css');`;
+const FONTS = `@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Tenor+Sans&family=DM+Sans:wght@200;300;400&display=swap');`;
 const CSS = `
 ${FONTS}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}

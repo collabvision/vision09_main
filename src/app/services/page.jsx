@@ -375,14 +375,14 @@ const SIDEBAR_ITEMS = [
 function ServicePopup({ serviceKey, onClose }) {
   const data = serviceKey ? SERVICE_DATA[serviceKey] : null;
   const [vis, setVis] = useState(false);
-const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-useEffect(() => {
-  const check = () => setIsMobile(window.innerWidth < 768);
-  check();
-  window.addEventListener("resize", check);
-  return () => window.removeEventListener("resize", check);
-}, []);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
   useEffect(() => {
     if (data) requestAnimationFrame(() => setVis(true));
     else setVis(false);
@@ -417,15 +417,15 @@ useEffect(() => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-       style={{
-  background: THEME.pageBg,
-  width: "min(820px,92vw)",
-  maxHeight: "88vh",
-  position: "relative",
-  display: "flex",
-  flexDirection: window.innerWidth < 768 ? "column" : "row",
-  overflow: "hidden",
-}}
+        style={{
+          background: THEME.pageBg,
+          width: "min(820px,92vw)",
+          maxHeight: "88vh",
+          position: "relative",
+          display: "flex",
+          flexDirection: window.innerWidth < 768 ? "column" : "row",
+          overflow: "hidden",
+        }}
       >
         <button
           onClick={onClose}
@@ -450,15 +450,15 @@ useEffect(() => {
         </button>
 
         {/* image */}
-       <div
-  style={{
-    width: isMobile ? "100%" : "42%",
-    height: isMobile ? "220px" : "auto",
-    flexShrink: 0,
-    overflow: "hidden",
-    position: "relative",
-  }}
->
+        <div
+          style={{
+            width: isMobile ? "100%" : "42%",
+            height: isMobile ? "220px" : "auto",
+            flexShrink: 0,
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
           <img
             src={data.image}
             alt={data.title}
@@ -1120,7 +1120,7 @@ export default function ServicesPage() {
       <Header />
 
       {/* ══ LEFT PANEL ══ */}
-      <div style={{margin:"5rem 2rem"}}>
+      <div style={{ margin: "5rem 2rem" }}>
         <p
           style={{
             fontFamily: "'Tenor Sans',sans-serif",
@@ -1144,7 +1144,7 @@ export default function ServicesPage() {
             fontWeight: 700,
             color: "rgb(166, 162, 22)",
             lineHeight: 1,
-             padding: isMobile ? "0 1rem" : "0 5rem",
+            padding: isMobile ? "0 1rem" : "0 5rem",
           }}
         >
           Services Crafted for Growth
@@ -1157,7 +1157,7 @@ export default function ServicesPage() {
           overflowY: "auto",
           padding: isMobile ? "2 1rem" : "0 5rem",
           background: "var(--bg)",
-          marginBottom:"2rem"
+          marginBottom: "2rem",
         }}
       >
         <div
